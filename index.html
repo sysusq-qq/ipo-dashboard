@@ -144,6 +144,24 @@
     .s-hotday   { background: #1a1000; color: var(--gold);    border: 1px solid var(--gold); }
     .s-listed   { background: var(--bg-card); color: var(--text-dim); border: 1px solid var(--border); }
     .s-transfer { background: var(--cyan-bg); color: var(--cyan);   border: 1px solid var(--cyan); }
+    .s-ended    { background: var(--bg-card); color: var(--text-dim); border: 1px solid var(--border); }
+    .stock-card.dimmed { opacity: 0.55; }
+    .collapse-toggle {
+      padding: 9px 16px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-dim);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      border-bottom: 1px solid var(--border);
+      user-select: none;
+      letter-spacing: .5px;
+    }
+    .collapse-toggle:hover { color: var(--text-second); background: var(--bg-hover); }
+    .collapse-arrow { margin-left: auto; font-size: 12px; transition: transform .2s; }
+    .collapse-arrow.open { transform: rotate(180deg); }
 
     .stock-name {
       font-size: 13px;
@@ -395,6 +413,31 @@
 let stocks = [];
 
 /* ════════════════════════════════════════════════════════
+   北京时间 & 状态自动计算
+════════════════════════════════════════════════════════ */
+function getBeijingDateStr() {
+  const bj = new Date(Date.now() + 8 * 3600 * 1000);
+  return bj.toISOString().slice(0, 10);
+}
+function parseSubEndDate(subDate) {
+  if (!subDate || subDate.includes('不适用') || subDate === '—') return null;
+  const m = subDate.match(/(\d{4}-\d{2}-\d{2})\s*$/);
+  return m ? m[1] : null;
+}
+function computeStatus(s) {
+  if (s.isTransfer) return { status: 'transfer', statusText: '转板' };
+  const today = getBeijingDateStr();
+  const subEnd  = parseSubEndDate(s.subDate);
+  const listDate = s.listDate;
+  if (listDate && today > listDate) return { status: 'listed',  statusText: '已上市' };
+  if (subEnd) {
+    if (today > subEnd)   return { status: 'ended',   statusText: '申购截止' };
+    if (today === subEnd) return { status: 'hotday',  statusText: '今日截招' };
+  }
+  return { status: 'hot', statusText: '招股中' };
+}
+
+/* ════════════════════════════════════════════════════════
    中签率计算（港交所回拨机制）
    公式：min(1, clawbackPct / (initPct × subMult)) × 100
 ════════════════════════════════════════════════════════ */
@@ -414,18 +457,30 @@ function calcAllocRate(subMult) {
 function renderSidebar() {
   const list = document.getElementById('stock-list');
   document.getElementById('stock-count').textContent = stocks.length + '只';
-  list.innerHTML = stocks.map((s, i) => {
+
+  // 计算每只股票的实时状态（基于北京时间）
+  stocks.forEach(s => {
+    const c = computeStatus(s);
+    s._status = c.status;
+    s._statusText = c.statusText;
+  });
+
+  const activeIdx = [], endedIdx = [];
+  stocks.forEach((s, i) => {
+    (s._status === 'ended' || s._status === 'listed') ? endedIdx.push(i) : activeIdx.push(i);
+  });
+
+  function cardHtml(i) {
+    const s = stocks[i];
     const priceStr = s.price ? `HK$${s.price.toFixed(2)}` : '转板';
-    const statusClass = s.status === 'hotday' ? 's-hotday' :
-                        s.status === 'hot'    ? 's-hot' :
-                        s.status === 'listed' ? 's-listed' :
-                        s.status === 'transfer' ? 's-transfer' : 's-hot';
+    const cls = { hotday:'s-hotday', hot:'s-hot', listed:'s-listed', transfer:'s-transfer', ended:'s-ended' }[s._status] || 's-hot';
+    const dimmed = (s._status === 'ended' || s._status === 'listed') ? ' dimmed' : '';
     return `
-    <div class="stock-card" data-idx="${i}" onclick="selectStock(${i})">
+    <div class="stock-card${dimmed}" data-idx="${i}" onclick="selectStock(${i})">
       <div class="stock-row1">
         <span class="stock-code">${s.code}</span>
         <span class="badge-row">
-          <span class="status-badge ${statusClass}">${s.statusText}</span>
+          <span class="status-badge ${cls}">${s._statusText}</span>
           <span class="verdict-badge badge-${s.verdict}">${s.verdictLabel}</span>
         </span>
       </div>
@@ -437,7 +492,29 @@ function renderSidebar() {
       <div class="score-bar"><div class="score-fill" style="width:${s.score}%"></div></div>
       <div class="score-label">${s.score}/100 · ${s.sector}</div>
     </div>`;
-  }).join('');
+  }
+
+  let html = activeIdx.map(cardHtml).join('');
+  if (endedIdx.length > 0) {
+    html += `
+    <div class="collapse-toggle" onclick="toggleEnded(this)">
+      <span>已截止 / 已上市</span>
+      <span class="sidebar-count">${endedIdx.length}只</span>
+      <span class="collapse-arrow">▾</span>
+    </div>
+    <div id="ended-stocks" style="display:none">
+      ${endedIdx.map(cardHtml).join('')}
+    </div>`;
+  }
+  list.innerHTML = html;
+}
+
+function toggleEnded(el) {
+  const panel = document.getElementById('ended-stocks');
+  const arrow  = el.querySelector('.collapse-arrow');
+  const show   = panel.style.display === 'none';
+  panel.style.display = show ? 'block' : 'none';
+  arrow.classList.toggle('open', show);
 }
 
 /* ════════════════════════════════════════════════════════
@@ -445,7 +522,7 @@ function renderSidebar() {
 ════════════════════════════════════════════════════════ */
 function selectStock(idx) {
   document.querySelectorAll('.stock-card').forEach(el => el.classList.remove('active'));
-  document.querySelectorAll('.stock-card')[idx].classList.add('active');
+  document.querySelector(`.stock-card[data-idx="${idx}"]`).classList.add('active');
 
   const s = stocks[idx];
   const content = document.getElementById('content');
@@ -464,7 +541,7 @@ function selectStock(idx) {
     </div>` : '';
 
   // Status badge for listed stocks
-  const listedNotice = s.status === 'listed' ? `
+  const listedNotice = (s._status === 'listed' || s._status === 'ended') ? `
     <div class="notice-banner" style="border-color:var(--text-dim);color:var(--text-second);">
       📅 <strong>该股已于 ${s.listDate} 正式上市，招股期已过。</strong>以下报告作为历史分析记录保存，供未来参考。
     </div>` : '';
