@@ -43,7 +43,7 @@ def send_feishu_reminder(stocks_due, webhook_url):
         lines.append(f"{emoji} {s['code']} {s['name']}")
         lines.append(f"   发行价：{price_str}  每手入场费：{entry_str}")
         lines.append(f"   评分：{s['score']}/100 | 建议：{s['verdictLabel']}")
-        lines.append(f"   ⚠️ 今日12:00截止申购，还有约20分钟！")
+        lines.append(f"   ⚠️ 富途今日10:00截止申购，还有约20分钟！")
         lines.append("")
     lines.append("🔗 https://sysusq-qq.github.io/ipo-dashboard/")
 
