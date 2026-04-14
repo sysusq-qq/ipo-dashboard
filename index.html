@@ -380,6 +380,32 @@
     .order-trigger { font-size: 12px; padding: 6px 11px; border-radius: 5px; margin-top: 7px; }
     .order-trigger.margin-tip { color: var(--cyan);   background: var(--cyan-bg);   border: 1px solid var(--cyan); }
     .order-trigger.urgent-tip { color: var(--yellow); background: var(--yellow-bg); border: 1px solid var(--yellow); }
+
+    /* ── 暗盘模块 ──────────────────────────────────────── */
+    .gm-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 20px;
+    }
+    .gm-pending {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 13px; color: var(--text-second);
+    }
+    .gm-pending-icon { font-size: 22px; flex-shrink: 0; }
+    .gm-pending-label { font-size: 12px; color: var(--text-dim); margin-top: 3px; }
+    .gm-live { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--red); font-weight: 700; }
+    .gm-live-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--red); animation: blink 1s infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.2} }
+    .gm-data { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .gm-data-item { text-align: center; }
+    .gm-data-label { font-size: 11px; color: var(--text-dim); margin-bottom: 5px; }
+    .gm-data-value { font-size: 22px; font-weight: 800; font-family: 'SF Mono','Fira Code',monospace; }
+    .gm-data-value.up   { color: var(--red); }
+    .gm-data-value.down { color: var(--green); }
+    .gm-data-value.flat { color: var(--text-second); }
+    .gm-data-value.price { color: var(--gold); font-size: 20px; }
+    .gm-meta { font-size: 11px; color: var(--text-dim); margin-top: 10px; text-align: center; }
   </style>
 </head>
 <body>
@@ -518,6 +544,90 @@ function toggleEnded(el) {
 }
 
 /* ════════════════════════════════════════════════════════
+   暗盘模块渲染
+════════════════════════════════════════════════════════ */
+function buildGreyMarketSection(s) {
+  const gm = s.greyMarket;
+  if (!gm) return '';   // 转板等无暗盘
+
+  const now  = new Date(Date.now() + 8 * 3600 * 1000);  // 北京时间
+  const todayStr = now.toISOString().slice(0, 10);
+  const hhmm = now.getHours() * 100 + now.getMinutes();  // e.g. 1630
+  const gmDate = gm.date;
+  const START = 1630, END = 1830;
+
+  let inner = '';
+
+  if (gm.price !== null && gm.changePct !== null) {
+    // ── 已有数据
+    const sign    = gm.changePct > 0 ? '+' : '';
+    const cls     = gm.changePct > 0 ? 'up' : gm.changePct < 0 ? 'down' : 'flat';
+    const ipoPrice = s.price ? `HK$${s.price.toFixed(2)}` : '—';
+    inner = `
+      <div class="gm-data">
+        <div class="gm-data-item">
+          <div class="gm-data-label">暗盘收盘价</div>
+          <div class="gm-data-value price">HK$${gm.price.toFixed(2)}</div>
+        </div>
+        <div class="gm-data-item">
+          <div class="gm-data-label">较招股价涨跌</div>
+          <div class="gm-data-value ${cls}">${sign}${gm.changePct.toFixed(1)}%</div>
+        </div>
+        <div class="gm-data-item">
+          <div class="gm-data-label">招股价</div>
+          <div class="gm-data-value price" style="font-size:16px;color:var(--text-second)">${ipoPrice}</div>
+        </div>
+      </div>
+      <div class="gm-meta">📅 暗盘交易日：${gmDate} · 16:30 – 18:30 · 富途牛牛</div>`;
+
+  } else if (todayStr === gmDate && hhmm >= START && hhmm < END) {
+    // ── 暗盘交易中
+    inner = `
+      <div class="gm-live"><span class="gm-live-dot"></span>暗盘交易进行中 · 今日 16:30 – 18:30（富途牛牛）</div>
+      <div class="gm-meta" style="margin-top:8px;text-align:left;color:var(--text-second)">数据尚未录入，请手动更新 greyMarket.price 及 changePct</div>`;
+
+  } else if (todayStr === gmDate && hhmm < START) {
+    // ── 今日开市，未到时间
+    inner = `
+      <div class="gm-pending">
+        <div class="gm-pending-icon">🕐</div>
+        <div>
+          <div>暗盘今日开市</div>
+          <div class="gm-pending-label">16:30 – 18:30（富途牛牛）· 敬请关注</div>
+        </div>
+      </div>`;
+
+  } else if (todayStr > gmDate) {
+    // ── 暗盘已结束，数据未录入
+    inner = `
+      <div class="gm-pending">
+        <div class="gm-pending-icon">📋</div>
+        <div>
+          <div>暗盘已结束，数据待录入</div>
+          <div class="gm-pending-label">交易日：${gmDate} · 16:30 – 18:30</div>
+        </div>
+      </div>`;
+
+  } else {
+    // ── 暗盘尚未开始
+    inner = `
+      <div class="gm-pending">
+        <div class="gm-pending-icon">⏳</div>
+        <div>
+          <div>暗盘尚未开始</div>
+          <div class="gm-pending-label">预计交易时间：${gmDate} · 16:30 – 18:30（富途牛牛）</div>
+        </div>
+      </div>`;
+  }
+
+  return `
+    <div class="section">
+      <div class="section-title">暗盘行情</div>
+      <div class="gm-box">${inner}</div>
+    </div>`;
+}
+
+/* ════════════════════════════════════════════════════════
    RENDER REPORT
 ════════════════════════════════════════════════════════ */
 function selectStock(idx) {
@@ -572,6 +682,8 @@ function selectStock(idx) {
 
     ${transferNotice}
     ${listedNotice}
+
+    ${buildGreyMarketSection(s)}
 
     <!-- Conclusion -->
     <div class="section">
