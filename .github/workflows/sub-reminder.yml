@@ -1,0 +1,27 @@
+name: Subscription Deadline Reminder
+
+on:
+  schedule:
+    - cron: '40 3 * * *'   # 每天 11:40 HKT（UTC+8 → UTC 03:40）
+  workflow_dispatch:
+
+jobs:
+  remind:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Send reminder if any stock closes today
+        env:
+          FEISHU_WEBHOOK: ${{ secrets.FEISHU_WEBHOOK }}
+        run: python scripts/send_reminder.py
