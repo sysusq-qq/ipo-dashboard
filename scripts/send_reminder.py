@@ -35,7 +35,7 @@ def send_feishu_reminder(stocks_due, webhook_url):
     if not webhook_url or not stocks_due:
         return
     today = datetime.date.today()
-    lines = [f"⏰ 申购截止提醒 [{today}]", ""]
+    lines = [f"⏰ IPO仪表盘 申购截止提醒 [{today}]", ""]
     for s in stocks_due:
         price_str = f"HK${s['price']}" if s.get("price") else "转板"
         entry_str = f"HK${s['entryFee']:,.0f}" if s.get("entryFee") else "—"
@@ -51,7 +51,11 @@ def send_feishu_reminder(stocks_due, webhook_url):
     try:
         resp = requests.post(webhook_url, json=payload, timeout=15)
         resp.raise_for_status()
-        print(f"[OK] 提醒已发送，涉及 {len(stocks_due)} 只股票")
+        result = resp.json()
+        if result.get("code") != 0:
+            print(f"[WARN] 飞书返回错误: {result}")
+        else:
+            print(f"[OK] 提醒已发送，涉及 {len(stocks_due)} 只股票")
     except Exception as e:
         print(f"[WARN] 飞书通知失败: {e}")
 
