@@ -741,6 +741,8 @@ function selectStock(idx) {
         <div class="info-item">
           <div class="info-item-label">招股日期</div>
           <div class="info-item-value sm">${s.subDate}</div>
+          ${s.subDate && s.subDate !== '不适用（转板）' && s.subDate !== '—'
+            ? `<div style="font-size:11px;color:var(--text-dim);margin-top:3px;">富途截止 10:00</div>` : ''}
         </div>
         <div class="info-item">
           <div class="info-item-label">基石总额</div>
