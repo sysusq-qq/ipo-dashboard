@@ -1157,8 +1157,10 @@ function selectStock(idx) {
       } else if (st.cls === 's-closed') {
         // 申购已截止：保留原申购建议 + 追加后续时间节点
         const recClassMap = { da: '', wait: 'wait-rec', no: 'no-rec' };
-        const listStr = listD ? bjDate(listD) : '—';
-        const darkStr = darkD ? bjDate(darkD) : '—';
+        const listStr   = listD ? bjDate(listD) : '—';
+        const darkStr   = darkD ? bjDate(darkD) : '—';
+        const resultD   = darkD ? new Date(darkD.getTime() - 86400000) : null;
+        const resultStr = resultD ? bjDate(resultD) : '—';
         recCardHTML = `
       <div class="order-rec ${recClassMap[sub.recClass] || ''}">
         <div class="order-rec-title">${sub.recTitle} <span style="font-size:11px;font-weight:400;color:var(--text-dim);margin-left:6px">（申购已截止）</span></div>
@@ -1189,7 +1191,7 @@ function selectStock(idx) {
         <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border);display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
           <div class="order-item">
             <div class="order-item-label">📋 中签结果</div>
-            <div class="order-item-value" style="color:var(--yellow)">${darkStr} 上午公布</div>
+            <div class="order-item-value" style="color:var(--yellow)">${resultStr} 公布</div>
           </div>
           <div class="order-item">
             <div class="order-item-label">🌙 暗盘</div>
