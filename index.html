@@ -1103,8 +1103,9 @@ function selectStock(idx) {
       const st = calcStatus(s);
 
       const padM = n => String(n).padStart(2,'0');
+      // listTs 是北京时间 Unix 秒，+8h 后用 getUTC* 读取即为北京日期
       const bjDate = d => `${padM(d.getUTCMonth()+1)}/${padM(d.getUTCDate())}`;
-      const listD = s.listTs ? new Date(s.listTs * 1000 + new Date().getTimezoneOffset()*60000 + 8*3600000) : null;
+      const listD = s.listTs ? new Date(s.listTs * 1000 + 8 * 3600000) : null;
       const darkD = listD ? new Date(listD.getTime() - 86400000) : null;
 
       // ── 情景卡片（任何状态都显示，供参考）──
