@@ -19,8 +19,8 @@
     "score": 81,
     "position": "现金仓 · 标准仓位",
     "sponsors": "摩根大通、中信建投、广发融资",
-    "status": "hotday",
-    "statusText": "今日截招",
+    "status": "hot",
+    "statusText": "招股中",
     "isTransfer": false,
     "cornerstone": {
       "total": "USD ~9.97亿 · 约44.67%发行量",
@@ -176,7 +176,7 @@
       "marginOk": true,
       "marginTip": "认购倍数 > 50x → 可追加2-3手孖展",
       "rationale": "每手入场费HK$21,200，高门槛令散户基数有限，相对中签率更优。AI/PCB赛道热度极高，38家顶级机构基石锁定44.67%，上市溢价确定性强。标准仓位参与，认购倍数>50x可补小额孖展。",
-      "urgentTip": "⏰ 今日(4/13)截止，请在今日提交申购"
+      "urgentTip": "⏰ 截止日4/16，请于4月16日前提交申购"
     }
   },
   {
@@ -199,8 +199,8 @@
     "score": 82,
     "position": "现金仓 · 标准仓位",
     "sponsors": "中信证券（香港）、国泰君安融资",
-    "status": "hot",
-    "statusText": "招股中",
+    "status": "hotday",
+    "statusText": "今日截招",
     "isTransfer": false,
     "cornerstone": {
       "total": "USD ~1.66亿 · 约50%发行量",
@@ -364,7 +364,7 @@
       "marginOk": true,
       "marginTip": "认购倍数 > 50x → 可补5-8手孖展（每手仅HK$3,988，孖展成本极低）",
       "rationale": "每手仅HK$3,988，申购门槛极低吸引大量散户，竞争较激烈但胜在财务质量近乎完美（OCF/净利润159%）。四大顶级机构基石锁定50%，安全垫厚实。低门槛建议多手申购提升中签概率。",
-      "urgentTip": "⏰ 明日(4/14)截止，建议今日提交"
+      "urgentTip": "⏰ 今日(4/14)截止，请立即提交申购，勿错过"
     }
   },
   {
@@ -387,8 +387,8 @@
     "score": 54,
     "position": "不参与 / 少量试水",
     "sponsors": "高盛、中金公司",
-    "status": "hot",
-    "statusText": "招股中",
+    "status": "hotday",
+    "statusText": "今日截招",
     "isTransfer": false,
     "cornerstone": {
       "total": "USD 5800万 · 约5.6%市值",
@@ -534,7 +534,7 @@
       "marginOk": false,
       "marginTip": "",
       "rationale": "GAAP持续亏损+调整后PE 127x+收入增速仅+9%，性价比极低。基石仅占5%，机构热情有限。认购倍数预计不高，中签率看似较高，但暗盘溢价空间极小。若坚持参与，1手彩票性质，务必不建议孖展。",
-      "urgentTip": "⏰ 明日(4/14)截止；建议等认购倍数公布后再决策"
+      "urgentTip": "⏰ 今日(4/14)截止；建议等认购倍数公布后再决策"
     }
   },
   {
@@ -665,8 +665,8 @@
     "score": 81,
     "position": "现金仓 · 标准仓位",
     "sponsors": "摩根士丹利、中金公司",
-    "status": "hotday",
-    "statusText": "今日截招",
+    "status": "hot",
+    "statusText": "申购截止",
     "isTransfer": false,
     "cornerstone": {
       "total": "USD ~1.4亿 · 约50%发行量",
@@ -810,7 +810,7 @@
       "marginOk": true,
       "marginTip": "认购倍数 > 50x → 可补1-2手孖展（今日截止请立即决策）",
       "rationale": "每手入场费HK$32,747，极高门槛大幅压缩散户竞争，中签率是三只推荐股中最优。PE仅29x对应3年154倍收入增长，性价比最高。高瓴/GIC/淡马锡三大主权基金同框背书，上市确定性极强。",
-      "urgentTip": "⏰ 今日(4/13)截止，请立即提交申购，勿错过"
+      "urgentTip": "申购已于4/13截止，即将于4/16上市"
     }
   },
   {
