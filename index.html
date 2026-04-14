@@ -452,13 +452,19 @@ function parseSubEndDate(subDate) {
 }
 function computeStatus(s) {
   if (s.isTransfer) return { status: 'transfer', statusText: '转板' };
-  const today = getBeijingDateStr();
-  const subEnd  = parseSubEndDate(s.subDate);
+  const now  = new Date(Date.now() + 8 * 3600 * 1000); // 北京时间
+  const today = now.toISOString().slice(0, 10);
+  const hhmm  = now.getHours() * 100 + now.getMinutes(); // e.g. 1000 = 10:00
+  const FUTU_CLOSE = 1000; // 富途截止 10:00
+  const subEnd   = parseSubEndDate(s.subDate);
   const listDate = s.listDate;
-  if (listDate && today > listDate) return { status: 'listed',  statusText: '已上市' };
+  if (listDate && today > listDate) return { status: 'listed', statusText: '已上市' };
   if (subEnd) {
-    if (today > subEnd)   return { status: 'ended',   statusText: '申购截止' };
-    if (today === subEnd) return { status: 'hotday',  statusText: '今日截招' };
+    if (today > subEnd) return { status: 'ended', statusText: '申购截止' };
+    if (today === subEnd) {
+      if (hhmm >= FUTU_CLOSE) return { status: 'ended', statusText: '申购截止' };
+      return { status: 'hotday', statusText: '今日截招 · 富途10:00截止' };
+    }
   }
   return { status: 'hot', statusText: '招股中' };
 }
@@ -491,9 +497,11 @@ function renderSidebar() {
     s._statusText = c.statusText;
   });
 
-  const activeIdx = [], endedIdx = [];
+  const activeIdx = [], endedIdx = [], listedIdx = [];
   stocks.forEach((s, i) => {
-    (s._status === 'ended' || s._status === 'listed') ? endedIdx.push(i) : activeIdx.push(i);
+    if      (s._status === 'listed')  listedIdx.push(i);
+    else if (s._status === 'ended')   endedIdx.push(i);
+    else                              activeIdx.push(i);
   });
 
   function cardHtml(i) {
@@ -520,23 +528,26 @@ function renderSidebar() {
     </div>`;
   }
 
-  let html = activeIdx.map(cardHtml).join('');
-  if (endedIdx.length > 0) {
-    html += `
-    <div class="collapse-toggle" onclick="toggleEnded(this)">
-      <span>已截止 / 已上市</span>
-      <span class="sidebar-count">${endedIdx.length}只</span>
+  function collapseGroup(id, label, count, items) {
+    return `
+    <div class="collapse-toggle" onclick="toggleGroup(this,'${id}')">
+      <span>${label}</span>
+      <span class="sidebar-count">${count}只</span>
       <span class="collapse-arrow">▾</span>
     </div>
-    <div id="ended-stocks" style="display:none">
-      ${endedIdx.map(cardHtml).join('')}
+    <div id="${id}" style="display:none">
+      ${items.map(cardHtml).join('')}
     </div>`;
   }
+
+  let html = activeIdx.map(cardHtml).join('');
+  if (endedIdx.length  > 0) html += collapseGroup('grp-ended',  '申购截止', endedIdx.length,  endedIdx);
+  if (listedIdx.length > 0) html += collapseGroup('grp-listed', '已上市',   listedIdx.length, listedIdx);
   list.innerHTML = html;
 }
 
-function toggleEnded(el) {
-  const panel = document.getElementById('ended-stocks');
+function toggleGroup(el, id) {
+  const panel = document.getElementById(id);
   const arrow  = el.querySelector('.collapse-arrow');
   const show   = panel.style.display === 'none';
   panel.style.display = show ? 'block' : 'none';
