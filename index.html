@@ -327,6 +327,70 @@
       line-height: 1.6;
     }
 
+    /* ── IPO Timeline ─────────────────────────────────── */
+    .ipo-timeline {
+      display: flex;
+      align-items: flex-start;
+      padding: 16px 20px 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 16px;
+      overflow-x: auto;
+    }
+    .tl-node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 90px;
+      flex-shrink: 0;
+    }
+    .tl-dot {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px;
+      border: 2px solid var(--border);
+      background: var(--bg-surface);
+      color: var(--text-dim);
+      position: relative;
+      z-index: 1;
+    }
+    .tl-dot.tl-past   { background: var(--border); border-color: var(--border); color: var(--bg-base); }
+    .tl-dot.tl-today  { background: var(--green);  border-color: var(--green);  color: var(--bg-base); box-shadow: 0 0 0 4px rgba(0,196,122,.18); }
+    .tl-dot.tl-future { background: var(--bg-surface); border-color: var(--border-light); color: var(--text-dim); }
+    .tl-label {
+      margin-top: 7px;
+      font-size: 11px; font-weight: 600;
+      color: var(--text-second);
+      text-align: center;
+    }
+    .tl-label.tl-past   { color: var(--text-dim); }
+    .tl-label.tl-today  { color: var(--green); }
+    .tl-label.tl-future { color: var(--text-second); }
+    .tl-date {
+      margin-top: 3px;
+      font-size: 12px; font-weight: 600;
+      color: var(--text-primary);
+      text-align: center;
+    }
+    .tl-date.tl-past { color: var(--text-dim); }
+    .tl-time {
+      margin-top: 1px;
+      font-size: 10px;
+      color: var(--text-dim);
+      text-align: center;
+    }
+    .tl-connector {
+      flex: 1;
+      height: 2px;
+      margin-top: 13px;
+      min-width: 24px;
+      background: var(--border);
+    }
+    .tl-connector.tl-past   { background: var(--border-light); }
+    .tl-connector.tl-future { background: var(--border); }
+
     /* Scrollbar */
     ::-webkit-scrollbar { width: 5px; }
     ::-webkit-scrollbar-track { background: transparent; }
@@ -951,6 +1015,67 @@ function selectStock(idx) {
 
     ${transferNotice}
     ${listedNotice}
+
+    <!-- Timeline -->
+    ${(() => {
+      if (s.isTransfer) return '';
+      const nowTs = Date.now() / 1000;
+      const pad2  = n => String(n).padStart(2,'0');
+
+      // BJ timestamp → { dateStr, timeStr }
+      function tsInfo(ts) {
+        if (!ts) return null;
+        const d = new Date(ts * 1000 + 8 * 3600000);
+        return {
+          dateStr: `${pad2(d.getUTCMonth()+1)}/${pad2(d.getUTCDate())}`,
+          timeStr: `${pad2(d.getUTCHours())}:${pad2(d.getUTCMinutes())}`,
+          ts
+        };
+      }
+      // 上市日 listTs 是当天 00:00 BJ，暗盘/中签取上市日的前一天/两天
+      const listTs_val   = s.listTs;
+      const darkTs_val   = listTs_val  ? listTs_val  - 86400 : null;
+      const resultTs_val = darkTs_val  ? darkTs_val  - 86400 : null;
+
+      const nodes = [
+        { key: 'apply',  label: '申购截止', icon: '✂️', info: tsInfo(s.applyEndTs),   extraTime: null },
+        { key: 'result', label: '中签结果', icon: '📋', info: tsInfo(resultTs_val),  extraTime: '上午公布' },
+        { key: 'dark',   label: '暗盘',     icon: '🌙', info: tsInfo(darkTs_val),    extraTime: '16:00–23:00' },
+        { key: 'list',   label: '上市',     icon: '🔔', info: tsInfo(listTs_val),    extraTime: '09:30' },
+      ].filter(n => n.info);
+
+      if (!nodes.length) return '';
+
+      // 判断每个节点状态：past / today / future
+      function nodeState(info) {
+        if (!info) return 'future';
+        const bjNow  = new Date(Date.now() + 8 * 3600000);
+        const bjNode = new Date(info.ts * 1000 + 8 * 3600000);
+        if (nowTs >= info.ts) return 'past';
+        // 同一北京日期算 today
+        if (bjNow.getUTCFullYear() === bjNode.getUTCFullYear() &&
+            bjNow.getUTCMonth()    === bjNode.getUTCMonth()    &&
+            bjNow.getUTCDate()     === bjNode.getUTCDate())     return 'today';
+        return 'future';
+      }
+
+      const nodeHTML = nodes.map((n, i) => {
+        const st  = nodeState(n.info);
+        const dot = st === 'past' ? '✓' : st === 'today' ? n.icon : n.icon;
+        const connector = i < nodes.length - 1
+          ? `<div class="tl-connector ${st === 'past' ? 'tl-past' : 'tl-future'}"></div>`
+          : '';
+        return `
+        <div class="tl-node">
+          <div class="tl-dot ${st === 'past' ? 'tl-past' : st === 'today' ? 'tl-today' : 'tl-future'}">${dot}</div>
+          <div class="tl-label ${st === 'past' ? 'tl-past' : st === 'today' ? 'tl-today' : ''}">${n.label}</div>
+          <div class="tl-date ${st === 'past' ? 'tl-past' : ''}">${n.info.dateStr}</div>
+          <div class="tl-time">${n.extraTime || n.info.timeStr}</div>
+        </div>${connector}`;
+      }).join('');
+
+      return `<div class="ipo-timeline">${nodeHTML}</div>`;
+    })()}
 
     <!-- Conclusion -->
     <div class="section">
