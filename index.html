@@ -1155,32 +1155,50 @@ function selectStock(idx) {
       </div>`;
 
       } else if (st.cls === 's-closed') {
-        // 申购已截止：显示"等待中签"状态卡
+        // 申购已截止：保留原申购建议 + 追加后续时间节点
+        const recClassMap = { da: '', wait: 'wait-rec', no: 'no-rec' };
         const listStr = listD ? bjDate(listD) : '—';
         const darkStr = darkD ? bjDate(darkD) : '—';
         recCardHTML = `
-      <div class="order-rec" style="border-color:var(--border-light)">
-        <div class="order-rec-title" style="color:var(--text-second)">📋 申购已截止</div>
+      <div class="order-rec ${recClassMap[sub.recClass] || ''}">
+        <div class="order-rec-title">${sub.recTitle} <span style="font-size:11px;font-weight:400;color:var(--text-dim);margin-left:6px">（申购已截止）</span></div>
         <div class="order-rec-grid">
           <div class="order-item">
-            <div class="order-item-label">暗盘日期</div>
-            <div class="order-item-value">${darkStr}</div>
+            <div class="order-item-label">建议手数</div>
+            <div class="order-item-value">${sub.lots}手</div>
           </div>
           <div class="order-item">
-            <div class="order-item-label">上市日期</div>
-            <div class="order-item-value">${listStr}</div>
+            <div class="order-item-label">申购方式</div>
+            <div class="order-item-value">${sub.method}</div>
           </div>
           <div class="order-item">
-            <div class="order-item-label">中签结果</div>
-            <div class="order-item-value" style="color:var(--yellow)">预计${listStr}前公布</div>
+            <div class="order-item-label">孖展</div>
+            <div class="order-item-value" style="color:${sub.marginOk ? 'var(--cyan)' : 'var(--text-dim)'}">
+              ${sub.marginOk ? '条件允许' : '不建议'}
+            </div>
           </div>
           <div class="order-item">
-            <div class="order-item-label">认购倍数</div>
-            <div class="order-item-value" style="color:var(--text-dim)">待官方公布</div>
+            <div class="order-item-label">每手入场费</div>
+            <div class="order-item-value" style="color:var(--gold)">
+              ${s.entryFee ? 'HK$' + s.entryFee.toLocaleString() : '—'}
+            </div>
           </div>
         </div>
-        <div class="order-rationale" style="color:var(--text-second)">
-          申购窗口已关闭。中签结果公布后，用上方情景表对照实际认购倍数，判断预期中签率和暗盘溢价空间。
+        ${sub.marginOk && sub.marginTip ? `<div class="order-trigger margin-tip">📌 ${sub.marginTip}</div>` : ''}
+        <div class="order-rationale">${sub.rationale}</div>
+        <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border);display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+          <div class="order-item">
+            <div class="order-item-label">📋 中签结果</div>
+            <div class="order-item-value" style="color:var(--yellow)">预计 ${listStr} 前公布</div>
+          </div>
+          <div class="order-item">
+            <div class="order-item-label">🌙 暗盘</div>
+            <div class="order-item-value">${darkStr} 16:00–23:00</div>
+          </div>
+          <div class="order-item">
+            <div class="order-item-label">🔔 上市</div>
+            <div class="order-item-value">${listStr} 09:30</div>
+          </div>
         </div>
       </div>`;
 
