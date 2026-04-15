@@ -38,7 +38,7 @@ FUTU_PORT       = 11111
 
 GM_START_HM = 1614   # 16:14 HKT（暗盘 16:15 开盘前1分钟）
 GM_END_HM   = 1830   # 18:30 HKT
-POLL_INTERVAL = 600  # 轮询间隔（秒）
+POLL_INTERVAL = 300  # 轮询间隔（秒，5分钟）
 
 # 暗盘交易建议矩阵
 def get_advice(change_pct):
@@ -258,7 +258,13 @@ def main():
             else:
                 print(f"[{bj_now.strftime('%H:%M')}] 价格无变化，跳过通知")
 
-        time.sleep(POLL_INTERVAL)
+        # 智能睡眠：距收盘不足一个轮询周期时，直接睡到18:30，确保准时收盘
+        bj_tmp, _ = get_beijing_now()
+        secs_to_close = (
+            (GM_END_HM // 100) * 3600 + (GM_END_HM % 100) * 60
+            - bj_tmp.hour * 3600 - bj_tmp.minute * 60 - bj_tmp.second
+        )
+        time.sleep(min(POLL_INTERVAL, max(5, secs_to_close)))
 
     print("[OK] 暗盘监控完成")
 
