@@ -23,19 +23,73 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Run fetch & analyze
-        env:
-          FEISHU_WEBHOOK: ${{ secrets.FEISHU_WEBHOOK }}
+      - name: Run fetch & analyze (writes data.json + .notify_pending.json)
         run: python scripts/fetch_and_analyze.py
 
       - name: Commit and push if changed
+        id: git_push
         run: |
           git config user.name "IPO Bot"
           git config user.email "ipo-bot@github.com"
           git add data.json
           if git diff --staged --quiet; then
+            echo "no_change=true" >> $GITHUB_OUTPUT
             echo "No new stocks found, nothing to commit."
           else
             git commit -m "Auto-update: IPO listings $(date +%Y-%m-%d)"
             git push
+            echo "no_change=false" >> $GITHUB_OUTPUT
           fi
+
+      - name: Wait for GitHub Pages to deploy
+        if: steps.git_push.outputs.no_change == 'false'
+        run: |
+          echo "等待 GitHub Pages 部署完成（约90秒）..."
+          sleep 90
+
+      - name: Send Feishu notification after page is live
+        if: steps.git_push.outputs.no_change == 'false'
+        env:
+          FEISHU_WEBHOOK: ${{ secrets.FEISHU_WEBHOOK }}
+        run: |
+          python3 - <<'EOF'
+          import json, os, requests
+
+          webhook = os.environ.get("FEISHU_WEBHOOK", "")
+          notify_path = ".notify_pending.json"
+
+          if not os.path.exists(notify_path):
+              print("[OK] 无待发通知")
+              exit(0)
+
+          with open(notify_path) as f:
+              new_stocks = json.load(f)
+
+          if not new_stocks or not webhook:
+              exit(0)
+
+          import datetime
+          today = datetime.date.today()
+          lines = [f"📊 港股IPO仪表盘更新 [{today}]", ""]
+          lines.append(f"新增 {len(new_stocks)} 只新股（分析已更新至网页）：")
+          for s in new_stocks:
+              emoji = "✅" if s["verdict"] == "da" else ("👀" if s["verdict"] == "watch" else "❌")
+              price_str = f"HK${s['price']}" if s.get("price") else "待定"
+              lines.append(
+                  f"{emoji} {s['code']} {s['name']}  "
+                  f"| {price_str} | 评分{s['score']}/100 | {s['verdictLabel']}"
+              )
+          lines.append("")
+          lines.append("🔗 https://sysusq-qq.github.io/ipo-dashboard/")
+
+          payload = {"msg_type": "text", "content": {"text": "\n".join(lines)}}
+          resp = requests.post(webhook, json=payload, timeout=15)
+          result = resp.json()
+          if result.get("code") != 0:
+              print(f"[WARN] 飞书返回错误: {result}")
+          else:
+              print(f"[OK] 飞书通知已发送，涉及 {len(new_stocks)} 只新股")
+
+          # 清理临时文件
+          os.remove(notify_path)
+          EOF

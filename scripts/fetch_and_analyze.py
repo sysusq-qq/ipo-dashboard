@@ -50,39 +50,50 @@ def fetch_hkex_listings():
         resp.raise_for_status()
         soup = BeautifulSoup(resp.text, "lxml")
 
-        # 尝试解析表格
-        for table in soup.find_all("table"):
-            rows = table.find_all("tr")
-            for row in rows[1:]:  # 跳过表头
-                cells = row.find_all(["td", "th"])
-                if len(cells) < 3:
-                    continue
-                text_cells = [c.get_text(strip=True) for c in cells]
-                # 找股票代码（4-5位数字）
-                code = None
-                name = ""
-                list_date = ""
-                for cell in text_cells:
-                    m = re.match(r"^(\d{4,5})$", cell)
-                    if m:
-                        code = m.group(1).zfill(5)
-                    # 日期格式 YYYY-MM-DD 或 DD/MM/YYYY
-                    dm = re.search(r"(\d{4}[-/]\d{2}[-/]\d{2}|\d{2}[/-]\d{2}[/-]\d{4})", cell)
-                    if dm:
-                        raw = dm.group(1)
-                        list_date = _normalize_date(raw)
-                if code:
-                    # name = 最长的非代码、非日期文本
-                    name = max(
-                        [c for c in text_cells if c != code and not re.match(r"\d{1,2}[/-]", c)],
-                        key=len, default=""
-                    )
-                    listings.append({"code": code, "name": name, "listDate": list_date})
+        # 主策略：从页面纯文本用正则提取「代码 + 公司名」
+        # HKEX 页面实际结构为换行分隔的文本，不用标准 <table>
+        page_text = soup.get_text()
+        # 匹配：4-5位数字 换行 公司名（支持中英文）
+        matches = re.findall(
+            r"(\d{4,5})\s*\n\s*([^\n]{4,60}(?:有限公司|Inc\.|Corp\.|Ltd\.|Limited))",
+            page_text,
+        )
+        seen = set()
+        for code_raw, name in matches:
+            code = code_raw.zfill(5)
+            if code not in seen:
+                seen.add(code)
+                listings.append({"code": code, "name": name.strip(), "listDate": ""})
 
-        # 若表格解析失败，用正则从HTML提取代码
+        # 备用策略：若主策略失败，尝试表格解析
+        if not listings:
+            for table in soup.find_all("table"):
+                for row in table.find_all("tr")[1:]:
+                    cells = row.find_all(["td", "th"])
+                    if len(cells) < 3:
+                        continue
+                    text_cells = [c.get_text(strip=True) for c in cells]
+                    code = None
+                    list_date = ""
+                    for cell in text_cells:
+                        m = re.match(r"^(\d{4,5})$", cell)
+                        if m:
+                            code = m.group(1).zfill(5)
+                        dm = re.search(r"(\d{4}[-/]\d{2}[-/]\d{2}|\d{2}[/-]\d{2}[/-]\d{4})", cell)
+                        if dm:
+                            list_date = _normalize_date(dm.group(1))
+                    if code and code not in seen:
+                        seen.add(code)
+                        name = max(
+                            [c for c in text_cells if c != code and not re.match(r"\d{1,2}[/-]", c)],
+                            key=len, default="",
+                        )
+                        listings.append({"code": code, "name": name, "listDate": list_date})
+
+        # 最后兜底：只提取5位数字代码
         if not listings:
             codes = re.findall(r"\b(\d{5})\b", resp.text)
-            for c in dict.fromkeys(codes):  # deduplicate
+            for c in dict.fromkeys(codes):
                 listings.append({"code": c, "name": "", "listDate": ""})
 
     except Exception as e:
@@ -521,8 +532,12 @@ def main():
             json.dump(all_stocks, f, ensure_ascii=False, indent=2)
         print(f"[OK] data.json 已更新，共 {len(all_stocks)} 只股票")
 
-        # 飞书通知
-        send_feishu(new_stocks, FEISHU_WEBHOOK)
+        # 将新股信息写入临时文件，供 workflow 在部署完成后发通知
+        # 避免在 Pages 部署前就推送飞书通知（用户点击链接时页面尚未更新）
+        notify_path = os.path.join(os.path.dirname(__file__), "..", ".notify_pending.json")
+        with open(os.path.abspath(notify_path), "w", encoding="utf-8") as f:
+            json.dump(new_stocks, f, ensure_ascii=False, indent=2)
+        print(f"[OK] 通知队列已写入 .notify_pending.json，等待 Pages 部署后发送")
     else:
         print("[OK] 无新增股票，data.json 未变动")
 
