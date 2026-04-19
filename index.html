@@ -161,39 +161,53 @@
     .score-fill { height: 100%; border-radius: 2px; background: linear-gradient(90deg, var(--blue), var(--green)); }
     .score-label { font-size: 11px; color: var(--text-dim); margin-top: 3px; text-align: right; }
 
-    /* ── Sidebar Tabs ─────────────────────────────────────── */
-    .sidebar-tabs {
+    /* ── Sidebar Tabs（纵向）─────────────────────────────── */
+    .sidebar-body {
       display: flex;
-      border-bottom: 1px solid var(--border);
+      flex: 1;
+      overflow: hidden;
+    }
+    .sidebar-tabs {
+      width: 52px;
       flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid var(--border);
       background: var(--bg-surface);
     }
     .sidebar-tab {
       flex: 1;
-      padding: 8px 2px;
-      font-size: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      cursor: pointer;
+      font-size: 11px;
       font-weight: 600;
       color: var(--text-dim);
-      text-align: center;
-      cursor: pointer;
-      border-bottom: 2px solid transparent;
-      transition: color .15s, border-color .15s;
+      border-bottom: 1px solid var(--border);
+      transition: color .15s, background .15s;
       user-select: none;
-      letter-spacing: .3px;
+      box-shadow: inset -2px 0 0 transparent;
+      padding: 6px 2px;
     }
-    .sidebar-tab:hover { color: var(--text-second); }
-    .sidebar-tab.active { color: var(--blue); border-bottom-color: var(--blue); }
+    .sidebar-tab:last-child { border-bottom: none; }
+    .sidebar-tab:hover { color: var(--text-second); background: var(--bg-hover); }
+    .sidebar-tab.active {
+      color: var(--blue);
+      background: var(--blue-bg);
+      box-shadow: inset -2px 0 0 var(--blue);
+    }
+    .tab-label { letter-spacing: .5px; line-height: 1.2; }
     .tab-count {
-      display: inline-block;
-      background: var(--bg-card);
-      border-radius: 8px;
-      font-size: 9px;
-      padding: 0 4px;
-      margin-left: 3px;
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
       color: var(--text-dim);
-      min-width: 14px;
+      line-height: 1;
     }
-    .sidebar-tab.active .tab-count { background: var(--blue-bg); color: var(--blue); }
+    .sidebar-tab.active .tab-count { color: var(--blue); }
 
     /* ── Content ─────────────────────────────────────────── */
     .content { flex: 1; overflow-y: auto; padding: 24px 28px; }
@@ -477,13 +491,23 @@
       近期新股
       <span class="sidebar-count" id="stock-count"></span>
     </div>
-    <div class="sidebar-tabs">
-      <div class="sidebar-tab active" data-tab="recruiting" onclick="switchTab('recruiting')">招股中<span class="tab-count" id="tc-recruiting"></span></div>
-      <div class="sidebar-tab" data-tab="closed" onclick="switchTab('closed')">已截招<span class="tab-count" id="tc-closed"></span></div>
-      <div class="sidebar-tab" data-tab="listed" onclick="switchTab('listed')">已上市<span class="tab-count" id="tc-listed"></span></div>
-      <div class="sidebar-tab" data-tab="other" onclick="switchTab('other')">其他<span class="tab-count" id="tc-other"></span></div>
+    <div class="sidebar-body">
+      <div class="sidebar-tabs">
+        <div class="sidebar-tab active" data-tab="recruiting" onclick="switchTab('recruiting')">
+          <span class="tab-label">招股中</span><span class="tab-count" id="tc-recruiting"></span>
+        </div>
+        <div class="sidebar-tab" data-tab="closed" onclick="switchTab('closed')">
+          <span class="tab-label">已截招</span><span class="tab-count" id="tc-closed"></span>
+        </div>
+        <div class="sidebar-tab" data-tab="listed" onclick="switchTab('listed')">
+          <span class="tab-label">已上市</span><span class="tab-count" id="tc-listed"></span>
+        </div>
+        <div class="sidebar-tab" data-tab="other" onclick="switchTab('other')">
+          <span class="tab-label">其他</span><span class="tab-count" id="tc-other"></span>
+        </div>
+      </div>
+      <div class="sidebar-list" id="stock-list"></div>
     </div>
-    <div class="sidebar-list" id="stock-list"></div>
   </div>
   <div class="content" id="content">
     <div class="placeholder">
