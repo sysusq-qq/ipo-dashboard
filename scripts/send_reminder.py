@@ -8,6 +8,7 @@
 import json
 import os
 import re
+import time
 import datetime
 import requests
 
@@ -74,16 +75,20 @@ def send_feishu_reminder(stocks_due, webhook_url):
     lines.append("🔗 https://sysusq-qq.github.io/ipo-dashboard/")
 
     payload = {"msg_type": "text", "content": {"text": "\n".join(lines)}}
-    try:
-        resp = requests.post(webhook_url, json=payload, timeout=15)
-        resp.raise_for_status()
-        result = resp.json()
-        if result.get("code") != 0:
-            print(f"[WARN] 飞书返回错误: {result}")
-        else:
-            print(f"[OK] 提醒已发送，涉及 {len(stocks_due)} 只股票")
-    except Exception as e:
-        print(f"[WARN] 飞书通知失败: {e}")
+    for attempt in range(1, 4):
+        try:
+            resp = requests.post(webhook_url, json=payload, timeout=15)
+            resp.raise_for_status()
+            result = resp.json()
+            if result.get("code") != 0:
+                print(f"[WARN] 飞书返回错误: {result}")
+            else:
+                print(f"[OK] 提醒已发送，涉及 {len(stocks_due)} 只股票")
+            return
+        except Exception as e:
+            print(f"[WARN] 飞书通知失败（第{attempt}次）: {e}")
+            if attempt < 3:
+                time.sleep(20)
 
 
 def main():

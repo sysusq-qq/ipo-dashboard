@@ -196,7 +196,7 @@ def main():
 
     # ── 等待暗盘开始
     if hhmm < GM_START_HM:
-        wait_sec = (16 * 60 + 30 - bj_now.hour * 60 - bj_now.minute) * 60 - bj_now.second
+        wait_sec = (16 * 60 + 14 - bj_now.hour * 60 - bj_now.minute) * 60 - bj_now.second
         print(f"[OK] 等待暗盘开始（{wait_sec//60}分钟后）...")
         time.sleep(max(0, wait_sec))
 
