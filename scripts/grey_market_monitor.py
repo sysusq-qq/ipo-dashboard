@@ -36,7 +36,7 @@ DATA_JSON_PATH  = os.path.join(os.path.dirname(__file__), "..", "data.json")
 FUTU_HOST       = "127.0.0.1"
 FUTU_PORT       = 11111
 
-GM_START_HM = 1614   # 16:14 HKT（暗盘 16:15 开盘前1分钟）
+GM_START_HM = 1615   # 16:15 HKT（暗盘开盘时间）
 GM_END_HM   = 1830   # 18:30 HKT
 POLL_INTERVAL = 300  # 轮询间隔（秒，5分钟）
 
@@ -196,7 +196,7 @@ def main():
 
     # ── 等待暗盘开始
     if hhmm < GM_START_HM:
-        wait_sec = (16 * 60 + 14 - bj_now.hour * 60 - bj_now.minute) * 60 - bj_now.second
+        wait_sec = (16 * 60 + 15 - bj_now.hour * 60 - bj_now.minute) * 60 - bj_now.second
         print(f"[OK] 等待暗盘开始（{wait_sec//60}分钟后）...")
         time.sleep(max(0, wait_sec))
 

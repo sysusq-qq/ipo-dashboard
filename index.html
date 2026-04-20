@@ -1733,6 +1733,10 @@ function selectStock(idx) {
       const bjTodayMs = Date.UTC(bjNow.getUTCFullYear(), bjNow.getUTCMonth(), bjNow.getUTCDate());
       const isPast    = bjTodayMs > gmDateMs;
       const isToday   = bjTodayMs === gmDateMs;
+      // 当日精确时间（北京时间，用 getUTC* 读取已偏移8h的时间戳）
+      const bjHHMM    = bjNow.getUTCHours() * 100 + bjNow.getUTCMinutes();
+      const GM_OPEN   = 1615;   // 16:15 HKT
+      const GM_CLOSE  = 1830;   // 18:30 HKT
 
       let priceStr, changeStr, changeColor;
       if (gm.price !== null && gm.price !== undefined && gm.price > 0) {
@@ -1740,16 +1744,20 @@ function selectStock(idx) {
         const sign  = gm.changePct >= 0 ? '+' : '';
         changeStr   = `${sign}${gm.changePct}%`;
         changeColor = gm.changePct >= 0 ? 'var(--green)' : 'var(--red)';
-      } else if (isToday) {
+      } else if (isToday && bjHHMM >= GM_OPEN && bjHHMM < GM_CLOSE) {
         priceStr    = '进行中';
         changeStr   = '实时更新';
         changeColor = 'var(--yellow)';
+      } else if (isToday && bjHHMM < GM_OPEN) {
+        priceStr    = '待开盘';
+        changeStr   = '16:15 开市';
+        changeColor = 'var(--text-dim)';
       } else if (!isPast) {
         priceStr    = '未开始';
         changeStr   = '—';
         changeColor = 'var(--text-dim)';
       } else {
-        priceStr    = '无数据';
+        priceStr    = '暂无数据';
         changeStr   = '—';
         changeColor = 'var(--text-dim)';
       }
@@ -1758,7 +1766,7 @@ function selectStock(idx) {
     <div class="section">
       <div class="section-title">暗盘记录</div>
       <div class="gm-result">
-        <div class="gm-result-header">🌙 暗盘日期：${gm.date}</div>
+        <div class="gm-result-header">🌙 ${gm.date} &nbsp;16:15–18:30 HKT</div>
         <div class="gm-result-body">
           <div>
             <div class="gm-label">发行价</div>
