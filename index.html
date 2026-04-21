@@ -1388,7 +1388,7 @@ function selectStock(idx) {
       const nodes = [
         { key: 'apply',  label: '申购截止', icon: '✂️', info: tsInfo(s.applyEndTs),   extraTime: null },
         { key: 'result', label: '中签结果', icon: '📋', info: tsInfo(resultTs_val),  extraTime: '上午公布' },
-        { key: 'dark',   label: '暗盘',     icon: '🌙', info: tsInfo(darkTs_val),    extraTime: '16:00–23:00' },
+        { key: 'dark',   label: '暗盘',     icon: '🌙', info: tsInfo(darkTs_val),    extraTime: '16:15–18:30' },
         { key: 'list',   label: '上市',     icon: '🔔', info: tsInfo(listTs_val),    extraTime: '09:30' },
       ].filter(n => n.info);
 
@@ -1399,11 +1399,11 @@ function selectStock(idx) {
         if (!info) return 'future';
         const bjNow  = new Date(Date.now() + 8 * 3600000);
         const bjNode = new Date(info.ts * 1000 + 8 * 3600000);
-        if (nowTs >= info.ts) return 'past';
-        // 同一北京日期算 today
+        // 同一北京日期算 today（必须先判断，避免 listTs=00:00 BJ 当天被误判为 past）
         if (bjNow.getUTCFullYear() === bjNode.getUTCFullYear() &&
             bjNow.getUTCMonth()    === bjNode.getUTCMonth()    &&
             bjNow.getUTCDate()     === bjNode.getUTCDate())     return 'today';
+        if (nowTs >= info.ts) return 'past';
         return 'future';
       }
 
@@ -1669,7 +1669,7 @@ function selectStock(idx) {
           </div>
           <div class="order-item">
             <div class="order-item-label">🌙 暗盘</div>
-            <div class="order-item-value">${darkStr} 16:00–23:00</div>
+            <div class="order-item-value">${darkStr} 16:15–18:30</div>
           </div>
           <div class="order-item">
             <div class="order-item-label">🔔 上市</div>
