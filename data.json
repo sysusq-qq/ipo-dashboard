@@ -4,10 +4,10 @@
     "name": "华勤技术股份有限公司",
     "nameEn": "Huaqin Co., Ltd.",
     "sector": "消费电子ODM / AI服务器 / 数据基础设施",
-    "listDate": "2026-04-24",
+    "listDate": "2026-04-23",
     "subDate": "2026-04-15 ~ 2026-04-20",
     "applyEndTs": 1776650400,
-    "listTs": 1776994200,
+    "listTs": 1776873600,
     "price": 77.7,
     "lotSize": 100,
     "entryFee": 7848.36,
@@ -176,7 +176,7 @@
       "urgentTip": "⏰ 截止日4/20(周一) 10:00，定价前勿重仓；4/21定价后再做最终决策"
     },
     "greyMarket": {
-      "date": "2026-04-23",
+      "date": "2026-04-22",
       "price": null,
       "changePct": null,
       "peakPrice": null,
