@@ -1,49 +1,5 @@
 [
   {
-    "code": "01879",
-    "name": "曦智科技",
-    "nameEn": "Lightelligence",
-    "sector": "光子计算 / 光电混合算力 / AI互联 (18C)",
-    "listDate": "2026-04-28",
-    "subDate": "2026-04-17 ~ 2026-04-23",
-    "applyEndTs": 1776909600,
-    "listTs": 1777305600,
-    "price": 183.2,
-    "lotSize": 15,
-    "entryFee": 2775.71,
-    "verdict": "no",
-    "verdictLabel": "不打",
-    "score": 44,
-    "isTransfer": false,
-    "greyMarket": {
-      "date": "2026-04-27",
-      "price": null,
-      "changePct": null
-    }
-  },
-  {
-    "code": "02493",
-    "name": "迈威（上海）生物科技",
-    "nameEn": "Mabwell (Shanghai) Bioscience",
-    "sector": "生物科技 / ADC / 抗肿瘤生物制药 (18A)",
-    "listDate": "2026-04-28",
-    "subDate": "2026-04-17 ~ 2026-04-23",
-    "applyEndTs": 1776909600,
-    "listTs": 1777305600,
-    "price": 30.71,
-    "lotSize": 200,
-    "entryFee": 6203.95,
-    "verdict": "wait",
-    "verdictLabel": "观望",
-    "score": 63,
-    "isTransfer": false,
-    "greyMarket": {
-      "date": "2026-04-27",
-      "price": null,
-      "changePct": null
-    }
-  },
-  {
     "code": "03296",
     "name": "华勤技术股份有限公司",
     "nameEn": "Huaqin Co., Ltd.",
@@ -222,7 +178,9 @@
     "greyMarket": {
       "date": "2026-04-23",
       "price": null,
-      "changePct": null
+      "changePct": null,
+      "peakPrice": null,
+      "peakChangePct": null
     }
   },
   {
@@ -406,8 +364,10 @@
     },
     "greyMarket": {
       "date": "2026-04-20",
-      "price": null,
-      "changePct": null
+      "price": 336.2,
+      "changePct": 60.19,
+      "peakPrice": null,
+      "peakChangePct": null
     }
   },
   {
@@ -600,7 +560,9 @@
     "greyMarket": {
       "date": "2026-04-16",
       "price": 68.6,
-      "changePct": 72.02
+      "changePct": 72.02,
+      "peakPrice": null,
+      "peakChangePct": null
     }
   },
   {
@@ -775,7 +737,9 @@
     "greyMarket": {
       "date": "2026-04-16",
       "price": 20.52,
-      "changePct": 169.29
+      "changePct": 169.29,
+      "peakPrice": null,
+      "peakChangePct": null
     }
   },
   {
@@ -1057,7 +1021,9 @@
     "greyMarket": {
       "date": "2026-04-15",
       "price": 598.0,
-      "changePct": 84.45
+      "changePct": 84.45,
+      "peakPrice": null,
+      "peakChangePct": null
     }
   },
   {
@@ -1198,7 +1164,9 @@
     "greyMarket": {
       "date": "2026-03-29",
       "price": null,
-      "changePct": null
+      "changePct": null,
+      "peakPrice": null,
+      "peakChangePct": null
     }
   }
 ]
