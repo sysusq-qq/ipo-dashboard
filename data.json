@@ -1168,5 +1168,279 @@
       "peakPrice": null,
       "peakChangePct": null
     }
+  },
+  {
+    "code": "06810",
+    "name": "商米科技",
+    "nameEn": "SUNMI Technology",
+    "sector": "商业物联网(BIoT) / 智能POS终端 / SaaS平台 / WVR架构",
+    "listDate": "2026-04-29",
+    "subDate": "2026-04-21 ~ 2026-04-24",
+    "applyEndTs": 1776996000,
+    "listTs": 1777392000,
+    "price": 24.86,
+    "lotSize": 100,
+    "entryFee": 2511.07,
+    "totalIssue": "4262.68万股H股（全球发售）",
+    "publicIssue": "426.27万股（10%香港公开发售）",
+    "greenshoe": "—",
+    "mktCapH": "约HK$100.1亿（总股本4.03亿股×HK$24.86）",
+    "pe": "约PE 42x（2025A）/ PS 2.4x",
+    "verdict": "wait",
+    "verdictLabel": "观望",
+    "score": 63,
+    "status": "hot",
+    "statusText": "招股中",
+    "conclusion": "全球最大安卓端BIoT解决方案商，海外收入74.9%，200+国家，服务全球前50大餐饮企业中逾70%。2025年收入RMB 38.1亿(+10.3%)，净利润2.23亿(+21.9%)，毛利率31.3%。但WVR架构创始人掌握79.63%投票权；基石27%主为关联方；10.3%增速与PE~42x性价比一般。BIoT赛道CAGR 23.7%，长期逻辑成立；1手彩票性质参与。",
+    "scoreBreakdown": [
+      {
+        "label": "业务质量",
+        "pts": 18,
+        "max": 25,
+        "desc": "全球最大安卓端BIoT龙头，PaaS平台护城河；但增速10.3%偏低"
+      },
+      {
+        "label": "财务健康",
+        "pts": 16,
+        "max": 25,
+        "desc": "净利润连续增长，毛利率持续改善；净利率5.8%偏低"
+      },
+      {
+        "label": "估值吸引力",
+        "pts": 14,
+        "max": 25,
+        "desc": "PE~42x，增速撑不起；WVR折价；PS 2.4x合理"
+      },
+      {
+        "label": "资本结构",
+        "pts": 15,
+        "max": 25,
+        "desc": "基石27%但主为关联方，独立基石<2%；三家保荐尚可"
+      }
+    ],
+    "financials": [
+      {
+        "label": "收入（人民币亿元）",
+        "y2023": "30.7",
+        "y2024": "34.6",
+        "y2025": "38.1"
+      },
+      {
+        "label": "毛利率",
+        "y2023": "26.7%",
+        "y2024": "28.9%",
+        "y2025": "31.3%"
+      },
+      {
+        "label": "净利润（人民币M）",
+        "y2023": "101.2",
+        "y2024": "181.0",
+        "y2025": "222.6"
+      },
+      {
+        "label": "收入增速",
+        "y2023": "—",
+        "y2024": "+12.6%",
+        "y2025": "+10.3%"
+      }
+    ],
+    "risks": [
+      "WVR架构：创始人掌握79.63%投票权，小股东影响力极低",
+      "独立基石极少：$3657万基石中$3157万为关联方，独立机构仅$500万",
+      "增速放缓：10.3%收入增速撑不起42x PE",
+      "巴西客户仲裁未解决",
+      "净利率偏低（5.8%），硬件业务天花板"
+    ],
+    "actions": [
+      {
+        "date": "上市后",
+        "title": "观察暗盘",
+        "desc": "溢价>10%可持仓，<5%或折价不追"
+      },
+      {
+        "date": "中期",
+        "title": "BIoT赛道",
+        "desc": "跟踪PaaS平台渗透率和海外市场扩张"
+      }
+    ],
+    "greyMarket": {
+      "date": "2026-04-28",
+      "price": null,
+      "changePct": null,
+      "peakPrice": null,
+      "peakChangePct": null
+    }
+  },
+  {
+    "code": "01879",
+    "name": "上海曦智科技股份有限公司",
+    "nameEn": "",
+    "sector": "待补充",
+    "listDate": "",
+    "subDate": "—",
+    "price": null,
+    "lotSize": 100,
+    "entryFee": null,
+    "totalIssue": "—",
+    "publicIssue": "—",
+    "greenshoe": "—",
+    "mktCapH": "—",
+    "pe": "—",
+    "verdict": "noda",
+    "verdictLabel": "不打",
+    "score": 47,
+    "status": "hot",
+    "statusText": "新上市",
+    "conclusion": "自动分析 | 近期上市新股。毛利率 —，收入增速 —。基本面评分 47/100，建议：不打。（本分析由规则引擎自动生成，仅供参考）",
+    "scoreBreakdown": [
+      {
+        "label": "业务质量",
+        "pts": 12,
+        "max": 25,
+        "desc": "自动评分：收入增速+毛利率"
+      },
+      {
+        "label": "财务健康",
+        "pts": 10,
+        "max": 25,
+        "desc": "自动评分：盈利能力+现金流"
+      },
+      {
+        "label": "估值吸引力",
+        "pts": 12,
+        "max": 25,
+        "desc": "自动评分：估值区间参考"
+      },
+      {
+        "label": "资本结构",
+        "pts": 13,
+        "max": 25,
+        "desc": "自动评分：基石+新旧股比例"
+      }
+    ],
+    "financials": [
+      {
+        "label": "收入",
+        "y2023": "—",
+        "y2024": "—",
+        "y2025": "—"
+      },
+      {
+        "label": "毛利率",
+        "y2023": "—",
+        "y2024": "—",
+        "y2025": "—"
+      },
+      {
+        "label": "净利润",
+        "y2023": "—",
+        "y2024": "—",
+        "y2025": "—"
+      }
+    ],
+    "risks": [
+      "<strong>信息待补充</strong>：建议手动补充招股书详细分析"
+    ],
+    "actions": [
+      {
+        "date": "上市后",
+        "title": "观察价格",
+        "desc": "关注上市后估值收敛情况"
+      },
+      {
+        "date": "中期",
+        "title": "盈利兑现",
+        "desc": "跟踪全年净利润是否实质性增长"
+      }
+    ],
+    "subscription": null,
+    "_auto": true,
+    "_updatedAt": "2026-04-21"
+  },
+  {
+    "code": "02493",
+    "name": "邁威（上海）生物科技股份有限公司",
+    "nameEn": "",
+    "sector": "待补充",
+    "listDate": "",
+    "subDate": "—",
+    "price": null,
+    "lotSize": 100,
+    "entryFee": null,
+    "totalIssue": "—",
+    "publicIssue": "—",
+    "greenshoe": "—",
+    "mktCapH": "—",
+    "pe": "—",
+    "verdict": "noda",
+    "verdictLabel": "不打",
+    "score": 47,
+    "status": "hot",
+    "statusText": "新上市",
+    "conclusion": "自动分析 | 近期上市新股。毛利率 —，收入增速 —。基本面评分 47/100，建议：不打。（本分析由规则引擎自动生成，仅供参考）",
+    "scoreBreakdown": [
+      {
+        "label": "业务质量",
+        "pts": 12,
+        "max": 25,
+        "desc": "自动评分：收入增速+毛利率"
+      },
+      {
+        "label": "财务健康",
+        "pts": 10,
+        "max": 25,
+        "desc": "自动评分：盈利能力+现金流"
+      },
+      {
+        "label": "估值吸引力",
+        "pts": 12,
+        "max": 25,
+        "desc": "自动评分：估值区间参考"
+      },
+      {
+        "label": "资本结构",
+        "pts": 13,
+        "max": 25,
+        "desc": "自动评分：基石+新旧股比例"
+      }
+    ],
+    "financials": [
+      {
+        "label": "收入",
+        "y2023": "—",
+        "y2024": "—",
+        "y2025": "—"
+      },
+      {
+        "label": "毛利率",
+        "y2023": "—",
+        "y2024": "—",
+        "y2025": "—"
+      },
+      {
+        "label": "净利润",
+        "y2023": "—",
+        "y2024": "—",
+        "y2025": "—"
+      }
+    ],
+    "risks": [
+      "<strong>信息待补充</strong>：建议手动补充招股书详细分析"
+    ],
+    "actions": [
+      {
+        "date": "上市后",
+        "title": "观察价格",
+        "desc": "关注上市后估值收敛情况"
+      },
+      {
+        "date": "中期",
+        "title": "盈利兑现",
+        "desc": "跟踪全年净利润是否实质性增长"
+      }
+    ],
+    "subscription": null,
+    "_auto": true,
+    "_updatedAt": "2026-04-21"
   }
 ]
