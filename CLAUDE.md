@@ -5,6 +5,111 @@
 
 ---
 
+## 零、新伙伴入门（从零开始）
+
+### 第一步：安装必要工具
+
+**1. 安装 Claude Code**
+
+打开终端（Mac：Command+空格 → 输入"终端"），运行：
+```bash
+npm install -g @anthropic/claude-code
+```
+
+> 如果提示 `npm: command not found`，先安装 Node.js：https://nodejs.org → 下载 LTS 版本安装后重试。
+
+**2. 登录 Claude**
+
+```bash
+claude
+```
+
+首次运行会弹出浏览器要求登录 Anthropic 账号，登录后回到终端即可。
+
+**3. 确认 Git 已安装**
+
+```bash
+git --version
+```
+
+如果提示 `command not found`，Mac 运行 `xcode-select --install` 安装；Windows 去 https://git-scm.com 下载安装。
+
+---
+
+### 第二步：Clone 仓库
+
+```bash
+# 1. 选择一个你想存放项目的目录，例如进入桌面
+cd ~/Desktop
+
+# 2. Clone 仓库（会在当前目录创建 ipo-dashboard 文件夹）
+git clone https://github.com/sysusq-qq/ipo-dashboard.git
+
+# 3. 进入项目目录
+cd ipo-dashboard
+```
+
+---
+
+### 第三步：用 Claude Code 打开项目
+
+```bash
+# 在项目目录内启动 Claude Code
+claude .
+```
+
+Claude Code 会自动读取本目录的 `CLAUDE.md`，加载所有团队规则。你会看到命令行提示符，直接输入指令即可，例如：
+
+```
+> 新增一只股票 06810 商米科技，帮我分析招股书
+> 把 01879 曦智科技的暗盘收盘价更新为 212.5，涨幅 16.0%
+```
+
+---
+
+### 第四步：修改内容后同步给团队
+
+每次修改完 `index.html` 或 `CLAUDE.md` 后，运行以下命令提交并推送：
+
+```bash
+# 查看改了哪些文件
+git status
+
+# 将改动加入暂存区（. 表示全部改动文件）
+git add .
+
+# 提交，引号内写本次改动说明
+git commit -m "更新01879暗盘数据"
+
+# 推送到 GitHub，团队其他人即可看到
+git push
+```
+
+---
+
+### 第五步：获取团队最新内容
+
+每次开始工作前，先同步一下别人的改动：
+
+```bash
+git pull
+```
+
+---
+
+### 常见问题
+
+**Q：push 时提示没有权限？**
+需要被仓库管理员加为 Collaborator。把你的 GitHub 用户名发给管理员，等收到邮件邀请后接受即可。
+
+**Q：pull 时提示 conflict（冲突）？**
+说明你和别人同时改了同一个地方。把问题截图发给管理员，或在 Claude Code 里说"帮我解决 git conflict"。
+
+**Q：Claude Code 没有加载本项目的规则？**
+确认你是在 `ipo-dashboard` 目录内启动的 `claude .`，不是在其他目录。
+
+---
+
 ## 一、项目结构
 
 ```
