@@ -1272,6 +1272,92 @@
     }
   },
   {
+    "code": "01187",
+    "name": "可孚醫療科技股份有限公司",
+    "nameEn": "",
+    "sector": "待补充",
+    "listDate": "",
+    "subDate": "—",
+    "price": null,
+    "lotSize": 100,
+    "entryFee": null,
+    "totalIssue": "—",
+    "publicIssue": "—",
+    "greenshoe": "—",
+    "mktCapH": "—",
+    "pe": "—",
+    "verdict": "noda",
+    "verdictLabel": "不打",
+    "score": 47,
+    "status": "hot",
+    "statusText": "新上市",
+    "conclusion": "自动分析 | 近期上市新股。毛利率 —，收入增速 —。基本面评分 47/100，建议：不打。（本分析由规则引擎自动生成，仅供参考）",
+    "scoreBreakdown": [
+      {
+        "label": "业务质量",
+        "pts": 12,
+        "max": 25,
+        "desc": "自动评分：收入增速+毛利率"
+      },
+      {
+        "label": "财务健康",
+        "pts": 10,
+        "max": 25,
+        "desc": "自动评分：盈利能力+现金流"
+      },
+      {
+        "label": "估值吸引力",
+        "pts": 12,
+        "max": 25,
+        "desc": "自动评分：估值区间参考"
+      },
+      {
+        "label": "资本结构",
+        "pts": 13,
+        "max": 25,
+        "desc": "自动评分：基石+新旧股比例"
+      }
+    ],
+    "financials": [
+      {
+        "label": "收入",
+        "y2023": "—",
+        "y2024": "—",
+        "y2025": "—"
+      },
+      {
+        "label": "毛利率",
+        "y2023": "—",
+        "y2024": "—",
+        "y2025": "—"
+      },
+      {
+        "label": "净利润",
+        "y2023": "—",
+        "y2024": "—",
+        "y2025": "—"
+      }
+    ],
+    "risks": [
+      "<strong>信息待补充</strong>：建议手动补充招股书详细分析"
+    ],
+    "actions": [
+      {
+        "date": "上市后",
+        "title": "观察价格",
+        "desc": "关注上市后估值收敛情况"
+      },
+      {
+        "date": "中期",
+        "title": "盈利兑现",
+        "desc": "跟踪全年净利润是否实质性增长"
+      }
+    ],
+    "subscription": null,
+    "_auto": true,
+    "_updatedAt": "2026-04-27"
+  },
+  {
     "code": "01609",
     "name": "北京天星醫療股份有限公司",
     "nameEn": "",
