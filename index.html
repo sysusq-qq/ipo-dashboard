@@ -529,6 +529,256 @@
 ════════════════════════════════════════════════════════ */
 const stocks = [
 
+  /* ── NEW. 07630 英派藥業（18A PARP抑制剂 · 5/13上市）──────── */
+  {
+    code: '07630',
+    applyEndTs: 1778205600,   // 北京时间 2026-05-08 10:00
+    listTs:     1778601600,   // 北京时间 2026-05-13 00:00（招股书）
+    name: '英派藥業-B',
+    nameEn: 'IMPACT Therapeutics, Inc',
+    sector: '18A 肿瘤药 / PARP1/2抑制剂 / 卵巢癌 / EMA申请中',
+    listDate: '2026-05-13',
+    subDate: '2026-05-05 ~ 2026-05-08',
+    price: 20.75,
+    lotSize: 200,
+    entryFee: 4393.88,
+    totalIssue: '4197.7万股H股（含绿鞋）',
+    publicIssue: '419.78万股（10%香港公开发售）',
+    greenshoe: '有（超额配股权最多约15%）',
+    mktCapH: '约HK$57亿（HK$19.75-21.75，取中间价×2.76亿股）',
+    pe: '亏损中 / 18A生物科技用管线价值定价',
+    verdict: 'wait',
+    verdictLabel: '观望',
+    score: 63,
+    position: '1手现金仓（彩票性质）',
+    sponsors: '高盛（联席保薦人+整体协调人）、摩根大通（联席）',
+    isTransfer: false,
+    cornerstone: {
+      total: '约USD 3000万+（多方小型基石）',
+      tier1: [
+        '礼来亚洲基金（LAV）',
+        '腾讯（战略投资）',
+        '德诚资本（Decheng Capital）',
+        '上海礼颐',
+      ],
+      others: []
+    },
+    conclusion: '塞纳帕利(Senaparib)是中国已获批PARP1/2抑制剂，用于晚期卵巢癌一线化疗后维持治疗。2025年商业收入RMB 3,825万，毛利率95.9%。关键催化剂：EMA申请已验证，欧洲市场批准在即。高盛+腾讯+LAV联合背书。但年均亏损约3亿，IPO提供55个月现金跑道。1手彩票参与，等EMA批准后加仓。',
+    scores: [
+      { label: '业务质量',   pts: 16, max: 25, desc: '中国已获批PARP1/2抑制剂，卵巢癌商业化中；EMA验证=欧洲市场催化剂；竞争对手强（AZ Lynparza, GSK Zejula）' },
+      { label: '财务健康',   pts: 14, max: 25, desc: '收入33.5M→38.3M增长；95.9%毛利率；但净亏损扩大(254.8M→295.9M)；IPO后55个月现金跑道' },
+      { label: '估值吸引力', pts: 15, max: 25, desc: '传统PS极高，但18A biotech用EV/pipeline价值；EMA批准后EU市场潜力远超当前收入；HK$57亿对获批PARP+EMA催化剂合理' },
+      { label: '资本结构',   pts: 18, max: 25, desc: '高盛+腾讯+LAV三重背书，腾讯战略投资意义重大；高盛作稳定价格操作人；55个月现金跑道' },
+    ],
+    financial: [
+      { label: '收入（人民币M）',    y2023: '—',    y2024: '33.5',   y2025: '38.3' },
+      { label: '毛利率',             y2023: '—',    y2024: '95.4%',  y2025: '95.9%' },
+      { label: '净亏损（人民币M）',  y2023: '—',    y2024: '-254.8', y2025: '-295.9' },
+      { label: '研发支出（人民币M）',y2023: '—',    y2024: '194.8',  y2025: '183.7' },
+      { label: '现金（人民币M）',    y2023: '—',    y2024: '230.1',  y2025: '258.5' },
+    ],
+    cfChecks: [
+      { icon: '✅', text: 'IPO后现金跑道55个月（RMB 258.5M现金 + HK$741.5M募资），无近期断粮风险', tag: 'ok', tagText: '资金充裕' },
+      { icon: '✅', text: 'EMA申请已验证——欧洲监管审核正式启动，若获批则欧美市场收入将数倍于中国市场', tag: 'ok', tagText: 'EU催化剂' },
+      { icon: '⚠️', text: '净亏损从254.8M扩大至295.9M（2025年），主因管理费用及SBC增加；无IPO仅15个月现金', tag: 'warn', tagText: '亏损扩大' },
+      { icon: '⚠️', text: '单一核心产品：99%收入来自塞纳帕利，管线候选药物均在早期阶段，集中度风险高', tag: 'warn', tagText: '集中风险' },
+    ],
+    risks: [
+      '<strong>单一核心产品</strong>：近100%收入依赖塞纳帕利，管线候选药物均在早期阶段',
+      '<strong>竞争激烈</strong>：全球PARP抑制剂被AZ(Lynparza)、GSK(Zejula)主导，国内竞争对手亦在增加',
+      '<strong>EMA批准不确定</strong>：欧洲监管审批进程可能延迟或失败，是最大催化剂也是最大风险',
+      '<strong>亏损扩大趋势</strong>：2025年净亏损295.9M较2024年增加，商业化进度与烧钱速度赛跑',
+      '<strong>CDMO依赖</strong>：生产完全依赖第三方CDMO，供应链断裂风险',
+    ],
+    actions: [
+      { date: '5月8日 截止', title: '申购截止', desc: '1手申购200股，缴付HK$4,394（at最高价HK$21.75）；等待5月11日定价公告' },
+      { date: '5月11日 定价', title: '观察定价位置', desc: '定价接近HK$21.75=机构需求强；接近HK$19.75=较保守' },
+      { date: '5月12日 暗盘', title: 'EMA消息优先', desc: '暗盘溢价=机构认可；未来EMA批准公告将是最大催化剂' },
+      { date: '上市后', title: '持有策略', desc: '若EMA审批正面可持有；否则1手纪念' },
+    ],
+    subscription: {
+      scenarios: [
+        { label: '保守', mult: 10,  premPct: 0  },
+        { label: '基准', mult: 30,  premPct: 8  },
+        { label: '乐观', mult: 80,  premPct: 20 },
+      ],
+      recClass: 'wait', recTitle: '⚠️ 谨慎参与',
+      lots: 1, method: '现金仓（彩票性质）',
+      marginOk: false,
+      marginTip: '不建议孖展：18A biotech波动极大，EMA批准前估值不确定性高',
+      rationale: '英派是EMA申请最领先的中国PARP抑制剂，高盛+腾讯背书信号强。单一产品生物科技，1手彩票参与，押注EMA批准催化剂。票价HK$4,394（200股），风险可控。',
+      urgentTip: '截止5/8(周四) 10:00 BJ；发售价范围HK$19.75-21.75'
+    },
+    greyMarket: { date: '2026-05-12', price: null, changePct: null, peakPrice: null, peakChangePct: null }
+  },
+
+  /* ── NEW. 07666 劑泰科技（18C AI纳米材料 · 5/13上市）──────── */
+  {
+    code: '07666',
+    applyEndTs: 1778205600,   // 北京时间 2026-05-08 10:00
+    listTs:     1778601600,   // 北京时间 2026-05-13 00:00（招股书）
+    name: '劑泰科技-P',
+    nameEn: 'Metis TechBio Co., Ltd.',
+    sector: '18C AI纳米材料 / LNP药物递送平台 / 商业化前',
+    listDate: '2026-05-13',
+    subDate: '2026-05-05 ~ 2026-05-08',
+    price: 10.50,
+    lotSize: 500,
+    entryFee: 5302.95,
+    totalIssue: '20122.9万股H股（含绿鞋）',
+    publicIssue: '1006.15万股（5%香港公开发售）',
+    greenshoe: '有（超额配股权最多约15%）',
+    mktCapH: '约HK$121亿（固定价HK$10.50×11.52亿股）',
+    pe: '亏损中 / 18C特专科技按平台价值定价',
+    verdict: 'no',
+    verdictLabel: '不打',
+    score: 46,
+    position: '不建议参与（激进者可1手彩票）',
+    sponsors: '中信里昂（整体协调人）、华泰国际（联席保薦人）',
+    isTransfer: false,
+    cornerstone: {
+      total: 'USD 1.48亿（HK$11.6亿），占发售股份54.87%',
+      tier1: [
+        '贝莱德（BlackRock，USD 5000万，18.54%）',
+        '瑞银资管新加坡（UBS AM SG，USD 1500万）',
+        '国风投创新投资基金（国家VC，USD 1000万）',
+        '工银瑞信+工银理财（USD 700万）',
+      ],
+      others: [
+        'Mirae Asset、Deerfield、RTW基金、广发基金、华夏基金(HK)、富国基金、ORIX Asia AM等13方合共USD 6.9亿',
+      ]
+    },
+    conclusion: 'AI驱动脂质纳米颗粒（LNP）药物递送平台，号称全球最大脂质库（1000万+结构）。2025年收入RMB 1.05亿看似大增，但95.2%来自一笔对浙江引安的单次许可费——经常性收入接近零。市值HK$121亿/PS约115x属极度投机。最大亮点：贝莱德USD5000万领投+17家机构基石占发售股份54.87%。18C特专科技，不建议普通投资者参与，激进者可考虑1手纯彩票。',
+    scores: [
+      { label: '业务质量',   pts: 11, max: 25, desc: 'AI纳米材料平台技术真实，1000万+脂质库有价值；但商业化前，95.2%收入来自一次性许可费，经常性收入接近零' },
+      { label: '财务健康',   pts: 10, max: 25, desc: '现金RMB 8.28亿+IPO净募约HK$20亿=资金充裕；但2025年行政费用暴增至RMB 1.96亿（+116%），调整后亏损仍达1.8亿/年' },
+      { label: '估值吸引力', pts: 8,  max: 25, desc: '固定价HK$10.50，市值HK$121亿；PS约115x（名义），基于经常性收入则估值实为无限；账面净资产HK$2.90/股，溢价3.6x净资产' },
+      { label: '资本结构',   pts: 17, max: 25, desc: '贝莱德USD5000万领衔17方机构基石占54.87%——全球顶级机构背书；CLSA作稳定价格操作人' },
+    ],
+    financial: [
+      { label: '收入（人民币M）',    y2023: '9.3',    y2024: '1.5',    y2025: '105.0*' },
+      { label: '研发支出（人民币M）',y2023: '290.5',  y2024: '274.0',  y2025: '269.8' },
+      { label: '净亏损（人民币M）',  y2023: '-581.9', y2024: '-499.2', y2025: '-391.8' },
+      { label: '调整净亏损（人民币M）',y2023:'—',    y2024: '—',      y2025: '-183.7' },
+    ],
+    cfChecks: [
+      { icon: '✅', text: '贝莱德USD5000万领衔17家机构基石，占发售股份54.87%——极强的机构信心背书', tag: 'ok', tagText: '顶级背书' },
+      { icon: '⚠️', text: '2025年收入RMB 1.05亿，但95.2%来自对浙江引安的单次一次性许可费，经常性收入接近零', tag: 'warn', tagText: '收入虚高' },
+      { icon: '⚠️', text: '18C未商业化公司，PS约115x（名义），极高估值泡沫风险；普通投资者不适合参与', tag: 'warn', tagText: '极高估值' },
+    ],
+    risks: [
+      '<strong>收入质量差</strong>：95.2%来自一次性许可费，2026年经常性收入基本为零起步',
+      '<strong>18C极高风险</strong>：未商业化特专科技，PS 115x，散户投机风险极高',
+      '<strong>竞争激烈</strong>：LNP领域Alnylam、Moderna、Arctus等巨头领先；国内竞争者亦众多',
+      '<strong>行政费用失控</strong>：2025年行政费用RMB 1.96亿（+116%），烧钱速度加快',
+      '<strong>商业化路径不清晰</strong>：仅1个候选药物处于临床试验，正式商业化还需数年',
+    ],
+    actions: [
+      { date: '5月8日 截止', title: '申购截止（选择性参与）', desc: '仅激进者考虑1手（500股，入场费HK$5,303）；固定定价HK$10.50' },
+      { date: '5月12日 暗盘', title: '暗盘观察', desc: '若暗盘溢价>20%说明机构拉升，可持仓；平开则1手纪念币' },
+      { date: '5月13日 上市', title: '上市策略', desc: '18C高波动，有盈利则首日落袋为安' },
+    ],
+    subscription: {
+      scenarios: [
+        { label: '保守', mult: 5,   premPct: 0  },
+        { label: '基准', mult: 15,  premPct: 5  },
+        { label: '乐观', mult: 40,  premPct: 15 },
+      ],
+      recClass: 'no', recTitle: '❌ 不建议参与',
+      lots: 0, method: '不参与',
+      marginOk: false,
+      marginTip: '绝对不建议孖展：18C商业化前公司，收入虚高，估值极度投机',
+      rationale: '虽有贝莱德领投的超强基石背书，但18C未商业化+收入质量差+PS 115x=普通投资者不适合参与。激进者可考虑1手纯彩票（HK$5,303），押注机构炒作。',
+      urgentTip: '截止5/8(周四) 10:00 BJ；固定定价HK$10.50，不建议普通投资者参与'
+    },
+    greyMarket: { date: '2026-05-12', price: null, changePct: null, peakPrice: null, peakChangePct: null }
+  },
+
+  /* ── NEW. 01236 深圳樂動機器人（激光雷达B2B · 5/11上市）──── */
+  {
+    code: '01236',
+    applyEndTs: 1778032800,   // 北京时间 2026-05-06 10:00（已截止）
+    listTs:     1778428800,   // 北京时间 2026-05-11 00:00（招股书）
+    name: '樂動機器人',
+    nameEn: 'SHENZHEN LDROBOT CO., LTD',
+    sector: '机器人视觉感知（激光雷达）/ 智能割草机 / 消费电子B2B',
+    listDate: '2026-05-11',
+    subDate: '2026-04-29 ~ 2026-05-06',
+    price: 27.0,
+    lotSize: 200,
+    entryFee: 6060.51,
+    totalIssue: '3333.34万股H股（全球发售，含绿鞋）',
+    publicIssue: '333.34万股（10%香港公开发售）',
+    greenshoe: '有（超额配股权最多约15%）',
+    mktCapH: '约HK$90亿（总股本3.33亿股×HK$27中间价）；HK$80-100亿（范围HK$24-30）',
+    pe: '亏损中 / PS约12x（2025A，RMB 7.48亿收入 ≈ HK$8.2亿，按中间价）',
+    verdict: 'wait',
+    verdictLabel: '观望',
+    score: 68,
+    position: '1手现金仓',
+    sponsors: '中金公司（保薦人兼整体协调人）、瑞银（联席）',
+    isTransfer: false,
+    cornerstone: {
+      total: 'HK$2.77亿（约30-35%发售股份）',
+      tier1: [
+        'Prosperity Investment（HK$0.77亿）',
+        '德方纳米（科创板上市，HK$0.50亿）',
+        'Vivo Capital（HK$0.50亿）',
+      ],
+      others: [
+        '其他机构基石合共HK$1.0亿',
+      ]
+    },
+    conclusion: '全球领先机器人视觉感知（激光雷达）B2B供应商，服务全球前10大家用服务机器人7家及前5大商用机器人全部客户。2025年收入RMB 7.48亿(+60.0%)，近3年CAGR 64%；调整后净亏损率已压缩至-3.5%（接近盈亏平衡）。客户留存率100%，净收入留存率133%。核心风险：仍亏损，割草机器人US出口受17.5%关税影响。估值HK$9B/PS约12x合理。观望1手，若超额倍数高可考虑2手。',
+    scores: [
+      { label: '业务质量',   pts: 18, max: 25, desc: '全球TOP机器人B2B激光雷达供应商，CAGR 64%，客户留存100%，NRR 133%；US关税及割草机海外扩张不确定性' },
+      { label: '财务健康',   pts: 17, max: 25, desc: '收入高速增长，调整后亏损率-3.5%逼近盈亏平衡；应收账款周转改善（127天→81天），毛利率回升至25.7%' },
+      { label: '估值吸引力', pts: 16, max: 25, desc: 'PS约12x，对比同类机器人传感器公司较合理；接近盈利定价具吸引力' },
+      { label: '资本结构',   pts: 17, max: 25, desc: '基石HK$2.77亿（占约30%），含上市公司德方纳米及知名VC；中金+瑞银双保薦，绿鞋15%' },
+    ],
+    financial: [
+      { label: '收入（人民币亿元）', y2023: '2.77',   y2024: '4.67',   y2025: '7.48' },
+      { label: '毛利率',             y2023: '25.7%',  y2024: '19.5%',  y2025: '25.7%' },
+      { label: '净亏损（人民币M）',  y2023: '-68.5',  y2024: '-56.5',  y2025: '-62.5' },
+      { label: '收入增速',           y2023: '+18.3%', y2024: '+69.0%', y2025: '+60.0%' },
+      { label: '调整净亏损率',       y2023: '-20.2%', y2024: '-9.6%',  y2025: '-3.5%' },
+    ],
+    cfChecks: [
+      { icon: '✅', text: '调整净亏损率从-20.2%压缩到-3.5%，接近盈亏平衡；收入CAGR 64%驱动规模效应提升', tag: 'ok', tagText: '逼近盈利' },
+      { icon: '✅', text: '2025年客户留存率100%，净收入留存率133%——存量客户在扩大采购', tag: 'ok', tagText: '留存率优秀' },
+      { icon: '⚠️', text: '割草机器人出口美国须缴纳合计17.5%关税；海外收入扩至18.4%，贸易摩擦风险上升', tag: 'warn', tagText: '关税风险' },
+      { icon: '⚠️', text: '社保/公积金欠缴RMB 20.2M（2025年），存在补缴风险', tag: 'warn', tagText: '合规风险' },
+    ],
+    risks: [
+      '<strong>亏损持续</strong>：近3年均亏损（-68.5M→-56.5M→-62.5M），调整后接近盈亏平衡，正式盈利时间表不确定',
+      '<strong>US关税</strong>：割草机器人美国市场须缴17.5%关税；主要机器人客户产品出口美国亦受影响',
+      '<strong>毛利率不稳定</strong>：2024年骤降至19.5%后2025年回升至25.7%，产品结构变化影响可预测性',
+      '<strong>客户集中度</strong>：前5大客户占收入49.8%（改善但仍高）；单一最大客户16%',
+      '<strong>社保合规</strong>：历年欠缴社保/公积金，存在补缴及罚款风险',
+    ],
+    actions: [
+      { date: '5月6日 已截止', title: '申购已截止', desc: '5月6日10:00已截止，等待中签结果' },
+      { date: '5月8日 结果', title: '中签结果公布', desc: '关注认购倍数——倍数>50x且国际反响好可持仓；<20x建议暗盘观察' },
+      { date: '5月10日 暗盘', title: '暗盘判断', desc: '溢价>10%可持仓至上市；折价则止损' },
+      { date: '5月11日 上市', title: '上市策略', desc: '估值合理，有持有价值；首日高开超过15%即可兑现' },
+    ],
+    subscription: {
+      scenarios: [
+        { label: '保守', mult: 30,  premPct: 5  },
+        { label: '基准', mult: 80,  premPct: 12 },
+        { label: '乐观', mult: 200, premPct: 20 },
+      ],
+      recClass: 'wait', recTitle: '⚠️ 谨慎参与',
+      lots: 1, method: '现金仓',
+      marginOk: false,
+      marginTip: '不建议孖展：仍亏损企业估值波动大，关税不确定性增加尾部风险',
+      rationale: '乐动机器人是实质性机器人B2B赛道龙头，客户留存100%、NRR 133%、CAGR 64%，接近盈亏平衡。估值PS~12x对此增速合理。主要风险是仍亏损+关税。1手现金仓票价HK$6,061，若超额认购倍数高（>100x）可考虑2手。',
+      urgentTip: '申购已于5/6(周二)截止，等待5月8日中签结果'
+    },
+    greyMarket: { date: '2026-05-10', price: null, changePct: null, peakPrice: null, peakChangePct: null }
+  },
+
+
   /* ── NEW. 01187 可孚醫療科技（家用医疗设备 A+H）──────── */
   {
     code: '01187',
