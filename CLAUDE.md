@@ -127,6 +127,10 @@ ipo-dashboard/
 
 **编辑入口**：新增/修改股票只改 `index.html`，commit + push 后 GitHub Pages 自动部署。
 
+> ⚠️ **Claude 必读禁令**：分析完新股后，**必须且只能写入 `index.html`** 的 `stocks` 数组。
+> **严禁把分析结果写入 `data.json`**——那是 GitHub Actions 自动脚本的专属文件，手动写进去不会更新网页，还会制造数据混乱。
+> 判断标准：改完后网页 https://sysusq-qq.github.io/ipo-dashboard/ 能看到新股 = 正确；看不到 = 写错地方了。
+
 ---
 
 ## 二、新增股票：完整字段规范
