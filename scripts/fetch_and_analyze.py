@@ -29,6 +29,7 @@ HKEX_URL = "https://www2.hkexnews.hk/New-Listings/New-Listing-Information/Main-B
 HKEX_ANNOUNCE_URL = "https://www2.hkexnews.hk/search/titlesearch.xhtml?lang=ZH"
 FEISHU_WEBHOOK = os.environ.get("FEISHU_WEBHOOK", "")
 DATA_JSON_PATH = os.path.join(os.path.dirname(__file__), "..", "data.json")
+INDEX_HTML_PATH = os.path.join(os.path.dirname(__file__), "..", "index.html")
 
 HEADERS = {
     "User-Agent": (
@@ -112,6 +113,82 @@ def _normalize_date(raw):
         if len(parts[2]) == 4:
             return f"{parts[2]}-{parts[1]}-{parts[0]}"
     return raw
+
+
+# ─────────────────────────────────────────────
+# 1b. 扫描近期招股章程申报（覆盖招股中新股）
+# ─────────────────────────────────────────────
+def fetch_prospectus_filings(days=60):
+    """
+    搜索最近N天内港交所申报的招股章程，提取正在招股（尚未上市）的新股代码。
+    与 fetch_hkex_listings() 互补：后者只能发现已上市股票。
+    """
+    listings = []
+    try:
+        today = datetime.date.today()
+        from_date = (today - datetime.timedelta(days=days)).strftime("%Y%m%d")
+        to_date = today.strftime("%Y%m%d")
+
+        url = (
+            "https://www1.hkexnews.hk/search/titlesearch.xhtml"
+            f"?lang=ZH&market=SEHK&searchType=0&documentType=-1"
+            f"&returnType=0&t1code=-2&t2Gcode=-2&t2code=-2&stockId="
+            f"&from={from_date}&to={to_date}&title=招股章程&addKeyword=&search=Search"
+        )
+        resp = requests.get(url, headers=HEADERS, timeout=30)
+        resp.raise_for_status()
+        soup = BeautifulSoup(resp.text, "lxml")
+
+        seen = set()
+
+        # 策略1：从搜索结果表格提取股票代码
+        for row in soup.find_all("tr"):
+            cells = row.find_all(["td", "th"])
+            if len(cells) < 2:
+                continue
+            text_cells = [c.get_text(strip=True) for c in cells]
+            for i, text in enumerate(text_cells):
+                m = re.match(r"^(\d{4,5})$", text)
+                if m:
+                    code = m.group(1).zfill(5)
+                    if code not in seen:
+                        seen.add(code)
+                        name = ""
+                        for j, other in enumerate(text_cells):
+                            if j != i and len(other) > 3 and not re.match(r"^\d", other):
+                                name = other
+                                break
+                        listings.append({"code": code, "name": name, "listDate": ""})
+
+        # 策略2：从PDF链接路径提取代码
+        # 格式: /listedco/listconews/SEHK/YYYY/MMDD/CODEXXXXX/...
+        for a in soup.find_all("a", href=True):
+            href = a["href"]
+            m = re.search(r"/SEHK/\d{4}/\d+/(\d{5})/", href)
+            if m:
+                code = m.group(1)
+                if code not in seen:
+                    seen.add(code)
+                    listings.append({"code": code, "name": "", "listDate": ""})
+
+        # 策略3：页面文本正则（备用）
+        if not listings:
+            page_text = soup.get_text()
+            matches = re.findall(
+                r"(\d{4,5})\s*\n\s*([^\n]{4,60}(?:有限公司|Inc\.|Corp\.|Ltd\.|Limited))",
+                page_text,
+            )
+            for code_raw, name in matches:
+                code = code_raw.zfill(5)
+                if code not in seen:
+                    seen.add(code)
+                    listings.append({"code": code, "name": name.strip(), "listDate": ""})
+
+    except Exception as e:
+        print(f"[WARN] fetch_prospectus_filings failed: {e}")
+
+    print(f"来源2（招股章程申报，近{days}天）：{len(listings)} 条记录")
+    return listings
 
 
 # ─────────────────────────────────────────────
@@ -375,23 +452,21 @@ def build_stock_entry(code, name, fin, scores, total, verdict, verdict_label):
         g = (revenues[-1] - revenues[-2]) / revenues[-2] * 100
         rev_growth = f"+{g:.1f}%" if g >= 0 else f"{g:.1f}%"
 
-    # 结论文本
     gm_str = pct(gms[-1]) if gms else "—"
     conclusion = (
-        f"自动分析 | 近期上市新股。"
+        f"自动分析 | 招股/上市中新股。"
         f"毛利率 {gm_str}，收入增速 {rev_growth}。"
         f"基本面评分 {total}/100，建议：{verdict_label}。"
-        f"（本分析由规则引擎自动生成，仅供参考）"
+        f"（本分析由规则引擎自动生成，待人工补充完整招股书分析）"
     )
 
     score_breakdown = [
-        {"label": "业务质量", "pts": scores["business"], "max": 25, "desc": "自动评分：收入增速+毛利率"},
-        {"label": "财务健康", "pts": scores["financial"], "max": 25, "desc": "自动评分：盈利能力+现金流"},
+        {"label": "业务质量",   "pts": scores["business"],  "max": 25, "desc": "自动评分：收入增速+毛利率"},
+        {"label": "财务健康",   "pts": scores["financial"], "max": 25, "desc": "自动评分：盈利能力+现金流"},
         {"label": "估值吸引力", "pts": scores["valuation"], "max": 25, "desc": "自动评分：估值区间参考"},
-        {"label": "资本结构", "pts": scores["capital"], "max": 25, "desc": "自动评分：基石+新旧股比例"},
+        {"label": "资本结构",   "pts": scores["capital"],   "max": 25, "desc": "自动评分：基石+新旧股比例"},
     ]
 
-    # 风险条目
     risks = []
     if gms and gms[-1] < 30:
         risks.append("<strong>毛利率偏低</strong>：低毛利率业务抗风险能力较弱")
@@ -404,8 +479,30 @@ def build_stock_entry(code, name, fin, scores, total, verdict, verdict_label):
 
     list_date = fin.get("listDate", "")
 
+    # ── 计算时间戳（listTs / applyEndTs / greyMarket.date）
+    list_ts = 0
+    apply_end_ts = 0
+    grey_date = ""
+    if list_date:
+        try:
+            dt = datetime.datetime.strptime(list_date, "%Y-%m-%d")
+            # listTs = 上市日 BJ 00:00 = UTC 00:00 - 28800s
+            list_ts = int(
+                datetime.datetime(dt.year, dt.month, dt.day, 0, 0, 0,
+                                  tzinfo=datetime.timezone.utc).timestamp()
+            ) - 28800
+            # greyMarket.date = 上市日前一天（可能是周末，正常）
+            grey_dt = dt - datetime.timedelta(days=1)
+            grey_date = grey_dt.strftime("%Y-%m-%d")
+            # applyEndTs 粗估：上市前约4天 BJ 10:00（仅占位，需手动核对）
+            apply_end_ts = list_ts - 4 * 86400 + 2 * 3600
+        except ValueError:
+            pass
+
     return {
         "code": code,
+        "applyEndTs": apply_end_ts,   # ⚠️ 自动粗估，请核对招股书
+        "listTs": list_ts,             # ⚠️ 若无listDate则为0，请补充
         "name": name,
         "nameEn": "",
         "sector": "待补充",
@@ -422,28 +519,93 @@ def build_stock_entry(code, name, fin, scores, total, verdict, verdict_label):
         "verdict": verdict,
         "verdictLabel": verdict_label,
         "score": total,
-        "status": "hot",
-        "statusText": "新上市",
+        "position": "待确认",
+        "sponsors": "待补充",
+        "isTransfer": False,
+        "cornerstone": {
+            "total": "待补充",
+            "tier1": [],
+            "others": [],
+        },
         "conclusion": conclusion,
-        "scoreBreakdown": score_breakdown,
-        "financials": [
-            {"label": "收入", "y2023": "—", "y2024": amt(revenues[-2]) if len(revenues) >= 2 else "—", "y2025": amt(revenues[-1]) if revenues else "—"},
-            {"label": "毛利率", "y2023": "—", "y2024": pct(gms[-2]) if len(gms) >= 2 else "—", "y2025": pct(gms[-1]) if gms else "—"},
-            {"label": "净利润", "y2023": "—", "y2024": amt(nps[-2]) if len(nps) >= 2 else "—", "y2025": amt(nps[-1]) if nps else "—"},
+        "scores": score_breakdown,
+        "financial": [
+            {"label": "收入（人民币亿元）", "y2023": "—", "y2024": amt(revenues[-2]) if len(revenues) >= 2 else "—", "y2025": amt(revenues[-1]) if revenues else "—"},
+            {"label": "毛利率",             "y2023": "—", "y2024": pct(gms[-2]) if len(gms) >= 2 else "—", "y2025": pct(gms[-1]) if gms else "—"},
+            {"label": "净利润（人民币M）",  "y2023": "—", "y2024": amt(nps[-2]) if len(nps) >= 2 else "—", "y2025": amt(nps[-1]) if nps else "—"},
+            {"label": "收入增速",           "y2023": "—", "y2024": "—", "y2025": rev_growth},
+        ],
+        "cfChecks": [
+            {"icon": "⚠️", "text": "自动生成stub，现金流数据待人工核实", "tag": "warn", "tagText": "待核实"},
         ],
         "risks": risks,
         "actions": [
             {"date": "上市后", "title": "观察价格", "desc": "关注上市后估值收敛情况"},
-            {"date": "中期", "title": "盈利兑现", "desc": "跟踪全年净利润是否实质性增长"},
+            {"date": "中期",   "title": "盈利兑现", "desc": "跟踪全年净利润是否实质性增长"},
         ],
         "subscription": None,
+        "greyMarket": {
+            "date": grey_date,
+            "price": None,
+            "changePct": None,
+            "peakPrice": None,
+            "peakChangePct": None,
+        },
         "_auto": True,
         "_updatedAt": datetime.date.today().isoformat(),
     }
 
 
 # ─────────────────────────────────────────────
-# 7. 飞书通知
+# 7. 将 stub 插入 index.html（让网页立即显示新股）
+# ─────────────────────────────────────────────
+def insert_stub_into_index_html(entry, index_html_path):
+    """
+    在 index.html 的 const stocks = [ 数组头部插入自动生成的 stub 条目。
+    使用 JSON 格式（= 有效 JS），插入前检查代码是否已存在以防重复。
+    """
+    try:
+        path = os.path.abspath(index_html_path)
+        with open(path, "r", encoding="utf-8") as f:
+            content = f.read()
+
+        code = entry["code"]
+        # 检查是否已存在（JSON格式或JS格式均检查）
+        if (f'"code": "{code}"' in content
+                or f"code: '{code}'" in content
+                or f'code: "{code}"' in content):
+            print(f"  {code} 已存在于 index.html，跳过插入")
+            return False
+
+        marker = "const stocks = ["
+        pos = content.find(marker)
+        if pos == -1:
+            print(f"[WARN] insert_stub_into_index_html: 未找到 '{marker}'")
+            return False
+
+        insert_pos = pos + len(marker)
+        today_str = entry.get("_updatedAt", datetime.date.today().isoformat())
+        entry_json = json.dumps(entry, ensure_ascii=False, indent=2)
+        stub_block = (
+            f"\n  // ⚠️ AUTO-STUB [{today_str}] 自动插入，"
+            f"请用 Claude 补充完整招股书分析后替换此条目\n"
+            f"  {entry_json},"
+        )
+
+        new_content = content[:insert_pos] + stub_block + content[insert_pos:]
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(new_content)
+
+        print(f"[OK] {code} {entry.get('name', '')} 已插入 index.html（stub，待完善）")
+        return True
+
+    except Exception as e:
+        print(f"[WARN] insert_stub_into_index_html({entry.get('code', '?')}): {e}")
+        return False
+
+
+# ─────────────────────────────────────────────
+# 8. 飞书通知
 # ─────────────────────────────────────────────
 def send_feishu(new_stocks, webhook_url):
     if not webhook_url or not new_stocks:
@@ -483,12 +645,24 @@ def main():
     existing_codes = {s["code"] for s in existing}
     print(f"现有数据：{len(existing)} 只股票，代码：{sorted(existing_codes)}")
 
-    # 抓取港交所列表
-    listings = fetch_hkex_listings()
-    print(f"港交所返回：{len(listings)} 条记录")
+    # ── 来源1：港交所已上市新股列表（发现已上市但未收录的股票）
+    listings_listed = fetch_hkex_listings()
+    print(f"来源1（港交所已上市）：{len(listings_listed)} 条记录")
+
+    # ── 来源2：近60天招股章程申报（发现招股中、尚未上市的新股）
+    listings_prospectus = fetch_prospectus_filings(days=60)
+
+    # 合并去重，优先保留有名称的条目
+    all_listings_map = {}
+    for item in listings_prospectus + listings_listed:
+        code = item["code"]
+        if code not in all_listings_map or (item.get("name") and not all_listings_map[code].get("name")):
+            all_listings_map[code] = item
+    all_listings = list(all_listings_map.values())
+    print(f"两个来源合并后：{len(all_listings)} 只候选新股")
 
     new_stocks = []
-    for listing in listings:
+    for listing in all_listings:
         code = listing["code"]
         if code in existing_codes:
             print(f"  跳过 {code}（已存在）")
@@ -522,7 +696,7 @@ def main():
         time.sleep(1)  # 礼貌性延迟
 
     if new_stocks:
-        # 合并并按上市日期倒序排列
+        # ── 更新 data.json
         all_stocks = new_stocks + existing
         all_stocks.sort(
             key=lambda s: s.get("listDate") or "0000-00-00",
@@ -532,14 +706,21 @@ def main():
             json.dump(all_stocks, f, ensure_ascii=False, indent=2)
         print(f"[OK] data.json 已更新，共 {len(all_stocks)} 只股票")
 
-        # 将新股信息写入临时文件，供 workflow 在部署完成后发通知
-        # 避免在 Pages 部署前就推送飞书通知（用户点击链接时页面尚未更新）
+        # ── 同步插入 stub 到 index.html（让网页立即显示新股）
+        index_html_path = os.path.abspath(INDEX_HTML_PATH)
+        if os.path.exists(index_html_path):
+            for entry in new_stocks:
+                insert_stub_into_index_html(entry, index_html_path)
+        else:
+            print(f"[WARN] index.html 不存在于 {index_html_path}，跳过网页更新")
+
+        # ── 写入临时通知文件，供 workflow 在 Pages 部署后发送飞书通知
         notify_path = os.path.join(os.path.dirname(__file__), "..", ".notify_pending.json")
         with open(os.path.abspath(notify_path), "w", encoding="utf-8") as f:
             json.dump(new_stocks, f, ensure_ascii=False, indent=2)
         print(f"[OK] 通知队列已写入 .notify_pending.json，等待 Pages 部署后发送")
     else:
-        print("[OK] 无新增股票，data.json 未变动")
+        print("[OK] 无新增股票，data.json / index.html 未变动")
 
 
 if __name__ == "__main__":
