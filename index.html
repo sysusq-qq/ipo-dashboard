@@ -2160,7 +2160,7 @@ function selectStock(idx) {
 
       const nodes = [
         { key: 'apply',  label: '申购截止', icon: '✂️', info: tsInfo(s.applyEndTs),   extraTime: null },
-        { key: 'result', label: '中签结果', icon: '📋', info: tsInfo(resultTs_val),  extraTime: '上午公布' },
+        { key: 'result', label: '中签结果', icon: '📋', info: tsInfo(resultTs_val),  extraTime: '下午公布' },
         { key: 'dark',   label: '暗盘',     icon: '🌙', info: tsInfo(darkTs_val),    extraTime: '16:15–18:30' },
         { key: 'list',   label: '上市',     icon: '🔔', info: tsInfo(listTs_val),    extraTime: '09:30' },
       ].filter(n => n.info);
