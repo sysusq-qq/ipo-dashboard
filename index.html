@@ -2146,9 +2146,16 @@ function selectStock(idx) {
           t -= 86400;
         }
       }
-      // 上市日 listTs 是当天 00:00 BJ；暗盘 = 上市前一日（可为非交易日）；中签 = 暗盘前最近交易日
+      // 上市日 listTs 是当天 00:00 BJ；暗盘优先读 greyMarket.date（周一上市时暗盘是周五而非周日）；中签 = 暗盘前最近交易日
       const listTs_val   = s.listTs;
-      const darkTs_val   = listTs_val ? listTs_val - 86400 : null;
+      const darkTs_val   = (() => {
+        if (!listTs_val) return null;
+        if (s.greyMarket && s.greyMarket.date) {
+          const [gy, gm, gd] = s.greyMarket.date.split('-').map(Number);
+          return Date.UTC(gy, gm - 1, gd) / 1000 - 28800;  // greyMarket.date BJ 00:00
+        }
+        return listTs_val - 86400;
+      })();
       const resultTs_val = darkTs_val ? prevTradingDay(darkTs_val) : null;
 
       const nodes = [
