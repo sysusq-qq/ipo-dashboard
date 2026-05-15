@@ -5,15 +5,14 @@
 若当天有股票截止申购，发飞书通知
 """
 
-import json
 import os
 import re
 import time
 import datetime
 import requests
 
-FEISHU_WEBHOOK = os.environ.get("FEISHU_WEBHOOK", "")
-DATA_JSON_PATH = os.path.join(os.path.dirname(__file__), "..", "data.json")
+FEISHU_WEBHOOK  = os.environ.get("FEISHU_WEBHOOK", "")
+INDEX_HTML_PATH = os.path.join(os.path.dirname(__file__), "..", "index.html")
 
 BJ_OFFSET = datetime.timezone(datetime.timedelta(hours=8))
 
@@ -69,7 +68,7 @@ def send_feishu_reminder(stocks_due, webhook_url):
         emoji = "✅" if s["verdict"] == "da" else ("👀" if s["verdict"] == "watch" else "❌")
         lines.append(f"{emoji} {s['code']} {s['name']}")
         lines.append(f"   发行价：{price_str}  每手入场费：{entry_str}")
-        lines.append(f"   评分：{s['score']}/100 | 建议：{s['verdictLabel']}")
+        lines.append(f"   评分：{s['score']}/115 | 建议：{s['verdictLabel']}")
         lines.append(f"   ⚠️ 富途今日 10:00 截止，还有约20分钟！")
         lines.append("")
     lines.append("🔗 https://sysusq-qq.github.io/ipo-dashboard/")
@@ -91,15 +90,60 @@ def send_feishu_reminder(stocks_due, webhook_url):
                 time.sleep(20)
 
 
+def parse_stocks_from_html(html_path):
+    """从 index.html stocks 数组解析股票列表，返回 dict 列表。"""
+    with open(html_path, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    stocks = []
+    for block in re.split(r"(?=\n\s*\{\s*\n\s*code:)", content):
+        m = re.search(r"code:\s*'(\d{5})'", block)
+        if not m:
+            continue
+        s = {"code": m.group(1)}
+
+        m2 = re.search(r"name:\s*'([^']+)'", block)
+        s["name"] = m2.group(1) if m2 else s["code"]
+
+        m2 = re.search(r"applyEndTs:\s*(\d+)", block)
+        s["applyEndTs"] = int(m2.group(1)) if m2 else None
+
+        m2 = re.search(r"listTs:\s*(\d+)", block)
+        s["listTs"] = int(m2.group(1)) if m2 else None
+
+        m2 = re.search(r"isTransfer:\s*(true|false)", block)
+        s["isTransfer"] = (m2.group(1) == "true") if m2 else False
+
+        m2 = re.search(r"subDate:\s*'([^']+)'", block)
+        s["subDate"] = m2.group(1) if m2 else ""
+
+        m2 = re.search(r"^\s+price:\s*([\d.]+),", block, re.MULTILINE)
+        s["price"] = float(m2.group(1)) if m2 else None
+
+        m2 = re.search(r"entryFee:\s*([\d.]+)", block)
+        s["entryFee"] = float(m2.group(1)) if m2 else None
+
+        m2 = re.search(r"verdict:\s*'([^']+)'", block)
+        s["verdict"] = m2.group(1) if m2 else "wait"
+
+        m2 = re.search(r"verdictLabel:\s*'([^']+)'", block)
+        s["verdictLabel"] = m2.group(1) if m2 else "—"
+
+        m2 = re.search(r"score:\s*(\d+)", block)
+        s["score"] = int(m2.group(1)) if m2 else 0
+
+        stocks.append(s)
+    return stocks
+
+
 def main():
     today = get_bj_today()
     now_ts = datetime.datetime.now(tz=BJ_OFFSET).timestamp()
     print(f"[{datetime.datetime.now(tz=BJ_OFFSET).strftime('%Y-%m-%d %H:%M:%S')} BJ] "
           f"检查今日申购截止股票（{today}）...")
 
-    data_path = os.path.abspath(DATA_JSON_PATH)
-    with open(data_path, "r", encoding="utf-8") as f:
-        stocks = json.load(f)
+    html_path = os.path.abspath(INDEX_HTML_PATH)
+    stocks = parse_stocks_from_html(html_path)
 
     stocks_due = []
     for s in stocks:
