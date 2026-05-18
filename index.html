@@ -612,238 +612,237 @@ const stocks = [
     greyMarket: { date: '2026-05-21', price: null, changePct: null, peakPrice: null, peakChangePct: null }
   },
 
-  // ⚠️ AUTO-STUB [2026-05-18] 自动插入，请用 Claude 补充完整招股书分析后替换此条目
+
+  /* ── NEW. 00901 华曦达科技（STB/CPE智能终端 · 5/27上市）──────── */
   {
-  "code": "03310",
-  "applyEndTs": 0,
-  "listTs": 0,
-  "name": "雲英谷科技股份有限公司",
-  "nameEn": "",
-  "sector": "待补充",
-  "listDate": "",
-  "subDate": "—",
-  "price": null,
-  "lotSize": 100,
-  "entryFee": null,
-  "totalIssue": "—",
-  "publicIssue": "—",
-  "greenshoe": "—",
-  "mktCapH": "—",
-  "pe": "—",
-  "verdict": "noda",
-  "verdictLabel": "不打",
-  "score": 47,
-  "position": "待确认",
-  "sponsors": "待补充",
-  "isTransfer": false,
-  "cornerstone": {
-    "total": "待补充",
-    "tier1": [],
-    "others": []
+    code: '00901',
+    applyEndTs: 1779328800,   // 北京时间 2026-05-21 10:00
+    listTs:     1779811200,   // 北京时间 2026-05-27 00:00（招股书）
+    name: '华曦达科技',
+    nameEn: 'Shenzhen SDMC Technology Co., Ltd.',
+    sector: '智能家居 / 消费电子 / 机顶盒(STB/CPE) / 运营商定制终端',
+    listDate: '2026-05-27',
+    subDate: '2026-05-18 ~ 2026-05-21',
+    price: 32.80,
+    lotSize: 100,
+    entryFee: 3313.08,
+    totalIssue: '约1920.8万股H股（全球发售），另绿鞋追加288.1万股（15%）',
+    publicIssue: '192.08万股（10%香港公开发售）',
+    greenshoe: '有（超额配股权最多约288.1万股，约15%）',
+    mktCapH: '约HK$68.7亿（总股本2.095亿股×HK$32.80）',
+    pe: '约25x（2025A净利RMB2.39亿）；PS约1.78x',
+    verdict: 'wait',
+    verdictLabel: '观望',
+    score: 52,
+    position: '暗盘观察',
+    sponsors: '中国证券(国际)有限公司',
+    isTransfer: false,
+    cornerstone: {
+      total: '无基石投资者',
+      tier1: [],
+      others: []
+    },
+    conclusion: '运营商定制STB/CPE智能终端硬件制造商，90.3%收入来自海外，62.5%依赖电信运营商。2025年收入大幅增长+32.5%至RMB33.7亿，净利从1.37亿回升至2.39亿（+74%）；但经营现金流转负（-1.34亿），工作资本压力明显。PE 25x对硬件制造商偏贵，无AI故事，公开发售仅192万股，无基石。整体观望，暗盘若超10%可考虑二手买入。',
+    scores: [
+      { label: '业务质量',          pts: 12, max: 25, desc: '运营商定制STB/CPE/智能家居终端，产品线涵盖11大类。海外收入90.3%，生产基地分散至菲律宾/马来西亚/越南/印度/巴西/波兰/墨西哥（规避关税）。前5客户集中度47.7%，62.5%来自运营商资本开支敏感型客户。' },
+      { label: '财务健康',          pts: 15, max: 25, desc: '盈利中，2025净利回升+74%（1.37亿→2.39亿），收入+32.5%（25.4亿→33.7亿）；毛利率19.5%稳定；但2025经营现金流转负（-1.34亿 vs 2024+1.26亿），工作资本压力是黄旗。' },
+      { label: '估值吸引力',        pts: 13, max: 25, desc: 'PE 25x（2025净利），硬件制造商行业均值10-20x，略贵；PS 1.78x合理。市值HK$68.7亿，规模适中，无显著折价或溢价。' },
+      { label: '资本结构',          pts: 8,  max: 25, desc: '无基石投资者，公开发售比例极小（仅192万股，中签难），绿鞋15%。中国证券(国际)保荐，规格一般。' },
+      { label: '市场叙事/赛道溢价', pts: 4,  max: 15, desc: 'STB/机顶盒赛道冷门，无AI/机器人/低空经济故事，市场叙事弱。US关税风险（DDP出口模式，20-45%）虽通过OEM转移但仍有压力。' },
+    ],
+    financial: [
+      { label: '收入（人民币亿元）',  y2023: '23.67', y2024: '25.41', y2025: '33.68' },
+      { label: '毛利率',              y2023: '21.1%', y2024: '19.0%', y2025: '19.5%' },
+      { label: '净利润（人民币M）',   y2023: '191.2', y2024: '137.2', y2025: '239.2' },
+      { label: '收入增速',            y2023: '—',     y2024: '+7.4%', y2025: '+32.5%' },
+    ],
+    cfChecks: [
+      { icon: '✅', text: '2025净利回升74%，收入增速+32.5%，复苏趋势明确', tag: 'ok', tagText: '复苏' },
+      { icon: '✅', text: '海外多地制造布局（菲律宾/马来西亚等），有效规避关税', tag: 'ok', tagText: '分散' },
+      { icon: '⚠️', text: '2025经营现金流转负（-1.34亿），净利增长未转化为现金，工作资本需关注', tag: 'warn', tagText: '现金流' },
+      { icon: '⚠️', text: '62.5%收入来自电信运营商，资本开支波动直接影响业绩', tag: 'warn', tagText: '集中' },
+    ],
+    risks: [
+      '<strong>运营商集中风险</strong>：62.5%收入来自电信运营商资本开支，若运营商削减采购影响大',
+      '<strong>美国关税风险</strong>：DDP出口面临20-45%关税，OEM网络转移有成本',
+      '<strong>台湾芯片依赖</strong>：核心芯片多为台湾来源，美国出口管制升级有断供风险',
+      '<strong>现金流质量</strong>：2025年净利虽增长，OCF却转负，需跟踪2026年改善',
+    ],
+    actions: [
+      { date: '5月21日 截止', title: '申购截止', desc: '截止 2026-05-21 10:00 BJ（富途）；1手100股入场费HK$3,313.08；整体观望，不建议申购' },
+      { date: '5月26日 中签', title: '中签结果', desc: '5月26日晚11pm前公布；无基石股票关注超额认购倍数，若<50x说明机构冷淡' },
+      { date: '5月26日 暗盘', title: '暗盘交易', desc: '16:15-18:30暗盘；若暗盘溢价>10%可二手买入小仓，<5%则继续观望' },
+      { date: '5月27日 上市', title: '上市日', desc: '09:30开盘；硬件制造商首日波动通常有限，跟踪开盘价与发行价关系' },
+    ],
+    subscription: {
+      scenarios: [
+        { label: '保守', mult: 20,  premPct:  0 },
+        { label: '基准', mult: 50,  premPct:  5 },
+        { label: '乐观', mult: 100, premPct: 15 },
+      ],
+      recClass: 'wait', recTitle: '⚠️ 观望，不建议申购',
+      lots: 0, method: '不申购',
+      marginOk: false, marginTip: '无AI故事的硬件公司，不建议孖展',
+      rationale: '盈利中但PE偏贵，无基石，无AI叙事，公开发售超小。收入复苏真实但OCF转负是黄旗。整体性价比不高，资金可用于更优选标的。',
+      urgentTip: '⏰ 截止5/21(周四) 10:00 BJ；招股价HK$32.80；1手100股入场费HK$3,313.08'
+    },
+    greyMarket: { date: '2026-05-26', price: null, changePct: null, peakPrice: null, peakChangePct: null }
   },
-  "conclusion": "自动分析 | 招股/上市中新股。毛利率 —，收入增速 —。基本面评分 47/100，建议：不打。（本分析由规则引擎自动生成，待人工补充完整招股书分析）",
-  "scores": [
-    {
-      "label": "业务质量",
-      "pts": 12,
-      "max": 25,
-      "desc": "自动评分：收入增速+毛利率"
-    },
-    {
-      "label": "财务健康",
-      "pts": 10,
-      "max": 25,
-      "desc": "自动评分：盈利能力+现金流"
-    },
-    {
-      "label": "估值吸引力",
-      "pts": 12,
-      "max": 25,
-      "desc": "自动评分：估值区间参考"
-    },
-    {
-      "label": "资本结构",
-      "pts": 13,
-      "max": 25,
-      "desc": "自动评分：基石+新旧股比例"
-    }
-  ],
-  "financial": [
-    {
-      "label": "收入（人民币亿元）",
-      "y2023": "—",
-      "y2024": "—",
-      "y2025": "—"
-    },
-    {
-      "label": "毛利率",
-      "y2023": "—",
-      "y2024": "—",
-      "y2025": "—"
-    },
-    {
-      "label": "净利润（人民币M）",
-      "y2023": "—",
-      "y2024": "—",
-      "y2025": "—"
-    },
-    {
-      "label": "收入增速",
-      "y2023": "—",
-      "y2024": "—",
-      "y2025": "—"
-    }
-  ],
-  "cfChecks": [
-    {
-      "icon": "⚠️",
-      "text": "自动生成stub，现金流数据待人工核实",
-      "tag": "warn",
-      "tagText": "待核实"
-    }
-  ],
-  "risks": [
-    "<strong>信息待补充</strong>：建议手动补充招股书详细分析"
-  ],
-  "actions": [
-    {
-      "date": "上市后",
-      "title": "观察价格",
-      "desc": "关注上市后估值收敛情况"
-    },
-    {
-      "date": "中期",
-      "title": "盈利兑现",
-      "desc": "跟踪全年净利润是否实质性增长"
-    }
-  ],
-  "subscription": null,
-  "greyMarket": {
-    "date": "",
-    "price": null,
-    "changePct": null,
-    "peakPrice": null,
-    "peakChangePct": null
-  },
-  "_auto": true,
-  "_updatedAt": "2026-05-18"
-},
-  // ⚠️ AUTO-STUB [2026-05-18] 自动插入，请用 Claude 补充完整招股书分析后替换此条目
+  /* ── NEW. 03310 雲英谷科技（AMOLED DDIC芯片 · 5/27上市）──────── */
   {
-  "code": "02723",
-  "applyEndTs": 0,
-  "listTs": 0,
-  "name": "北京深演智能科技股份有限公司",
-  "nameEn": "",
-  "sector": "待补充",
-  "listDate": "",
-  "subDate": "—",
-  "price": null,
-  "lotSize": 100,
-  "entryFee": null,
-  "totalIssue": "—",
-  "publicIssue": "—",
-  "greenshoe": "—",
-  "mktCapH": "—",
-  "pe": "—",
-  "verdict": "noda",
-  "verdictLabel": "不打",
-  "score": 47,
-  "position": "待确认",
-  "sponsors": "待补充",
-  "isTransfer": false,
-  "cornerstone": {
-    "total": "待补充",
-    "tier1": [],
-    "others": []
+    code: '03310',
+    applyEndTs: 1779328800,   // 北京时间 2026-05-21 10:00
+    listTs:     1779811200,   // 北京时间 2026-05-27 00:00（招股书）
+    name: '雲英谷科技',
+    nameEn: 'Viewtrix Technology Co., Ltd.',
+    sector: '半导体 / AMOLED显示驱动芯片(DDIC) / 国产芯片替代 / Fabless',
+    listDate: '2026-05-27',
+    subDate: '2026-05-18 ~ 2026-05-21',
+    price: 20.81,
+    lotSize: 200,
+    entryFee: 4203.98,
+    totalIssue: '5286万股H股（全球发售），另绿鞋可追加约793万股（15%）',
+    publicIssue: '528.6万股（10%香港公开发售）',
+    greenshoe: '有（超额配股权最多约792.9万股，约15%）',
+    mktCapH: '约HK$89.0亿（总股本4.278亿股×HK$20.81）',
+    pe: '亏损中 / PS约7.3x（2025收入RMB11.1亿≈HKD12.3亿）',
+    verdict: 'wait',
+    verdictLabel: '轻仓',
+    score: 67,
+    position: '1手现金仓',
+    sponsors: '待确认（联合保荐人）',
+    isTransfer: false,
+    cornerstone: {
+      total: 'HK$3.89亿（18,692,800股，占发售股份35.4%），6个月锁定',
+      tier1: [
+        { name: 'Digital Vista（武岳峰半导体PE，广东省半导体基金支持）', amt: '合计HK$3.89亿', lockup: '6个月' },
+        { name: 'SpreadCom（武平，武岳峰创始合伙人）', amt: '（含于上述合计）', lockup: '6个月' },
+      ],
+      others: []
+    },
+    conclusion: 'AMOLED显示驱动芯片(DDIC)国产替代先行者，对标台湾联詠科技。收入CAGR 24%，毛利率从0.4%→12.9%是规模化拐点。VP彭昱勳来自联詠科技(DDIC全球Top2)技术可信。武岳峰半导体PE基石35.4%信号强。亏损中但改善趋势明确；PS 7.3x，轻仓1手博半导体国产替代溢价。',
+    scores: [
+      { label: '业务质量',          pts: 17, max: 25, desc: 'Fabless AMOLED DDIC芯片设计，收入CAGR 24%（7.2→8.9→11.1亿），VP彭昱勳来自台湾联詠科技(全球前2 DDIC)。国内AMOLED渗透率提升受益，研发团队具备深度芯片设计能力。曾尝试科创板STAR板上市（2023年撤回），转港股。' },
+      { label: '财务健康',          pts: 10, max: 25, desc: '三年持续亏损（净亏约2.54/3.25/2.44亿），但毛利率0.4%→2.5%→12.9%是关键拐点。R&D占收入约24%，芯片公司标配。现金消耗受控，IPO募资9.97亿可支撑研发。' },
+      { label: '估值吸引力',        pts: 13, max: 25, desc: 'PS 7.3x（2025收入RMB11.1亿），亏损芯片公司用PS估值合理。市值HK$89亿，对国产AMOLED DDIC先行者有合理溢价。' },
+      { label: '资本结构',          pts: 16, max: 25, desc: '基石35.4%（武岳峰半导体PE，广东省半导体产业基金背书），绿鞋15%。启明创投（Qiming，非执行董事周志峰）战略股东。' },
+      { label: '市场叙事/赛道溢价', pts: 11, max: 15, desc: '国产芯片替代+AMOLED渗透是持续强叙事，半导体国产化政策持续加码。港股稀缺标的有溢价，但非AI/机器人顶流赛道。' },
+    ],
+    financial: [
+      { label: '收入（人民币亿元）', y2023: '7.20', y2024: '8.91', y2025: '11.06' },
+      { label: '毛利率',             y2023: '0.4%', y2024: '2.5%',  y2025: '12.9%' },
+      { label: '净亏损（人民币M）', y2023: '-254',  y2024: '-325',  y2025: '-244' },
+      { label: '收入增速',           y2023: '—',    y2024: '+23.8%', y2025: '+24.0%' },
+    ],
+    cfChecks: [
+      { icon: '✅', text: '收入CAGR 24%（2023-2025），规模化路径清晰', tag: 'ok', tagText: '增长' },
+      { icon: '✅', text: '毛利率0.4%→12.9%，规模化拐点确认，盈亏平衡可期', tag: 'ok', tagText: '拐点' },
+      { icon: '⚠️', text: '连续三年亏损，净亏/收入比仍高，盈利时间表不确定', tag: 'warn', tagText: '亏损' },
+      { icon: '⚠️', text: '研发投入高（24%收入），若AMOLED渗透低于预期，现金消耗风险', tag: 'warn', tagText: '研发' },
+    ],
+    risks: [
+      '<strong>AMOLED竞争加剧</strong>：三星/美格纳仍是主导，国内竞争者奕斯伟/集创北方加速',
+      '<strong>客户集中度</strong>：头部品牌厂商集中，大客户丢失影响大',
+      '<strong>芯片价格压力</strong>：国产化后竞争可能导致价格战，压缩毛利改善空间',
+      '<strong>曾撤回科创板申请</strong>：2023年科创板申请未果，原因需关注',
+    ],
+    actions: [
+      { date: '5月21日 截止', title: '申购截止', desc: '截止 2026-05-21 10:00 BJ（富途）；1手200股入场费HK$4,203.98；轻仓1手现金仓' },
+      { date: '5月26日 中签', title: '中签结果', desc: '5月26日晚11pm前公布；关注超额认购倍数，基石35.4%锁定，剩余浮动盘有限' },
+      { date: '5月26日 暗盘', title: '暗盘交易', desc: '16:15-18:30暗盘；芯片股暗盘波动较大，参考认购热度' },
+      { date: '5月27日 上市', title: '上市日', desc: '09:30开盘；关注机构是否积极接盘，国产半导体标的首日表现参考' },
+    ],
+    subscription: {
+      scenarios: [
+        { label: '保守', mult: 50,  premPct:  0 },
+        { label: '基准', mult: 150, premPct: 15 },
+        { label: '乐观', mult: 300, premPct: 30 },
+      ],
+      recClass: 'wait', recTitle: '⚠️ 轻仓，1手现金仓',
+      lots: 1, method: '现金仓',
+      marginOk: false, marginTip: '亏损芯片公司高波动，不建议孖展',
+      rationale: 'AMOLED DDIC国产替代核心标的，毛利率从0.4%到12.9%确认拐点。武岳峰半导体PE基石35.4%信号强，VP来自联詠科技背书技术。亏损中但路径清晰，1手现金仓博半导体估值溢价。',
+      urgentTip: '⏰ 截止5/21(周四) 10:00 BJ（富途）；HK$20.81；1手200股入场费HK$4,203.98'
+    },
+    greyMarket: { date: '2026-05-26', price: null, changePct: null, peakPrice: null, peakChangePct: null }
   },
-  "conclusion": "自动分析 | 招股/上市中新股。毛利率 —，收入增速 —。基本面评分 47/100，建议：不打。（本分析由规则引擎自动生成，待人工补充完整招股书分析）",
-  "scores": [
-    {
-      "label": "业务质量",
-      "pts": 12,
-      "max": 25,
-      "desc": "自动评分：收入增速+毛利率"
+  /* ── NEW. 02723 北京深演智能科技（企业AI广告 · 5/27上市）──────── */
+  {
+    code: '02723',
+    applyEndTs: 1779328800,   // 北京时间 2026-05-21 10:00
+    listTs:     1779811200,   // 北京时间 2026-05-27 00:00（招股书）
+    name: '深演智能',
+    nameEn: 'Beijing DeepZero Technology Co., Ltd.',
+    sector: '企业AI / 程序化广告(DSP) / 智能营销 / AI Agent',
+    listDate: '2026-05-27',
+    subDate: '2026-05-18 ~ 2026-05-21',
+    price: 55.50,
+    lotSize: 100,
+    entryFee: 5605.97,
+    totalIssue: '906.8万股H股（全球发售），总股本9067.9万股',
+    publicIssue: '90.68万股（10%香港公开发售）',
+    greenshoe: '无',
+    mktCapH: '约HK$50.3亿（按最高价HK$55.5×9068万总股本）',
+    pe: '约493x（最高价/2025净利RMB918万）；PS约7.9x（最高价口径）',
+    verdict: 'wait',
+    verdictLabel: '观望',
+    score: 42,
+    position: '暗盘观察',
+    sponsors: '待确认（独家保荐人）',
+    isTransfer: false,
+    cornerstone: {
+      total: '无基石投资者',
+      tier1: [],
+      others: []
     },
-    {
-      "label": "财务健康",
-      "pts": 10,
-      "max": 25,
-      "desc": "自动评分：盈利能力+现金流"
+    conclusion: '表面AI Agent企业，实质是传统程序化广告DSP（前身"品友互动"）。Deep Agent 3.0于2026年1月发布但AI产品尚无实质收入。净利从6070万崩溃至918万（含1570万一次性上市费用）。价格区间HK$43.5-55.5（5/22确定），最高价PE高达493x极贵。港股仅90.68万股极小浮动盘，波动风险高。无基石、无绿鞋，整体不建议申购。',
+    scores: [
+      { label: '业务质量',          pts: 11, max: 25, desc: '企业AI广告科技，本质是DSP(程序化广告)平台(AlphaDesk)+CRM/CDP(AlphaData)。Deep Agent 3.0是AI噱头，但截至招股书日AI产品无实质收入（仅37份合同RMB2340万未入账）。前5客户59.6%，2024年收入下滑12%（宏观&客户削减营销预算）。' },
+      { label: '财务健康',          pts: 7,  max: 25, desc: '净利崩溃：RMB6070万(2023)→2150万(2024)→918万(2025，含1570万上市费用)。毛利率压缩：31.2%→27.3%→25.5%。收入2024下滑12%，2025仅恢复+7.2%。现金余额RMB1.55亿。三年经营现金流合计>HK$1亿（满足上市规则8.05(2)）。' },
+      { label: '估值吸引力',        pts: 7,  max: 25, desc: '最高价HK$55.5时PE=493x（荒谬）；PS=7.9x（勉强可接受的AI公司倍数但收入无实质增长）。低价HK$43.5时市值HK$39.5亿，PE=384x仍极贵。价格未定，最终价可能低于发行区间。' },
+      { label: '资本结构',          pts: 7,  max: 25, desc: '无基石投资者，无绿鞋。港股公开发售仅90.68万股（超小浮动盘，双面刃：波动大但也可能被拉升）。独家保荐人，规格待确认。' },
+      { label: '市场叙事/赛道溢价', pts: 10, max: 15, desc: 'Deep Agent 3.0+企业AI营销是2026年热门叙事，市场可能给予AI溢价。但实质收入不支撑，叙事与基本面背离风险高。' },
+    ],
+    financial: [
+      { label: '收入（人民币亿元）', y2023: '6.11', y2024: '5.38', y2025: '5.77' },
+      { label: '毛利率',             y2023: '31.2%', y2024: '27.3%', y2025: '25.5%' },
+      { label: '净利润（人民币M）',  y2023: '60.7',  y2024: '21.5',  y2025: '9.2（含15.7M上市费用）' },
+      { label: '收入增速',           y2023: '—',     y2024: '-12.0%', y2025: '+7.2%' },
+    ],
+    cfChecks: [
+      { icon: '⚠️', text: '净利三年连降（6070万→2150万→918万），盈利能力严重恶化', tag: 'warn', tagText: '恶化' },
+      { icon: '⚠️', text: 'Deep Agent AI产品尚无实质收入，AI故事缺乏收入支撑', tag: 'warn', tagText: '故事' },
+      { icon: '⚠️', text: '最高价PE 493x，即使AI题材也难支撑如此高估值', tag: 'warn', tagText: '估值贵' },
+      { icon: '✅', text: '极小浮动盘（90.68万股）可能带来短期波动上涨机会，双刃剑', tag: 'ok', tagText: '小浮动' },
+    ],
+    risks: [
+      '<strong>净利崩溃风险</strong>：净利从6070万降至918万，2026若AI产品收入未实质放量，亏损可能',
+      '<strong>AI故事与收入背离</strong>：Deep Agent产品尚无实质收入，市场可能快速回归基本面',
+      '<strong>估值泡沫风险</strong>：最高价PE 493x，任何业绩不及预期均可能导致大幅回调',
+      '<strong>极小浮动盘</strong>：90.68万股公开发售，高度不流动，散户进出风险大',
+    ],
+    actions: [
+      { date: '5月21日 截止', title: '申购截止', desc: '截止 2026-05-21 10:00 BJ（富途）；按最高价HK$55.5，1手100股入场费HK$5,605.97；不建议申购' },
+      { date: '5月22日 定价', title: '最终定价', desc: '5/22中午公布最终发行价（区间HK$43.5-55.5），定价影响估值判断' },
+      { date: '5月26日 中签', title: '中签结果', desc: '5月26日晚11pm前公布；极小公开发售股份，若超额认购高则中签率极低' },
+      { date: '5月26日 暗盘', title: '暗盘交易', desc: '16:15-18:30暗盘；极小浮动盘可能引发异常波动，谨慎对待暗盘价格信号' },
+      { date: '5月27日 上市', title: '上市日', desc: '09:30开盘；注意开盘后浮动盘（81.6M解禁股逐步流通）的压力' },
+    ],
+    subscription: {
+      scenarios: [
+        { label: '保守', mult: 20,  premPct:  0 },
+        { label: '基准', mult: 50,  premPct:  0 },
+        { label: '乐观', mult: 100, premPct: 10 },
+      ],
+      recClass: 'wait', recTitle: '⚠️ 观望，不建议申购',
+      lots: 0, method: '不申购',
+      marginOk: false, marginTip: 'PE 493x的AI概念股，不建议任何杠杆',
+      rationale: '表面AI公司，实质程序化广告DSP，净利三年连降。PE 493x估值荒谬。无基石无绿鞋。极小浮动盘可能有短期波动，但风险远大于收益，整体不建议参与申购。',
+      urgentTip: '⏰ 截止5/21(周四) 10:00 BJ；最高价HK$55.5；1手100股入场费HK$5,605.97（最终价5/22公布）'
     },
-    {
-      "label": "估值吸引力",
-      "pts": 12,
-      "max": 25,
-      "desc": "自动评分：估值区间参考"
-    },
-    {
-      "label": "资本结构",
-      "pts": 13,
-      "max": 25,
-      "desc": "自动评分：基石+新旧股比例"
-    }
-  ],
-  "financial": [
-    {
-      "label": "收入（人民币亿元）",
-      "y2023": "—",
-      "y2024": "—",
-      "y2025": "—"
-    },
-    {
-      "label": "毛利率",
-      "y2023": "—",
-      "y2024": "—",
-      "y2025": "—"
-    },
-    {
-      "label": "净利润（人民币M）",
-      "y2023": "—",
-      "y2024": "—",
-      "y2025": "—"
-    },
-    {
-      "label": "收入增速",
-      "y2023": "—",
-      "y2024": "—",
-      "y2025": "—"
-    }
-  ],
-  "cfChecks": [
-    {
-      "icon": "⚠️",
-      "text": "自动生成stub，现金流数据待人工核实",
-      "tag": "warn",
-      "tagText": "待核实"
-    }
-  ],
-  "risks": [
-    "<strong>信息待补充</strong>：建议手动补充招股书详细分析"
-  ],
-  "actions": [
-    {
-      "date": "上市后",
-      "title": "观察价格",
-      "desc": "关注上市后估值收敛情况"
-    },
-    {
-      "date": "中期",
-      "title": "盈利兑现",
-      "desc": "跟踪全年净利润是否实质性增长"
-    }
-  ],
-  "subscription": null,
-  "greyMarket": {
-    "date": "",
-    "price": null,
-    "changePct": null,
-    "peakPrice": null,
-    "peakChangePct": null
+    greyMarket: { date: '2026-05-26', price: null, changePct: null, peakPrice: null, peakChangePct: null }
   },
-  "_auto": true,
-  "_updatedAt": "2026-05-18"
-},
+
   {
     code: '07688',
     applyEndTs: 1778810400,   // 北京时间 2026-05-15 10:00
