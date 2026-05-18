@@ -528,6 +528,90 @@
    DATA  —  按上市日期倒序排列（越晚越前）
 ════════════════════════════════════════════════════════ */
 const stocks = [
+
+  /* ── NEW. 06872 丹诺医药-B（18A 抗H.pylori NME · 5/22上市）──────── */
+  {
+    code: '06872',
+    applyEndTs: 1779156000,   // 北京时间 2026-05-19 10:00
+    listTs:     1779379200,   // 北京时间 2026-05-22 00:00（招股书）
+    name: '丹诺医药-B',
+    nameEn: 'TenNor Therapeutics (Suzhou) Limited',
+    sector: '18A 生物科技 / 抗菌药物 / 幽门螺旋杆菌（H.pylori）/ 抗菌素耐药（AMR）',
+    listDate: '2026-05-22',
+    subDate: '2026-05-14 ~ 2026-05-19',
+    price: 75.70,
+    lotSize: 50,
+    entryFee: 3823.17,
+    totalIssue: '828万股H股（全球发售）',
+    publicIssue: '82.81万股（10%香港公开发售）',
+    greenshoe: '有（超额配股权最多1,242,050股，约15%）',
+    mktCapH: '约HK$39.2亿（总股本5,175万股×HK$75.70）',
+    pe: '亏损中 / 18A生物科技 无营收，用管线价值定价',
+    verdict: 'wait',
+    verdictLabel: '观望',
+    score: 62,
+    position: '1手现金仓（彩票性质）',
+    sponsors: '待确认',
+    isTransfer: false,
+    cornerstone: {
+      total: 'USD 2980万（≈HK$2.34亿），占发售股份37.2%',
+      tier1: [
+        { name: 'AMR Action Fund L.P.', amt: 'USD 1470万', lockup: '6个月' },
+        { name: 'AMR Action Fund SCSp', amt: 'USD 510万', lockup: '6个月' },
+        { name: 'Hua Yuan International', amt: 'USD 600万', lockup: '6个月' },
+        { name: 'Orient Asset Management (HK)', amt: 'USD 300万', lockup: '6个月' },
+        { name: 'June Star', amt: 'USD 100万', lockup: '6个月' },
+      ],
+      others: []
+    },
+    conclusion: '全球首个针对幽门螺旋杆菌（H.pylori）的NME新药rifasutenizol，III期完成，NMPA审批预计2026年底。市场规模：中国患者6.2亿、全球40亿。基石由AMR专项基金领投（占37.2%发售量，含现有股东）；无盈利，年均亏损1.5亿；商业化交由Grand Life Science（获65-75%促销费）稀释公司利润。评分62/115，1手彩票参与等待审批催化剂。',
+    scores: [
+      { label: '业务质量',          pts: 19, max: 25, desc: '人类发现H.pylori以来首个NME药，科学护城河极强；III期完成，NMPA审批2026年底；全球权益包括中国+美国Phase II；抗菌素耐药（AMR）是全球公卫紧迫问题。但商业化经济被Grand Life Science大幅稀释（65-75%促销费）。' },
+      { label: '财务健康',          pts:  9, max: 25, desc: '纯亏损18A：2023/2024/2025净亏1.92亿/1.46亿/1.53亿；无营收（pre-commercial）；IPO净募HK$5.58亿+现金1.84亿（RMB）→约4-5年跑道；WuXi AppTec为Pre-IPO投资者（验证药物价值）。' },
+      { label: '估值吸引力',        pts: 14, max: 25, desc: '市值HK$39.2亿，对接近NMPA批准的全球唯一H.pylori NME不算贵；无PE/PS（无营收）；商业化里程碑最高RMB 7.1亿（Grand Life Science达标后支付）；2026年底审批若成功市值有重估空间。' },
+      { label: '资本结构',          pts: 14, max: 25, desc: '绿鞋15%；基石37.2%（AMR Action Fund主力，抗AMR专项基金，受全球23家药企+8家慈善基金会支持）；AMR Fund为现有股东+基石=信心高但非增量外部资金；无Blackrock/Goldman/Morgan顶级金融机构。' },
+      { label: '市场叙事/赛道溢价', pts:  6, max: 15, desc: '抗菌素耐药（AMR）全球政策议题，但非AI/机器人/低空赛道；"首个H.pylori NME"是独特故事但非市场当前热点叙事；18A稀缺性有一定溢价但弱于18C+AI标的。' },
+    ],
+    financial: [
+      { label: '研发支出（人民币M）', y2023: '-108.4', y2024: '-69.8',  y2025: '-72.1' },
+      { label: '净亏损（人民币M）',   y2023: '-191.8', y2024: '-145.9', y2025: '-153.2' },
+      { label: '经营现金流（人民币M）',y2023: '-98.1',  y2024: '-48.6',  y2025: '-87.2' },
+      { label: '现金余额（人民币M）',  y2023: '58.1',   y2024: '97.8',   y2025: '183.8' },
+    ],
+    cfChecks: [
+      { icon: '✅', text: 'IPO净募HK$5.58亿+年末现金RMB1.84亿，约4-5年资金跑道，无近期断粮风险', tag: 'ok', tagText: '资金充足' },
+      { icon: '✅', text: 'rifasutenizol全球首个H.pylori NME，Phase III完成，NMPA审批预计2026年底，接近商业化', tag: 'ok', tagText: '审批催化剂' },
+      { icon: '✅', text: 'AMR Action Fund（受全球顶级药企支持）及WuXi AppTec为现有股东，策略性背书强', tag: 'ok', tagText: '战略背书' },
+      { icon: '⚠️', text: '商业化交由Grand Life Science（65-75%促销费+里程碑），公司从销售中获益有限', tag: 'warn', tagText: '商业化稀释' },
+      { icon: '⚠️', text: '年均亏损约1.5亿元，无营收，依赖IPO募资支撑运营', tag: 'warn', tagText: '持续亏损' },
+    ],
+    risks: [
+      '<strong>审批风险</strong>：NMPA批准时间存在不确定性，若延迟至2027年或审批失败，将重挫估值',
+      '<strong>商业化稀释风险</strong>：Grand Life Science获65-75%销售促销费+RMB20M激励费，公司实际商业化回报大幅缩减',
+      '<strong>竞争风险</strong>：H.pylori现行BQT方案（PPI+铋剂+抗生素）成本仅RMB 750-1000/疗程，RTT定价压力大',
+      '<strong>高估值18A风险</strong>：市场情绪转弱时18A无盈利公司估值下行空间大',
+    ],
+    actions: [
+      { date: '5月19日 截止', title: '申购截止', desc: '截止 2026-05-19 10:00 BJ；1手入场费HK$3,823.17；建议1手现金仓彩票参与' },
+      { date: '5月21日 中签', title: '中签结果', desc: '5月21日深夜11pm公布配售结果；查看认购倍数，若>200x可考虑上市加仓' },
+      { date: '5月21日 暗盘', title: '暗盘交易', desc: '16:15-18:30暗盘（中签结果同天11pm公布）；关注涨幅，≥20%持仓至上市' },
+      { date: '5月22日 上市', title: '上市日', desc: '09:30开盘；关键催化剂：NMPA审批进展（2026年底）；若高开>30%可考虑减仓' },
+    ],
+    subscription: {
+      scenarios: [
+        { label: '保守', mult: 30,  premPct:  0 },
+        { label: '基准', mult: 80,  premPct: 10 },
+        { label: '乐观', mult: 150, premPct: 20 },
+      ],
+      recClass: 'wait', recTitle: '⚠️ 观望，1手彩票',
+      lots: 1, method: '现金仓',
+      marginOk: false, marginTip: '18A无盈利生物科技，高波动，不建议孖展',
+      rationale: '全球首个H.pylori NME药，接近NMPA批准是核心催化剂；AMR基金主力基石（现有股东）背书科学价值；但无营收、商业化稀释、非热点叙事，评分62/115（观望区间）。1手现金仓彩票参与，等待2026年底NMPA审批信号。',
+      urgentTip: '⏰ 截止5/19(周一) 10:00 BJ；招股价HK$75.70；1手入场费HK$3,823.17'
+    },
+    greyMarket: { date: '2026-05-21', price: null, changePct: null, peakPrice: null, peakChangePct: null }
+  },
+
   // ⚠️ AUTO-STUB [2026-05-18] 自动插入，请用 Claude 补充完整招股书分析后替换此条目
   {
   "code": "03310",
