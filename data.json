@@ -2187,7 +2187,7 @@
     "score": 47,
     "position": "待确认",
     "sponsors": "待补充",
-    "isTransfer": false,
+    "isTransfer": true,
     "cornerstone": {
       "total": "待补充",
       "tier1": [],
@@ -2302,7 +2302,7 @@
     "score": 47,
     "position": "待确认",
     "sponsors": "待补充",
-    "isTransfer": false,
+    "isTransfer": true,
     "cornerstone": {
       "total": "待补充",
       "tier1": [],
