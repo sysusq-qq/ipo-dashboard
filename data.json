@@ -2687,7 +2687,7 @@
     "name": "浙江翼菲智能科技股份有限公司",
     "nameEn": "",
     "sector": "待补充",
-    "listDate": "",
+    "listDate": "2026-05-18",
     "subDate": "—",
     "price": null,
     "lotSize": 100,
@@ -2700,7 +2700,7 @@
     "verdict": "noda",
     "verdictLabel": "不打",
     "score": 47,
-    "status": "hot",
+    "status": "listed",
     "statusText": "新上市",
     "conclusion": "自动分析 | 近期上市新股。毛利率 —，收入增速 —。基本面评分 47/100，建议：不打。（本分析由规则引擎自动生成，仅供参考）",
     "scoreBreakdown": [
@@ -2766,7 +2766,13 @@
     ],
     "subscription": null,
     "_auto": true,
-    "_updatedAt": "2026-05-08"
+    "_updatedAt": "2026-05-08",
+    "greyMarket": {
+      "date": "2026-05-15",
+      "price": 54.65,
+      "changePct": 79.18,
+      "note": "首日开盘价"
+    }
   },
   {
     "code": "01879",
