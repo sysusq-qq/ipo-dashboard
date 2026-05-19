@@ -313,14 +313,17 @@ def git_push(repo_dir, new_stocks_info):
 # ─────────────────────────────────────────────
 # 8. 飞书通知
 # ─────────────────────────────────────────────
-def send_feishu(new_stocks_info):
+def send_feishu(new_stocks_info, analyzed_codes=None):
+    analyzed_codes = analyzed_codes or set()
     today = datetime.datetime.now(tz=BJ_OFFSET).strftime("%Y-%m-%d")
-    lines = [f"🔔 港股IPO仪表盘 发现新股 [{today}]", ""]
-    lines.append(f"共 {len(new_stocks_info)} 只新股已自动插入仪表盘（AUTO-STUB）：")
+    lines = [f"📊 港股IPO仪表盘 发现新股 [{today}]", ""]
+    lines.append(f"共 {len(new_stocks_info)} 只新股已更新至仪表盘：")
     for code, name, list_date in new_stocks_info:
-        lines.append(f"  📋 {code} {name}（预计上市：{list_date or '待定'}）")
-    lines.append("")
-    lines.append("👉 对话Claude：「帮我分析 XX 招股书，更新仪表盘」")
+        status = "✅ 已完整分析" if code in analyzed_codes else "⚠️ AUTO-STUB，待人工分析"
+        lines.append(f"  {status}：{code} {name}（预计上市：{list_date or '待定'}）")
+    if analyzed_codes != {info[0] for info in new_stocks_info}:
+        lines.append("")
+        lines.append("👉 对未完成分析的股票，对话Claude：「帮我分析 XX 招股书，更新仪表盘」")
     lines.append("🔗 https://sysusq-qq.github.io/ipo-dashboard/")
 
     payload = {"msg_type": "text", "content": {"text": "\n".join(lines)}}
@@ -353,7 +356,16 @@ def main():
         print("[OK] Futu 未返回数据，退出")
         return
 
-    stubs_to_insert = []
+    # 尝试导入 Claude 分析模块
+    try:
+        sys.path.insert(0, os.path.dirname(__file__))
+        from auto_analyze import analyze_stock
+        CLAUDE_AVAILABLE = True
+    except ImportError as e:
+        print(f"[WARN] auto_analyze 模块加载失败: {e}，将使用 stub 模式")
+        CLAUDE_AVAILABLE = False
+
+    entries_to_insert = []   # (code, name, js_text, is_full_analysis)
     new_stocks_info = []
 
     for record in ipo_records:
@@ -373,29 +385,60 @@ def main():
         list_date = parsed["list_date"]
         print(f"  发现新股: {code} {name}（上市: {list_date}）")
 
-        stub_text = build_js_stub(parsed)
-        stubs_to_insert.append((code, name, stub_text))
+        js_text = None
+        is_full = False
+
+        if CLAUDE_AVAILABLE:
+            js_text = analyze_stock(parsed)
+            if js_text:
+                is_full = True
+
+        if not js_text:
+            print(f"    [INFO] Claude 分析失败或跳过，使用 stub")
+            js_text = build_js_stub(parsed)
+
+        entries_to_insert.append((code, name, js_text, is_full))
         new_stocks_info.append((code, name, list_date))
 
-    if not stubs_to_insert:
+    if not entries_to_insert:
         print("[OK] 无新增股票，退出")
         return
 
     # 插入 index.html
-    new_content, ok = insert_stubs(html_content, stubs_to_insert)
-    if not ok:
+    # 完整分析的条目直接插入（无 AUTO-STUB 注释），stub 保留注释
+    today = datetime.datetime.now(tz=BJ_OFFSET).strftime("%Y-%m-%d")
+    marker = "const stocks = ["
+    pos = html_content.find(marker)
+    if pos == -1:
+        print("[ERROR] 未找到 'const stocks = ['，插入失败")
         return
+
+    insert_pos = pos + len(marker)
+    block = ""
+    analyzed_codes = set()
+
+    for code, name, js_text, is_full in entries_to_insert:
+        if is_full:
+            block += f"\n  // ✅ AUTO-ANALYZED [{today}] Claude API 自动分析\n  {js_text},"
+            analyzed_codes.add(code)
+        else:
+            block += (
+                f"\n  // ⚠️ AUTO-STUB [{today}] Futu API检测，Claude分析失败，请手动补充\n"
+                f"  {js_text},"
+            )
+
+    new_content = html_content[:insert_pos] + block + html_content[insert_pos:]
 
     with open(html_path, "w", encoding="utf-8") as f:
         f.write(new_content)
-    print(f"[OK] 已将 {len(stubs_to_insert)} 只新股 stub 插入 index.html")
+    print(f"[OK] 已插入 {len(entries_to_insert)} 只新股（完整分析: {len(analyzed_codes)} 只）")
 
     # git push
     pushed = git_push(repo_dir, new_stocks_info)
 
     # 飞书通知（仅在成功 push 后发）
     if pushed:
-        send_feishu(new_stocks_info)
+        send_feishu(new_stocks_info, analyzed_codes)
     else:
         print("[INFO] 未推送，跳过飞书通知")
 
