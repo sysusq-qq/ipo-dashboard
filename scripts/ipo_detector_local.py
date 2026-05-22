@@ -302,6 +302,7 @@ def git_push(repo_dir, new_stocks_info):
             print("[OK] index.html 无变化（可能已存在），跳过 push")
             return False
         subprocess.run(["git", "commit", "-m", commit_msg], cwd=repo_dir, check=True)
+        subprocess.run(["git", "pull", "--rebase"], cwd=repo_dir, check=True)
         subprocess.run(["git", "push"], cwd=repo_dir, check=True)
         print(f"[OK] git push 完成：{commit_msg}")
         return True

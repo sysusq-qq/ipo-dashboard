@@ -14,6 +14,8 @@
 
 import json
 import os
+import re
+import subprocess
 import sys
 import time
 import datetime
@@ -33,6 +35,7 @@ except ImportError:
 FEISHU_WEBHOOK  = os.environ.get("FEISHU_WEBHOOK",
     "https://open.feishu.cn/open-apis/bot/v2/hook/bfb0bc75-5d4f-4c88-b587-1f65ef62abbc")
 DATA_JSON_PATH  = os.path.join(os.path.dirname(__file__), "..", "data.json")
+INDEX_HTML_PATH = os.path.join(os.path.dirname(__file__), "..", "index.html")
 FUTU_HOST       = "127.0.0.1"
 FUTU_PORT       = 11111
 
@@ -66,16 +69,100 @@ def get_beijing_now():
     return bj, hhmm
 
 
-def load_data():
-    path = os.path.abspath(DATA_JSON_PATH)
-    with open(path, "r", encoding="utf-8") as f:
-        return json.load(f)
+def parse_stocks_from_html(html_path):
+    """从 index.html stocks 数组解析股票列表（含 greyMarket 字段）"""
+    with open(html_path, "r", encoding="utf-8") as f:
+        content = f.read()
+    stocks = []
+    for block in re.split(r"(?=\n\s*\{\s*\n\s*code:)", content):
+        m = re.search(r"code:\s*'(\d{5})'", block)
+        if not m:
+            continue
+        s = {"code": m.group(1), "_source": "html"}
+        m2 = re.search(r"name:\s*'([^']+)'", block)
+        s["name"] = m2.group(1) if m2 else s["code"]
+        m2 = re.search(r"^\s+price:\s*([\d.]+),", block, re.MULTILINE)
+        s["price"] = float(m2.group(1)) if m2 else None
+        m2 = re.search(r"verdict:\s*'([^']+)'", block)
+        s["verdict"] = m2.group(1) if m2 else "wait"
+        # greyMarket
+        gm_match = re.search(r"greyMarket:\s*\{([^}]+)\}", block, re.DOTALL)
+        if gm_match:
+            gm_text = gm_match.group(1)
+            date_m = re.search(r"date:\s*'([^']+)'", gm_text)
+            s["greyMarket"] = {"date": date_m.group(1) if date_m else ""}
+        else:
+            s["greyMarket"] = {}
+        stocks.append(s)
+    return stocks
+
+
+def load_all_stocks():
+    """
+    合并 index.html（权威来源）和 data.json（自动化脚本）中的股票，code 去重。
+    index.html 优先级更高——手动录入的完整分析数据（含 greyMarket）以 index.html 为准。
+    """
+    stocks = []
+    seen = set()
+
+    # 先读 index.html（权威来源，含手动录入的 greyMarket 字段）
+    try:
+        html_path = os.path.abspath(INDEX_HTML_PATH)
+        for s in parse_stocks_from_html(html_path):
+            stocks.append(s)
+            seen.add(s["code"])
+    except Exception as e:
+        print(f"[WARN] 读取 index.html 失败: {e}")
+
+    # 再读 data.json，只补充 index.html 中没有的股票
+    try:
+        path = os.path.abspath(DATA_JSON_PATH)
+        with open(path, "r", encoding="utf-8") as f:
+            for s in json.load(f):
+                if s["code"] not in seen:
+                    s["_source"] = "json"
+                    stocks.append(s)
+                    seen.add(s["code"])
+    except Exception as e:
+        print(f"[WARN] 读取 data.json 失败: {e}")
+
+    return stocks
 
 
 def save_data(stocks):
+    """将 _source=json 的股票写回 data.json"""
     path = os.path.abspath(DATA_JSON_PATH)
+    json_stocks = [s for s in stocks if s.get("_source") != "html"]
     with open(path, "w", encoding="utf-8") as f:
-        json.dump(stocks, f, ensure_ascii=False, indent=2)
+        json.dump(json_stocks, f, ensure_ascii=False, indent=2)
+
+
+def save_grey_market_to_html(code, price, change_pct):
+    """将暗盘收盘价写回 index.html 中对应股票的 greyMarket 字段"""
+    html_path = os.path.abspath(INDEX_HTML_PATH)
+    with open(html_path, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    # 找到该股票的 greyMarket 块并更新 price 和 changePct
+    pattern = (
+        r"(code:\s*'" + re.escape(code) + r"'.*?greyMarket:\s*\{[^}]*?)"
+        r"price:\s*null"
+        r"([^}]*?)"
+        r"changePct:\s*null"
+    )
+    replacement = (
+        r"\g<1>price:      " + str(round(price, 3)) +
+        r"\g<2>changePct: " + str(round(change_pct, 2))
+    )
+    new_content, n = re.subn(pattern, replacement, content, flags=re.DOTALL)
+    if n > 0:
+        with open(html_path, "w", encoding="utf-8") as f:
+            f.write(new_content)
+        print(f"  → index.html: {code} greyMarket 已更新")
+        return True
+    else:
+        print(f"  [WARN] index.html 中未找到 {code} 的 greyMarket null 字段（已填过？）")
+        return False
 
 
 def get_grey_market_stocks(stocks, today_str):
@@ -181,8 +268,8 @@ def main():
     today_str = bj_now.strftime("%Y-%m-%d")
     print(f"[{bj_now.strftime('%Y-%m-%d %H:%M:%S')} BJ] 暗盘监控启动")
 
-    # ── 加载数据，找今日暗盘股票
-    stocks = load_data()
+    # ── 加载数据（data.json + index.html 合并），找今日暗盘股票
+    stocks = load_all_stocks()
     gm_stocks = get_grey_market_stocks(stocks, today_str)
 
     if not gm_stocks:
@@ -212,8 +299,8 @@ def main():
             print(f"[{bj_now.strftime('%H:%M')}] 暗盘交易结束，生成收盘报告...")
             final_prices = fetch_futu_prices(codes_hk)
 
-            # 更新 data.json
-            updated = False
+            # 更新暗盘最终数据
+            json_updated = False
             for s in stocks:
                 code = s["code"]
                 gm = s.get("greyMarket")
@@ -221,14 +308,37 @@ def main():
                     last_p = final_prices.get(code)
                     ipo_p  = s.get("price")
                     if last_p and last_p > 0 and ipo_p:
-                        gm["price"]     = round(last_p, 3)
-                        gm["changePct"] = round((last_p - ipo_p) / ipo_p * 100, 2)
-                        updated = True
-                        print(f"  → {code}: 最终暗盘价 HK${last_p:.3f}  ({gm['changePct']:+.2f}%)")
+                        change = round((last_p - ipo_p) / ipo_p * 100, 2)
+                        print(f"  → {code}: 最终暗盘价 HK${last_p:.3f}  ({change:+.2f}%)")
+                        if s.get("_source") == "html":
+                            save_grey_market_to_html(code, last_p, change)
+                        else:
+                            gm["price"]     = round(last_p, 3)
+                            gm["changePct"] = change
+                            json_updated = True
 
-            if updated:
+            if json_updated:
                 save_data(stocks)
                 print("[OK] data.json 已更新暗盘最终数据")
+
+            # git commit + push（让网页数据同步更新）
+            repo_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+            names = "、".join(f"{s['code']}{s['name']}" for s in gm_stocks)
+            try:
+                subprocess.run(["git", "add", "index.html", "data.json"], cwd=repo_dir, check=True)
+                result = subprocess.run(["git", "diff", "--staged", "--quiet"], cwd=repo_dir)
+                if result.returncode != 0:
+                    subprocess.run(
+                        ["git", "commit", "-m", f"暗盘收盘: {names} 数据更新"],
+                        cwd=repo_dir, check=True
+                    )
+                    subprocess.run(["git", "pull", "--rebase"], cwd=repo_dir, check=True)
+                    subprocess.run(["git", "push"], cwd=repo_dir, check=True)
+                    print("[OK] git push 完成，网页数据已同步")
+                else:
+                    print("[INFO] 无数据变化，跳过 git push")
+            except subprocess.CalledProcessError as e:
+                print(f"[WARN] git push 失败: {e}")
 
             # 发收盘通知
             notice = build_notification(gm_stocks, final_prices, is_final=True)
