@@ -2626,14 +2626,14 @@ function selectStock(idx) {
         '2026-05-01','2026-05-27','2026-07-01',
         '2026-10-01','2026-10-07','2026-12-25','2026-12-26',
       ]);
-      // 返回 ts 当天之前最近一个港股交易日的 BJ 00:00 时间戳
+      // 返回 ts 当天之前最近一个自然工作日（跳过周末，不跳假日）的 BJ 00:00 时间戳
+      // 中签结果无需是交易日，公司可在假日公布，故只跳周末
       function prevTradingDay(ts) {
         let t = ts - 86400;
         while (true) {
           const d   = new Date((t + 8 * 3600) * 1000);
           const dow = d.getUTCDay();              // 0=Sun, 6=Sat
-          const str = d.toISOString().slice(0, 10);
-          if (dow !== 0 && dow !== 6 && !HK_HOLIDAYS.has(str)) return t;
+          if (dow !== 0 && dow !== 6) return t;
           t -= 86400;
         }
       }
