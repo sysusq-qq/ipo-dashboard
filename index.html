@@ -2860,8 +2860,9 @@ function selectStock(idx) {
       📅 <strong>该股已于 ${s.listDate} 正式上市，招股期已过。</strong>以下报告作为历史分析记录保存，供未来参考。
     </div>` : '';
 
-  const tier1Badges  = s.cornerstone.tier1.map(n  => `<span class="cs-pill tier1">⭐ ${n}</span>`).join('');
-  const otherBadges  = s.cornerstone.others.map(n => `<span class="cs-pill">${n}</span>`).join('');
+  const csLabel = n => typeof n === 'string' ? n : [n.name, n.amt, n.lockup].filter(Boolean).join(' · ');
+  const tier1Badges  = s.cornerstone.tier1.map(n  => `<span class="cs-pill tier1">⭐ ${csLabel(n)}</span>`).join('');
+  const otherBadges  = s.cornerstone.others.map(n => `<span class="cs-pill">${csLabel(n)}</span>`).join('');
 
   content.innerHTML = `
     <!-- Report Header -->
