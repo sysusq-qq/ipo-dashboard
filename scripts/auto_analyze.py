@@ -457,5 +457,14 @@ def analyze_stock(parsed):
         print(f"    原始响应前500字: {raw[:500]}")
         return None
 
+    # 6. 强制校正关键时间戳（防止 Claude 重新计算出错）
+    apply_end_ts = parsed["apply_end_ts"]
+    list_ts = parsed["list_ts"]
+    if apply_end_ts:
+        js_obj = re.sub(r"applyEndTs:\s*\d+", f"applyEndTs: {apply_end_ts}", js_obj)
+    if list_ts:
+        js_obj = re.sub(r"listTs:\s*\d+", f"listTs:     {list_ts}", js_obj)
+    print(f"    [OK] 时间戳已校正: applyEndTs={apply_end_ts}, listTs={list_ts}")
+
     print(f"    [OK] 分析完成，JS 对象长度 {len(js_obj)} 字符")
     return js_obj
