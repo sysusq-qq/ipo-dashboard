@@ -1,8 +1,9 @@
 name: Subscription Deadline Reminder
 
 on:
-  schedule:
-    - cron: '40 1 * * *'   # 每天 09:40 HKT（UTC+8 → UTC 01:40）
+  # schedule 已禁用：本地 launchd 09:40 BJ 更可靠，GH Actions 有随机延迟且会与本地抢 webhook 触发 rate limit
+  # schedule:
+  #   - cron: '40 1 * * *'
   workflow_dispatch:
 
 jobs:

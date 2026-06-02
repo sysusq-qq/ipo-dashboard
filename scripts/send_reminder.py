@@ -79,15 +79,18 @@ def send_feishu_reminder(stocks_due, webhook_url):
             resp = requests.post(webhook_url, json=payload, timeout=15)
             resp.raise_for_status()
             result = resp.json()
-            if result.get("code") != 0:
-                print(f"[WARN] 飞书返回错误: {result}")
-            else:
+            if result.get("code") == 0:
                 print(f"[OK] 提醒已发送，涉及 {len(stocks_due)} 只股票")
-            return
+                return
+            else:
+                print(f"[WARN] 飞书返回错误（第{attempt}次）: {result}")
+                if attempt < 3:
+                    time.sleep(30)
         except Exception as e:
             print(f"[WARN] 飞书通知失败（第{attempt}次）: {e}")
             if attempt < 3:
                 time.sleep(20)
+    print(f"[ERROR] 飞书通知最终失败，已重试3次")
 
 
 def parse_stocks_from_html(html_path):
