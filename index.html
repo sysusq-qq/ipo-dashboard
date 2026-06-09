@@ -528,6 +528,67 @@
    DATA  —  按上市日期倒序排列（越晚越前）
 ════════════════════════════════════════════════════════ */
 const stocks = [
+  // ⚠️ AUTO-STUB [2026-06-09] Futu API检测，Claude分析失败，请手动补充
+    {
+    code: '06675',
+    applyEndTs: 1781193600,   // 北京时间 2026-06-12 10:00（Futu提供，待招股书核实）
+    listTs:     1781625600,        // 北京时间 2026-06-17 00:00（⚠️ 待招股书核实，禁用Futu原始时间戳）
+    name: 'SENASIC',
+    nameEn: '',
+    sector: '⚠️ 待补充',
+    listDate: '2026-06-17',
+    subDate: '⚠️ 待补充',
+    price: 18.36,
+    lotSize: 200,
+    entryFee: 3708.9,
+    totalIssue: '⚠️ 待补充',
+    publicIssue: '⚠️ 待补充',
+    greenshoe: '⚠️ 待查（需同时搜超額配股權和超額配售）',
+    mktCapH: '⚠️ 待补充',
+    pe: '⚠️ 待补充',
+    verdict: 'wait', verdictLabel: '待分析', score: 0,
+    position: '⚠️ 待分析',
+    sponsors: '⚠️ 待补充',
+    isTransfer: false,
+    cornerstone: { total: '⚠️ 待补充', tier1: [], others: [] },
+    conclusion: '⚠️ AUTO-STUB [2026-06-09] 由本地Futu API自动检测插入，请用Claude补充完整招股书分析。',
+    scores: [
+      { label: '业务质量',          pts: 0, max: 25, desc: '⚠️ 待分析' },
+      { label: '财务健康',          pts: 0, max: 25, desc: '⚠️ 待分析' },
+      { label: '估值吸引力',        pts: 0, max: 25, desc: '⚠️ 待分析' },
+      { label: '资本结构',          pts: 0, max: 25, desc: '⚠️ 待分析' },
+      { label: '市场叙事/赛道溢价', pts: 0, max: 15, desc: '⚠️ 待分析' },
+    ],
+    financial: [
+      { label: '收入（人民币亿元）', y2023: '—', y2024: '—', y2025: '—' },
+      { label: '毛利率',             y2023: '—', y2024: '—', y2025: '—' },
+      { label: '净利润（人民币M）',  y2023: '—', y2024: '—', y2025: '—' },
+      { label: '收入增速',           y2023: '—', y2024: '—', y2025: '—' },
+    ],
+    cfChecks: [
+      { icon: '⚠️', text: 'AUTO-STUB 自动插入，现金流数据待人工核实', tag: 'warn', tagText: '待分析' },
+    ],
+    risks: ['<strong>待分析</strong>：请用Claude补充完整招股书分析'],
+    actions: [
+      { date: '⚠️ 待填', title: '申购截止', desc: '请补充具体时间节点' },
+    ],
+    subscription: {
+      scenarios: [
+        { label: '保守', mult: 0, premPct: 0 },
+        { label: '基准', mult: 0, premPct: 0 },
+        { label: '乐观', mult: 0, premPct: 0 },
+      ],
+      recClass: 'wait', recTitle: '⚠️ 待分析',
+      lots: 0, method: '待定', marginOk: false,
+      marginTip: '⚠️ 待分析',
+      rationale: 'AUTO-STUB，待人工补充分析。',
+      urgentTip: '⚠️ 请补充截止时间',
+    },
+    greyMarket: {
+      date: '2026-06-16',
+      price: null, changePct: null, peakPrice: null, peakChangePct: null
+    }
+  },
   // ✅ AUTO-ANALYZED [2026-06-05] Claude API 自动分析
   {
   code: '06658',
