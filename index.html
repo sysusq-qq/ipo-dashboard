@@ -617,67 +617,94 @@ const stocks = [
     peakChangePct: null
   }
 },
-  // ⚠️ AUTO-STUB [2026-06-09] Futu API检测，Claude分析失败，请手动补充
-    {
-    code: '06675',
-    applyEndTs: 1781193600,   // 北京时间 2026-06-12 10:00（Futu提供，待招股书核实）
-    listTs:     1781625600,        // 北京时间 2026-06-17 00:00（⚠️ 待招股书核实，禁用Futu原始时间戳）
-    name: 'SENASIC',
-    nameEn: '',
-    sector: '⚠️ 待补充',
-    listDate: '2026-06-17',
-    subDate: '⚠️ 待补充',
-    price: 18.36,
-    lotSize: 200,
-    entryFee: 3708.9,
-    totalIssue: '⚠️ 待补充',
-    publicIssue: '⚠️ 待补充',
-    greenshoe: '⚠️ 待查（需同时搜超額配股權和超額配售）',
-    mktCapH: '⚠️ 待补充',
-    pe: '⚠️ 待补充',
-    verdict: 'wait', verdictLabel: '待分析', score: 0,
-    position: '⚠️ 待分析',
-    sponsors: '⚠️ 待补充',
-    isTransfer: false,
-    cornerstone: { total: '⚠️ 待补充', tier1: [], others: [] },
-    conclusion: '⚠️ AUTO-STUB [2026-06-09] 由本地Futu API自动检测插入，请用Claude补充完整招股书分析。',
-    scores: [
-      { label: '业务质量',          pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '财务健康',          pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '估值吸引力',        pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '资本结构',          pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '市场叙事/赛道溢价', pts: 0, max: 15, desc: '⚠️ 待分析' },
+  // ✅ AUTO-ANALYZED [2026-06-12] Claude API 自动分析
+  {
+  code: '06675',
+  applyEndTs: 1781229600,   // 北京时间 2026-06-12 10:00（招股书核实）
+  listTs:     1781625600,   // 北京时间 2026-06-17 00:00（招股书核实）
+  name: 'SENASIC',
+  nameEn: 'SENASIC Electronics Technology Co., Ltd.',
+  sector: '半导体芯片 / 无线传感SoC / 汽车电子+新能源',
+  listDate: '2026-06-17',
+  subDate: '2026-06-09 ~ 2026-06-12',
+  price: 18.36,
+  lotSize: 200,
+  entryFee: 3708.9,
+  totalIssue: '约5341万股H股（全球发售，含绿鞋前）',
+  publicIssue: '534万股（约10%香港公开发售）',
+  greenshoe: '有（最多801万股额外H股，约15%）',
+  mktCapH: '约HK$69.6亿（总股本3.79亿股×HK$18.36）',
+  pe: '未盈利（持续亏损）/ PS约1.9x（2025A收入约HK$5.5亿）',
+  verdict: 'wait',
+  verdictLabel: '观望',
+  score: 52,
+  position: '1手现金仓',
+  sponsors: '中国国际金融香港证券有限公司（联席保荐人兼整体协调人）、国泰君安融资有限公司（联席保荐人）',
+  isTransfer: false,
+  cornerstone: {
+    total: '基石投资者包含隆威香港（保隆汽车关联方），合计约1541万股H股（占发售股份约28.9%，6个月锁定期）',
+    tier1: [
+      { name: '隆威国际贸易有限公司（保隆汽车关联）', amt: '待确认具体金额', lockup: '6个月' }
     ],
-    financial: [
-      { label: '收入（人民币亿元）', y2023: '—', y2024: '—', y2025: '—' },
-      { label: '毛利率',             y2023: '—', y2024: '—', y2025: '—' },
-      { label: '净利润（人民币M）',  y2023: '—', y2024: '—', y2025: '—' },
-      { label: '收入增速',           y2023: '—', y2024: '—', y2025: '—' },
-    ],
-    cfChecks: [
-      { icon: '⚠️', text: 'AUTO-STUB 自动插入，现金流数据待人工核实', tag: 'warn', tagText: '待分析' },
-    ],
-    risks: ['<strong>待分析</strong>：请用Claude补充完整招股书分析'],
-    actions: [
-      { date: '⚠️ 待填', title: '申购截止', desc: '请补充具体时间节点' },
-    ],
-    subscription: {
-      scenarios: [
-        { label: '保守', mult: 0, premPct: 0 },
-        { label: '基准', mult: 0, premPct: 0 },
-        { label: '乐观', mult: 0, premPct: 0 },
-      ],
-      recClass: 'wait', recTitle: '⚠️ 待分析',
-      lots: 0, method: '待定', marginOk: false,
-      marginTip: '⚠️ 待分析',
-      rationale: 'AUTO-STUB，待人工补充分析。',
-      urgentTip: '⚠️ 请补充截止时间',
-    },
-    greyMarket: {
-      date: '2026-06-16',
-      price: null, changePct: null, peakPrice: null, peakChangePct: null
-    }
+    others: []
   },
+  conclusion: 'SENASIC为中国最大汽车无线传感SoC公司，全球第三，TPMS/BPS均具先发优势，收入两年CAGR 46%，毛利率从16.6%飞升至28%，技术稀缺性强。但核心缺陷明显：连续三年大额净亏损（2025年亏损3.3亿元人民币），经营现金持续流出（2025年净流出1.74亿），尚未盈利且管理层预期2026年仍亏损。估值PS约1.9x勉强合理，但无PE锚定。基石投资比例约29%中等，绿鞋15%提供一定保护。赛道为汽车芯片+新能源，港股有一定稀缺性。综合评估，建议1手现金仓参与，规避孖展风险，以彩票仓博取暗盘弹性。',
+  scores: [
+    { label: '业务质量',          pts: 17, max: 25, desc: '中国最大汽车无线传感SoC，TPMS/BPS双赛道先发，多项行业第一；wBMS是未来高增长潜力品类；但经营历史有限，客户集中度上升（最大客户占比31.9%），尚处早期商业化阶段' },
+    { label: '财务健康',          pts: 10, max: 25, desc: '收入CAGR 46%强劲，毛利率从16.6%升至28%方向正确；但净亏损3.31亿/年，经营现金连续三年大额净流出，累计亏绌14.8亿，2026年仍预期亏损，财务健康评分受限' },
+    { label: '估值吸引力',        pts: 10, max: 25, desc: 'PS约1.9x（2025A），未盈利无法用PE估值；全球对标同类Fabless芯片公司PS通常3-6x，定价偏中性；市值约70亿港元，发行价对应IPO前轮折价约33%，吸引力中等' },
+    { label: '资本结构',          pts: 9, max: 25, desc: '保荐人中金+国泰君安背书尚可；绿鞋15%提供稳价机制；基石约29%有一定吸引力但含关联方（保隆汽车）；创始人上市后仍控股27.71%，股权结构较清晰；前期融资超10亿元人民币，投资者背景含混改基金、经纬等知名机构' },
+    { label: '市场叙事/赛道溢价', pts: 6, max: 15, desc: '汽车芯片+新能源赛道有热度但非当前最热（AI芯片/机器人），wBMS概念有想象空间（预测2030年CAGR 457%），港股中国汽车传感芯片稀缺性中等，市场情绪中性偏暖' },
+  ],
+  financial: [
+    { label: '收入（人民币亿元）', y2023: '2.23', y2024: '3.48', y2025: '4.78' },
+    { label: '毛利率',             y2023: '16.6%', y2024: '20.3%', y2025: '28.0%' },
+    { label: '净亏损（人民币百万元）', y2023: '-355.8', y2024: '-351.3', y2025: '-330.6' },
+    { label: '收入增速',           y2023: '—', y2024: '+55.5%', y2025: '+37.5%' },
+  ],
+  cfChecks: [
+    { icon: '⚠️', text: '经营活动现金净流出：2023年-6121万元、2024年-1.37亿元、2025年-1.74亿元，持续扩大', tag: 'warn', tagText: '现金流告警' },
+    { icon: '⚠️', text: '净亏损持续三年且金额巨大（2025年HKFRS亏损3.31亿元），调整后Non-IFRS亏损收窄至3188万元但仍为负', tag: 'warn', tagText: '持续亏损' },
+    { icon: '✅', text: '2025年投资活动现金流转正（+2.17亿元），期末现金余额增至2.01亿元，短期流动性有改善', tag: 'ok', tagText: '流动性改善' },
+    { icon: '✅', text: '流动比率4.3（2025年），速动比率2.9，短期偿债能力尚可', tag: 'ok', tagText: '流动性合格' },
+    { icon: '⚠️', text: '存货周转天数2025年达208天，现金转换周期260天，营运资金压力较大', tag: 'warn', tagText: '周转效率低' },
+  ],
+  risks: [
+    '<strong>持续亏损风险</strong>：公司自成立以来持续亏损，管理层预期2026年仍录得净亏损，盈利时间表不确定',
+    '<strong>客户集中风险</strong>：最大客户2025年占收入31.9%，五大客户合计52.3%，任何流失将重创业绩',
+    '<strong>出口管制/实体清单风险</strong>：曾与实体清单客户有历史交易，美国EAR法规持续收紧，中美科技摩擦带来不确定性',
+    '<strong>供应链集中风险</strong>：Fabless模式依赖少数晶圆代工及封测供应商，前五大供应商采购占比59.6%',
+    '<strong>现金流风险</strong>：经营活动持续净流出，依赖外部融资，若融资环境收紧将影响持续运营能力',
+    '<strong>wBMS商业化不确定性</strong>：wBMS市场预测CAGR达457%但现阶段收入极小，仍处验证阶段，高增长存在较大不确定性',
+  ],
+  actions: [
+    { date: '6月12日 截止认购', title: '认购截止（BJ 10:00）', desc: '网上白表系统于11:30截止提交，银行转账于12:00截止；确保资金到位，手动完成支付' },
+    { date: '6月16日 暗盘交易', title: '暗盘参考价观察', desc: '暗盘价格将反映市场初步定价，若暗盘价格高于发行价10%以上可考虑追加；若破发则上市日谨慎观察' },
+    { date: '6月17日 正式上市', title: '上市首日策略', desc: '若首日溢价15-20%以上可考虑分批止盈；关注成交量，流动性不足时降低目标价预期' },
+  ],
+  subscription: {
+    scenarios: [
+      { label: '保守', mult: 30,  premPct: 5 },
+      { label: '基准', mult: 80,  premPct: 15 },
+      { label: '乐观', mult: 150, premPct: 25 },
+    ],
+    recClass: 'wait',
+    recTitle: '⚠️ 谨慎参与',
+    lots: 1,
+    method: '现金仓',
+    marginOk: false,
+    marginTip: '公司持续亏损、现金流为负，不建议孖展；认购规模较小（534万股公开发售），超额认购倍数有限，1手现金仓彩票策略最为稳妥',
+    rationale: 'SENASIC是港股稀缺的汽车无线传感SoC纯正标的，TPMS/BPS双赛道中国第一，毛利率改善趋势明确。但公司持续大额亏损，2025年调整后净亏损仍达3188万元，现金流持续净流出，距离盈利尚有距离。PS估值约1.9x在未盈利公司中属中性。wBMS赛道有想象力但收入尚小。建议1手现金仓参与，博取暗盘及上市首日弹性，不建议重仓或孖展。',
+    urgentTip: '⏰ 截止2026-06-12（周五）BJ 10:00；白表系统11:30截止提交，12:00截止付款；每人限申请一个账户；1手200股，入场费约HK$3,709',
+  },
+  greyMarket: {
+    date: '2026-06-16',
+    price: null,
+    changePct: null,
+    peakPrice: null,
+    peakChangePct: null
+  }
+},
   // ✅ AUTO-ANALYZED [2026-06-05] Claude API 自动分析
   {
   code: '06658',
