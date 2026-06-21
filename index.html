@@ -528,550 +528,905 @@
    DATA  —  按上市日期倒序排列（越晚越前）
 ════════════════════════════════════════════════════════ */
 const stocks = [
-  // ⚠️ AUTO-STUB [2026-06-18] Futu API检测，Claude分析失败，请手动补充
-    {
-    code: '01191',
-    applyEndTs: 1782230400,   // 北京时间 2026-06-24 10:00（Futu提供，待招股书核实）
-    listTs:     1782662400,        // 北京时间 2026-06-29 00:00（⚠️ 待招股书核实，禁用Futu原始时间戳）
-    name: '海光芯正',
-    nameEn: '',
-    sector: '⚠️ 待补充',
-    listDate: '2026-06-29',
-    subDate: '⚠️ 待补充',
-    price: 114.0,
-    lotSize: 50,
-    entryFee: 5757.28,
-    totalIssue: '⚠️ 待补充',
-    publicIssue: '⚠️ 待补充',
-    greenshoe: '⚠️ 待查（需同时搜超額配股權和超額配售）',
-    mktCapH: '⚠️ 待补充',
-    pe: '⚠️ 待补充',
-    verdict: 'wait', verdictLabel: '待分析', score: 0,
-    position: '⚠️ 待分析',
-    sponsors: '⚠️ 待补充',
-    isTransfer: false,
-    cornerstone: { total: '⚠️ 待补充', tier1: [], others: [] },
-    conclusion: '⚠️ AUTO-STUB [2026-06-18] 由本地Futu API自动检测插入，请用Claude补充完整招股书分析。',
-    scores: [
-      { label: '业务质量',          pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '财务健康',          pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '估值吸引力',        pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '资本结构',          pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '市场叙事/赛道溢价', pts: 0, max: 15, desc: '⚠️ 待分析' },
+  // ✅ AUTO-ANALYZED [2026-06-18] Claude API 自动分析
+  {
+  code: '01191',
+  applyEndTs: 1782266400,
+  listTs:     1782662400,
+  name: '海光芯正',
+  nameEn: 'Crealights Technology Co., Ltd.',
+  sector: '半导体 / 光模块·硅光子 / AI数据中心光互连',
+  listDate: '2026-06-29',
+  subDate: '2026-06-18 ~ 2026-06-24',
+  price: 114.0,
+  lotSize: 50,
+  entryFee: 5757.28,
+  totalIssue: '约1343.15万股H股（全球发售13,431,500股，另有超额配股权）',
+  publicIssue: '134.315万股（10%香港公开发售，1,343,150股）',
+  greenshoe: '有（最多2,014,700股额外H股，约占全球发售初步股份15%）',
+  mktCapH: '约HK$102.1亿（总股本89,542,045股×HK$114.0）',
+  pe: '亏损期无PE参考 / PS约7.4x（2025A收入约HK$14.0亿）',
+  verdict: 'wait',
+  verdictLabel: '轻仓',
+  score: 62,
+  position: '1手现金仓',
+  sponsors: '华泰金融控股（香港）有限公司（独家保荐人）',
+  isTransfer: false,
+  cornerstone: {
+    total: 'JSC International Investment Fund SPC（为及代表Jingxin SP，即BJJN投资基金）认购2,192,950股H股，约占全球发售股份16.3%',
+    tier1: [
+      { name: 'BJJN投资基金（北京信息发展基金关联方/现有股东紧密联系人）', amt: '约HK$2.5亿（2,192,950股×HK$114）', lockup: '6个月' }
     ],
-    financial: [
-      { label: '收入（人民币亿元）', y2023: '—', y2024: '—', y2025: '—' },
-      { label: '毛利率',             y2023: '—', y2024: '—', y2025: '—' },
-      { label: '净利润（人民币M）',  y2023: '—', y2024: '—', y2025: '—' },
-      { label: '收入增速',           y2023: '—', y2024: '—', y2025: '—' },
+    others: []
+  },
+  conclusion: '海光芯正专注AI数据中心硅光子光模块，赛道高度景气，但财务面有明显瑕疵：三年累计亏损逾2.27亿元，经营现金持续净流出，JDM主业毛利率仅3.1%，整体毛利率从2024年11.8%进一步下滑至2025年9.0%。营收增速虽亮眼（2023→2024+392%，2024→2025+42%），但收入高度集中（前五大客户占78.7%）、海外收入逆降、公司明确预告2026年仍将亏损及经营现金流出。估值约7.4x PS偏贵，基石为现有股东关联方、保荐人仅华泰一家且非顶级。综合打分62分，建议1手现金仓轻仓参与，博硅光子AI叙事溢价，切勿重仓。',
+  scores: [
+    { label: '业务质量', pts: 17, max: 25, desc: '硅光子光模块聚焦AI数据中心，技术路线前瞻，端到端能力（芯片设计→制造）构筑一定壁垒；全球光模块排名第17、AI光模块中国第8，市占率0.8%偏低；客户高度集中（前5占79%）、海外收入萎缩至10%、JDM毛利率仅3.1%为主要减分项' },
+    { label: '财务健康', pts: 10, max: 25, desc: '三年均净亏损（-1.09亿/-0.18亿/-1.00亿元），经营现金流三年持续净流出且逐年扩大（-0.91/-2.55/-3.59亿），毛利率从2024年11.8%滑落至2025年9.0%，速动比率仅0.8，负债权益比141%，存货周转天数高达181天；管理层明确预告2026年继续亏损' },
+    { label: '估值吸引力', pts: 12, max: 25, desc: '发行价HK$114对应市值约102亿港元，2025A收入约HK$14亿，PS约7.4x；同类可比旭创（688535）等A股光模块龙头PS在5-10x区间，海光芯正规模远小于头部但估值相当，溢价有限；每股资产净值23.55港元vs发行价114港元，折价幅度大；无PE正值参照' },
+    { label: '资本结构', pts: 10, max: 25, desc: '独家保荐人华泰香港，非顶级（中金/高盛/摩根级别），市场认知度中等；基石投资者为现有股东关联方BJJN（占16.3%），独立性存疑，对外部市场信号背书效果弱；有绿鞋（15%）提供一定稳价保护；股东结构分散（创始人团队仅17.95%），首次公开发售前有阿里巴巴、小米战略投资加持，具一定品质背书' },
+    { label: '市场叙事/赛道溢价', pts: 13, max: 15, desc: '硅光子+AI数据中心光互连为当前最热赛道之一，CPO/NPO技术布局具前瞻性，港股光模块硅光子纯标的稀缺；但已有多只光模块相关港股（中际旭创等），赛道拥挤度上升；阿里/小米投资背书提升叙事热度；近期赢得Lightwave创新大奖亦有正面催化' }
+  ],
+  financial: [
+    { label: '收入（人民币亿元）', y2023: '1.75', y2024: '8.62', y2025: '12.21' },
+    { label: '毛利率', y2023: '-17.9%', y2024: '11.8%', y2025: '9.0%' },
+    { label: '净利润（人民币百万元）', y2023: '-108.6', y2024: '-17.9', y2025: '-100.1' },
+    { label: '收入增速', y2023: '—', y2024: '+391.8%', y2025: '+41.7%' }
+  ],
+  cfChecks: [
+    { icon: '⚠️', text: '经营现金流三年持续净流出：2023年-0.91亿、2024年-2.55亿、2025年-3.59亿元，且逐年恶化', tag: 'warn', tagText: '现金流告急' },
+    { icon: '⚠️', text: '存货周转天数高达180.8天（2025年），应收账款周转82.6天，营运资金压力大', tag: 'warn', tagText: '营运效率偏低' },
+    { icon: '✅', text: '2025年末现金及现金等价物约3.34亿元，融资活动净流入7.33亿元（含Pre-IPO融资），短期流动性尚可', tag: 'ok', tagText: '现金储备支撑' },
+    { icon: '⚠️', text: '管理层明确预告2026年仍将亏损并持续经营现金净流出，IPO募资53%用于产能扩张，资本开支压力持续', tag: 'warn', tagText: '前向盈利不确定' },
+    { icon: '✅', text: '全球发售所得款项净额约14.15亿港元，可覆盖未来2-3年研发及产能投入（研发35%+产能53%）', tag: 'ok', tagText: 'IPO补血显著' }
+  ],
+  risks: [
+    '<strong>持续亏损风险</strong>：三年累亏2.27亿元，管理层明确预告2026年继续亏损，且经营现金持续净流出，盈利时间表不明确',
+    '<strong>毛利率下滑风险</strong>：光模块毛利率由2024年12.4%降至2025年6.7%，800G产品毛利率更暴跌至1.3%，竞争加剧导致单价持续承压',
+    '<strong>客户高度集中风险</strong>：前五大客户贡献78.7%收入，单一最大客户21%，任何客户流失对业绩冲击巨大',
+    '<strong>JDM低毛利结构风险</strong>：JDM模式收入占45.3%但毛利率仅3.1%，国内大客户定价权强势，规模扩大反而摊薄利润',
+    '<strong>海外收入萎缩风险</strong>：2025年海外收入从2024年2.38亿元降至1.22亿元（-49%），美国客户验证未完成，出口管制及关税不确定性高',
+    '<strong>美国对外投资规则（OUTEI）风险</strong>：公司属"受关注外国主体"，集成电路设计业务或触发申报要求，可能限制美国资金流入',
+    '<strong>技术迭代风险</strong>：硅光子领域技术更替快，1.6T产品尚在客户验证阶段，若进度滞后将失去先发优势',
+    '<strong>社保合规风险</strong>：部分员工社保及住房公积金未足额缴纳，存在补缴及罚款风险'
+  ],
+  actions: [
+    { date: '6月24日 申购截止', title: '申购操作', desc: '通过白表eIPO或经纪FINI渠道申购，建议仅入1手（入场费约HK$5,757），北京时间10:00前完成，切勿重仓或孖展' },
+    { date: '6月26日 分配结果', title: '查看中签', desc: '查看香港公开发售分配结果公告（hkexnews.hk），确认是否中签及退款情况' },
+    { date: '6月28日 暗盘', title: '观察暗盘价格', desc: '重点观察暗盘开盘价及走势，若暗盘较发行价溢价超15%可考虑暗盘卖出锁定收益；若破发则评估正股开盘减仓策略' },
+    { date: '6月29日 上市', title: '上市开盘策略', desc: '若涨幅超20%（约HK$137+）可卖出；若跌破发行价HK$114，1手损失有限（约数百港元），可持有观察2-4周看行情是否修复' },
+    { date: '上市后1-4周', title: '基本面跟踪', desc: '密切关注2026年半年报（2026Q2收入/毛利率趋势）及1.6T硅光子光模塊是否如期完成客户验证，作为中线持仓依据' }
+  ],
+  subscription: {
+    scenarios: [
+      { label: '保守', mult: 30, premPct: 5 },
+      { label: '基准', mult: 80, premPct: 15 },
+      { label: '乐观', mult: 150, premPct: 30 }
     ],
-    cfChecks: [
-      { icon: '⚠️', text: 'AUTO-STUB 自动插入，现金流数据待人工核实', tag: 'warn', tagText: '待分析' },
-    ],
-    risks: ['<strong>待分析</strong>：请用Claude补充完整招股书分析'],
-    actions: [
-      { date: '⚠️ 待填', title: '申购截止', desc: '请补充具体时间节点' },
-    ],
-    subscription: {
-      scenarios: [
-        { label: '保守', mult: 0, premPct: 0 },
-        { label: '基准', mult: 0, premPct: 0 },
-        { label: '乐观', mult: 0, premPct: 0 },
-      ],
-      recClass: 'wait', recTitle: '⚠️ 待分析',
-      lots: 0, method: '待定', marginOk: false,
-      marginTip: '⚠️ 待分析',
-      rationale: 'AUTO-STUB，待人工补充分析。',
-      urgentTip: '⚠️ 请补充截止时间',
-    },
+    recClass: 'wait',
+    recTitle: '⚠️ 谨慎参与（1手现金仓）',
+    lots: 1,
+    method: '现金仓',
+    marginOk: false,
+    marginTip: '公司持续亏损、经营现金流为负、毛利率下滑，基本面不支持孖展操作；且JDM占主业但毛利率极低，短期内难以实现盈利突破，不建议任何形式孖展申购',
+    rationale: '海光芯正硅光子+AI数据中心赛道契合当前市场主题，具备一定叙事溢价，阿里/小米战投背书提升品质感，港股光模块硅光子纯标的稀缺。但公司持续亏损、经营现金净流出且2026年仍将亏损，JDM毛利率仅3.1%、客户集中度高、海外收入大幅下滑，基本面存在实质性隐患。估值PS约7.4x并不便宜，基石为现有股东关联方独立性不足。建议仅参与1手现金仓，以小博大捕捉开盘短线溢价，不作中线重仓配置。',
+    urgentTip: '⏰ 申购截止：2026-06-24（周三）北京时间10:00（白表eIPO 11:30截止提交，12:00截止付款）；每人限申请上限671,550股；建议仅申购50股（1手）；切勿孖展'
+  },
+  greyMarket: {
+    date: '2026-06-28',
+    price: null,
+    changePct: null,
+    peakPrice: null,
+    peakChangePct: null
+  }
+},
     greyMarket: {
       date: '2026-06-28',
       price: null, changePct: null, peakPrice: null, peakChangePct: null
     }
   },
-  // ⚠️ AUTO-STUB [2026-06-18] Futu API检测，Claude分析失败，请手动补充
-    {
-    code: '02672',
-    applyEndTs: 1782230400,   // 北京时间 2026-06-24 10:00（Futu提供，待招股书核实）
-    listTs:     1782662400,        // 北京时间 2026-06-29 00:00（⚠️ 待招股书核实，禁用Futu原始时间戳）
-    name: '白鸽在线',
-    nameEn: '',
-    sector: '⚠️ 待补充',
-    listDate: '2026-06-29',
-    subDate: '⚠️ 待补充',
-    price: 20.28,
-    lotSize: 200,
-    entryFee: 4096.76,
-    totalIssue: '⚠️ 待补充',
-    publicIssue: '⚠️ 待补充',
-    greenshoe: '⚠️ 待查（需同时搜超額配股權和超額配售）',
-    mktCapH: '⚠️ 待补充',
-    pe: '⚠️ 待补充',
-    verdict: 'wait', verdictLabel: '待分析', score: 0,
-    position: '⚠️ 待分析',
-    sponsors: '⚠️ 待补充',
-    isTransfer: false,
-    cornerstone: { total: '⚠️ 待补充', tier1: [], others: [] },
-    conclusion: '⚠️ AUTO-STUB [2026-06-18] 由本地Futu API自动检测插入，请用Claude补充完整招股书分析。',
-    scores: [
-      { label: '业务质量',          pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '财务健康',          pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '估值吸引力',        pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '资本结构',          pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '市场叙事/赛道溢价', pts: 0, max: 15, desc: '⚠️ 待分析' },
+  // ✅ AUTO-ANALYZED [2026-06-18] Claude API 自动分析
+  {
+  code: '02672',
+  applyEndTs: 1782266400,
+  listTs:     1782662400,
+  name: '白鸽在线',
+  nameEn: 'Baige Online Digital Technology Co., Ltd.',
+  sector: '保险科技 / 场景险互联网中介 / InsurTech',
+  listDate: '2026-06-29',
+  subDate: '2026-06-18 ~ 2026-06-24',
+  price: 20.28,
+  lotSize: 200,
+  entryFee: 4096.76,
+  totalIssue: '约3334.44万股H股（全球发售，含绿鞋前）',
+  publicIssue: '约333.46万股（10%香港公开发售）',
+  greenshoe: '有（最多500.16万股，约15%）',
+  mktCapH: '约HK$30.61亿（H股150,963,472股×HK$20.28）；总股本约HK$65.02亿（320,620,632股×HK$20.28）',
+  pe: '亏损公司无PE参考 / PS约0.7x（2025年收入约RMB12.27亿，总市值约HK$65亿≈RMB57亿）',
+  verdict: 'wait',
+  verdictLabel: '观望',
+  score: 46,
+  position: '1手现金仓（彩票仓）',
+  sponsors: '民银资本有限公司、中银国际亚洲有限公司',
+  isTransfer: false,
+  cornerstone: {
+    total: '待确认（招股书节选未披露基石投资者具体金额）',
+    tier1: [
+      { name: '待确认', amt: '待确认', lockup: '6个月' }
     ],
-    financial: [
-      { label: '收入（人民币亿元）', y2023: '—', y2024: '—', y2025: '—' },
-      { label: '毛利率',             y2023: '—', y2024: '—', y2025: '—' },
-      { label: '净利润（人民币M）',  y2023: '—', y2024: '—', y2025: '—' },
-      { label: '收入增速',           y2023: '—', y2024: '—', y2025: '—' },
+    others: []
+  },
+  conclusion: '白鸽在线是中国第三方场景互联网保险中介龙头（市占3.1%），收入3年CAGR约36%，增长亮眼。但公司持续亏损（2025净亏损RMB4670万，同比扩大68%），毛利率仅8.4%，经营杠杆待证，保单量连续两年萎缩。保荐人为民银资本+中银国际，属国资背景中小行；绿鞋存在，流通H股比例仅约10%，流动性薄。估值PS约0.7x看似便宜，但亏损扩大、赛道竞争激烈，InsurTech非当前港股最热叙事。综合评分46分，建议观望或最多申购1手彩票仓，不宜重仓。',
+  scores: [
+    { label: '业务质量', pts: 13, max: 25, desc: '中国第三方场景险中介排名第一（市占3.1%），9大生态圈布局，与70+保险公司合作，科技赋能差异化明显。但保单量及被保险人数量连续两年下滑，客户集中度高（五大客户占收入55.9%），去中介化风险真实存在，护城河有限。' },
+    { label: '财务健康', pts: 9, max: 25, desc: '收入持续高增长（2023-2025 CAGR约36%），但净亏损逐年扩大（RMB1720万→2770万→4670万），毛利率低且波动（7.9%→9.1%→8.4%），净负债净额持续扩大至RMB4780万，流动比率0.82低于1，现金流2025年转正但规模小（RMB2014万），财务状况偏弱。' },
+    { label: '估值吸引力', pts: 11, max: 25, desc: '亏损公司无PE，2025收入RMB12.27亿对应总市值约RMB57亿，PS约0.7x，看似便宜。但毛利率仅8%出头，与众安在线（港股龙头）相比规模差距大，盈利路径不清晰，估值折扣合理。发行价处区间上限，定价不够进取。' },
+    { label: '资本结构', pts: 8, max: 25, desc: '保荐人民银资本+中银国际为中资中小行级别，背书力度有限；绿鞋存在（15%）提供一定稳定支撑；H股流通盘约占总股本10.4%（约HK$3亿），流动性偏薄；基石投资者信息在节选中未披露，无法确认占比质量；控股股东IPO后持股约49.8%，锁定期保障基本。' },
+    { label: '市场叙事/赛道溢价', pts: 5, max: 15, desc: 'InsurTech/场景险赛道为中性赛道，港股市场关注度低，非AI芯片/机器人/低空经济热门方向（虽有无人机保险等轻微低空叙事但占比极小）。同类公司众安在线已上市，稀缺性不足，市场热度偏低。' }
+  ],
+  financial: [
+    { label: '收入（人民币亿元）', y2023: '6.60', y2024: '9.14', y2025: '12.27' },
+    { label: '毛利率', y2023: '7.9%', y2024: '9.1%', y2025: '8.4%' },
+    { label: '净亏损（人民币百万元）', y2023: '-17.2', y2024: '-27.7', y2025: '-46.7' },
+    { label: '经调整净亏损（非HKFRS，人民币百万元）', y2023: '-13.5', y2024: '-7.0', y2025: '-9.3' },
+    { label: '收入增速', y2023: '+63.1%', y2024: '+38.5%', y2025: '+34.2%' }
+  ],
+  cfChecks: [
+    { icon: '⚠️', text: '净亏损逐年扩大，2025年净亏损RMB4670万，同比增68%', tag: 'warn', tagText: '持续亏损' },
+    { icon: '✅', text: '2025年经营活动现金流转正（RMB2014万），较2024年(-RMB702万)改善', tag: 'ok', tagText: '经营现金流改善' },
+    { icon: '⚠️', text: '流动比率0.82<1，截至2025年末负债净额RMB4780万，财务结构偏紧', tag: 'warn', tagText: '流动性偏紧' },
+    { icon: '✅', text: '年末现金RMB9403万，较2023年RMB4011万明显增长，IPO募资改善流动性', tag: 'ok', tagText: '现金增长' },
+    { icon: '⚠️', text: '毛利率仅8.4%，核心业务保险交易服务毛利率11.5%，精准营销仅2.0%，整体盈利空间薄', tag: 'warn', tagText: '毛利率偏低' },
+    { icon: '⚠️', text: '认沽股份负债（优先股）RMB1.07亿上市后转为权益，负债净额结构性改善但依赖IPO', tag: 'warn', tagText: '结构依赖上市' }
+  ],
+  risks: [
+    '<strong>持续亏损风险</strong>：公司净亏损逐年扩大，经调整亏损虽有改善但仍为负，盈利路径不明朗，预计2026年仍录得净亏损。',
+    '<strong>客户集中风险</strong>：五大客户2025年贡献收入55.9%，单一保险公司客户流失可能严重影响业绩。',
+    '<strong>去中介化风险</strong>：保险公司直销能力增强及行业监管变化可能削减对保险中介的需求。',
+    '<strong>出行生态依赖风险</strong>：主要场景合作伙伴已采用供应商多元化政策，被保险人及保单量持续下滑。',
+    '<strong>流动性风险</strong>：H股流通盘约HK$3亿，流动性极薄，上市初期波动风险大。',
+    '<strong>佣金费率波动风险</strong>：保费及佣金率受监管政策、市场竞争影响大，费率下降将直接压缩毛利。',
+    '<strong>监管合规风险</strong>：中国保险中介受国家金融监督管理总局严格监管，政策变化风险不可控。'
+  ],
+  actions: [
+    { date: '6月18日 招股书发布', title: '研读基石条款', desc: '重点关注基石投资者名单及占比，若机构级基石占发售股份>20%可考虑升级至轻仓1手。' },
+    { date: '6月24日 截止申购', title: '最多申购1手彩票仓', desc: '综合评分46分，建议最多以现金申购1手(HK$4096.76)，不建议孖展操作，将亏损风险控制在单手范围内。' },
+    { date: '6月25日 定价日', title: '关注最终定价', desc: '若最终定价低于HK$17（指示区间下限以下），超额折价暗示需求不足，可放弃或仅保留1手。若定价HK$20.28顶格，需谨慎。' },
+    { date: '6月26日 分配结果', title: '确认中签情况', desc: '公开发售仅333万股，中签率预计较高。若中1手，暗盘日视市场情绪决定是否持有至上市。' },
+    { date: '6月28日 暗盘', title: '观察暗盘表现', desc: '若暗盘跌破发行价HK$20.28超过5%，建议于暗盘或上市首日开盘止损离场，不宜恋战。' },
+    { date: '6月29日 上市首日', title: '设定止损止盈', desc: '止盈目标+15%（约HK$23.3），止损线-10%（约HK$18.25），流动性薄需警惕大幅波动。' }
+  ],
+  subscription: {
+    scenarios: [
+      { label: '保守', mult: 10, premPct: -5 },
+      { label: '基准', mult: 30, premPct: 5 },
+      { label: '乐观', mult: 80, premPct: 15 }
     ],
-    cfChecks: [
-      { icon: '⚠️', text: 'AUTO-STUB 自动插入，现金流数据待人工核实', tag: 'warn', tagText: '待分析' },
-    ],
-    risks: ['<strong>待分析</strong>：请用Claude补充完整招股书分析'],
-    actions: [
-      { date: '⚠️ 待填', title: '申购截止', desc: '请补充具体时间节点' },
-    ],
-    subscription: {
-      scenarios: [
-        { label: '保守', mult: 0, premPct: 0 },
-        { label: '基准', mult: 0, premPct: 0 },
-        { label: '乐观', mult: 0, premPct: 0 },
-      ],
-      recClass: 'wait', recTitle: '⚠️ 待分析',
-      lots: 0, method: '待定', marginOk: false,
-      marginTip: '⚠️ 待分析',
-      rationale: 'AUTO-STUB，待人工补充分析。',
-      urgentTip: '⚠️ 请补充截止时间',
-    },
+    recClass: 'wait',
+    recTitle: '⚠️ 谨慎参与',
+    lots: 1,
+    method: '现金仓',
+    marginOk: false,
+    marginTip: '不建议孖展：公司持续亏损、流通盘极小、赛道热度低，孖展风险远大于潜在收益。',
+    rationale: '白鸽在线是中国第三方场景险中介细分龙头，收入增速靓丽，但持续亏损且扩大、毛利率偏低、H股流通盘仅约HK$3亿，流动性极薄。保荐人背书力度一般，赛道非港股当前热门叙事，估值PS约0.7x看似便宜但盈利路径不清晰。综合五维评分46分，属"观望"区间。若投资者对InsurTech赛道有信仰或博弈低流通盘炒作，可考虑1手现金彩票仓，严格设置止损。',
+    urgentTip: '⏰ 截止2026-06-24(周三) 白表eIPO 11:30/付款12:00；每人限申1手起；最高申请1,667,200股；不建议孖展；暗盘日2026-06-28注意流动性风险。'
+  },
+  greyMarket: {
+    date: '2026-06-28',
+    price: null,
+    changePct: null,
+    peakPrice: null,
+    peakChangePct: null
+  }
+},
     greyMarket: {
       date: '2026-06-28',
       price: null, changePct: null, peakPrice: null, peakChangePct: null
     }
   },
-  // ⚠️ AUTO-STUB [2026-06-18] Futu API检测，Claude分析失败，请手动补充
-    {
-    code: '09637',
-    applyEndTs: 1782230400,   // 北京时间 2026-06-24 10:00（Futu提供，待招股书核实）
-    listTs:     1782662400,        // 北京时间 2026-06-29 00:00（⚠️ 待招股书核实，禁用Futu原始时间戳）
-    name: '礼邦医药-B',
-    nameEn: '',
-    sector: '⚠️ 待补充',
-    listDate: '2026-06-29',
-    subDate: '⚠️ 待补充',
-    price: 22.6,
-    lotSize: 100,
-    entryFee: 2282.71,
-    totalIssue: '⚠️ 待补充',
-    publicIssue: '⚠️ 待补充',
-    greenshoe: '⚠️ 待查（需同时搜超額配股權和超額配售）',
-    mktCapH: '⚠️ 待补充',
-    pe: '⚠️ 待补充',
-    verdict: 'wait', verdictLabel: '待分析', score: 0,
-    position: '⚠️ 待分析',
-    sponsors: '⚠️ 待补充',
-    isTransfer: false,
-    cornerstone: { total: '⚠️ 待补充', tier1: [], others: [] },
-    conclusion: '⚠️ AUTO-STUB [2026-06-18] 由本地Futu API自动检测插入，请用Claude补充完整招股书分析。',
-    scores: [
-      { label: '业务质量',          pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '财务健康',          pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '估值吸引力',        pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '资本结构',          pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '市场叙事/赛道溢价', pts: 0, max: 15, desc: '⚠️ 待分析' },
+  // ✅ AUTO-ANALYZED [2026-06-18] Claude API 自动分析
+  {
+  code: '09637',
+  applyEndTs: 1782266400,
+  listTs:     1782662400,
+  name: '礼邦医药-B',
+  nameEn: 'Alebund Pharmaceuticals (Jiangsu) Limited',
+  sector: '生物医药 / 肾病疗法 / 18A未盈利生物科技',
+  listDate: '2026-06-29',
+  subDate: '2026-06-18 ~ 2026-06-24',
+  price: 22.6,
+  lotSize: 100,
+  entryFee: 2282.71,
+  totalIssue: '约5675.54万股H股（全球发售，不含绿鞋）',
+  publicIssue: '567.56万股（10%香港公开发售）',
+  greenshoe: '有（最多851.33万股，约15%）',
+  mktCapH: '约HK$76.81亿（总股本3.40亿股×HK$22.6）',
+  pe: '未盈利（净亏损）/ PS 约186x（2025A收入RMB3056万）',
+  verdict: 'wait',
+  verdictLabel: '轻仓',
+  score: 57,
+  position: '1手现金仓',
+  sponsors: 'Jefferies（联席保荐人）、美银证券（BofA Securities）、华泰金融控股（HTSC）',
+  isTransfer: false,
+  cornerstone: {
+    total: '待确认具体金额，基石投资者包括腾讯（Perfect Ten + Huang River）、GIC、Loyal Valley Capital（Golden Valley Master + Golden Valley Global + Loyal Valley Fund III）、Symbiosis II LLC',
+    tier1: [
+      { name: '腾讯（Perfect Ten Holding + Huang River Investment）', amt: '待确认', lockup: '6个月' },
+      { name: 'GIC Private Limited', amt: '待确认', lockup: '6个月' },
+      { name: 'Loyal Valley Capital（Golden Valley Master/Global/Fund III）', amt: '待确认', lockup: '6个月' },
+      { name: 'Symbiosis II, LLC', amt: '待确认', lockup: '6个月' },
     ],
-    financial: [
-      { label: '收入（人民币亿元）', y2023: '—', y2024: '—', y2025: '—' },
-      { label: '毛利率',             y2023: '—', y2024: '—', y2025: '—' },
-      { label: '净利润（人民币M）',  y2023: '—', y2024: '—', y2025: '—' },
-      { label: '收入增速',           y2023: '—', y2024: '—', y2025: '—' },
+    others: []
+  },
+  conclusion: '礼邦医药为18A未盈利肾病生物科技，核心产品AP301（磷结合剂）已完成中国III期、预计2026年6月提交NDA，AP306获NMPA突破性疗法认定，管线聚焦CKD高价值赛道。但公司2025年净亏损RMB7.52亿、经营现金流持续净流出，目前唯一收入来源为美信羅®商业化（2025年RMB3056万），估值极贵。基石阵容质量高（腾讯、GIC、Loyal Valley Capital均为现有股东续投），保荐人Jefferies/BofA/HTSC阵容强。赛道为中性肾病细分，港股稀缺性一般。建议1手彩票仓，博AP301 NDA获批及市场情绪催化，勿重仓。',
+  scores: [
+    { label: '业务质量', pts: 15, max: 25, desc: 'AP301完成中国III期、全球MRCT进行中，AP306获BTD认定，全球仅2款在研高磷血症分子（均为礼邦）；但核心产品均未获批，商业化仅依赖罗氏美信羅®代理，管线尚早期，护城河有限，得分中等' },
+    { label: '财务健康', pts: 8, max: 25, desc: '2025年收入仅RMB3056万（+368% YoY但基数极低），净亏损RMB7.52亿，经营现金流净流出约RMB2.88亿，研发开支RMB3.73亿；账上现金RMB3.58亿，IPO后延长至约47个月runway；典型18A烧钱模型，财务健康评分低' },
+    { label: '估值吸引力', pts: 8, max: 25, desc: '总市值约HK$76.8亿，对标2025年收入PS约186x，无利润参考PE；与同类18A肾病/罕见病公司横向比较估值偏贵；H股有形资产净值仅HK$5.21/股，发售价溢价约334%；估值吸引力较弱' },
+    { label: '资本结构', pts: 18, max: 25, desc: '保荐人Jefferies+BofA+HTSC阵容强；基石投资者质量高（腾讯、GIC、Loyal Valley Capital均为资深/知名机构）且部分为现有股东续投，显示强信心；有15%绿鞋机制；超额配股权及稳定价格经辦人富瑞均已安排；上市前8轮融资约RMB20亿，投资者背景多元' },
+    { label: '市场叙事/赛道溢价', pts: 8, max: 15, desc: '肾病赛道为中性医疗细分，非当前最热赛道（AI/机器人等），但CKD全球患者8亿+、高磷血症市场2035年预计64亿美元具成长性；AP301 NDA提交为近期催化剂；港股肾病专科18A稀缺，叙事中等偏上' },
+  ],
+  financial: [
+    { label: '收入（人民币亿元）', y2023: '—', y2024: '0.065', y2025: '0.306' },
+    { label: '毛利率', y2023: '—', y2024: '36.5%', y2025: '44.0%' },
+    { label: '净利润（人民币M）', y2023: '—', y2024: '-335.1', y2025: '-751.8' },
+    { label: '收入增速', y2023: '—', y2024: '—', y2025: '+368%' },
+  ],
+  cfChecks: [
+    { icon: '⚠️', text: '经营现金流净流出：2024年RMB-2.50亿，2025年RMB-2.88亿，持续烧钱', tag: 'warn', tagText: '持续亏损' },
+    { icon: '⚠️', text: '研发开支快速增长：2025年RMB3.73亿（+58% YoY），短期内难以收窄亏损', tag: 'warn', tagText: '研发重投' },
+    { icon: '✅', text: '账上现金RMB3.58亿，IPO后预计维持至少47个月runway，短期流动性无虞', tag: 'ok', tagText: '现金充裕' },
+    { icon: '✅', text: '融资活动现金流入稳定：2024年RMB7.88亿，2025年RMB5.42亿，历史融资顺畅', tag: 'ok', tagText: '融资能力强' },
+    { icon: '⚠️', text: '2025年行政开支RMB2.51亿（含股份支付RMB2.61亿非现金），费用结构偏重', tag: 'warn', tagText: '费用偏高' },
+  ],
+  risks: [
+    '<strong>核心产品临床/监管风险</strong>：AP301 NDA尚未提交，III期MRCT仍在进行中；FDA裁员可能影响审批进度；任何临床失败将对股价造成重大冲击',
+    '<strong>单一收入来源风险</strong>：目前全部收入依赖美信羅®中国代理，若罗氏协议终止或竞品替代，收入将归零',
+    '<strong>高估值摊薄风险</strong>：发售价较每股有形净资产溢价约334%，上市即承压；未来持续融资将稀释股东权益',
+    '<strong>AP301/AP306自相蚕食风险</strong>：两款产品针对同一患者群（CKD高磷血症），商业化后存在内部竞争',
+    '<strong>美信羅®政策风险</strong>：纳入国家医保目录后价格压力较大，若集采或竞品生物类似药上市，利润空间将大幅收窄',
+    '<strong>大股东影响力风险</strong>：上市后单一最大股东集团控制约20.41%投票权，腾讯系约10.28%，小股东话语权有限',
+  ],
+  actions: [
+    { date: '6月18日 招股开始', title: '评估1手入场', desc: '以HK$2282.71申购1手现金仓，博AP301 NDA提交催化，控制风险' },
+    { date: '6月24日 截止申购', title: '最后申购截止', desc: '港股eIPO截止上午11:30，付款截止中午12:00，务必提前完成操作' },
+    { date: '6月26日 公布结果', title: '确认中签情况', desc: '查看分配结果，若中签确认持仓策略' },
+    { date: '6月28日 暗盘交易', title: '观察暗盘表现', desc: '暗盘溢价>10%可考虑暗盘减仓锁定利润；若暗盘破发则评估止损' },
+    { date: '6月29日 正式上市', title: '上市日操作', desc: '若股价>HK$26（+15%）可考虑分批止盈；若破发跌破HK$20考虑止损离场' },
+    { date: '2026Q3 关键催化', title: '关注AP301 NDA进展', desc: '预计2026年6月已提交中国NDA，后续NMPA受理公告为重要催化，可视情况加仓' },
+  ],
+  subscription: {
+    scenarios: [
+      { label: '保守', mult: 30, premPct: -5 },
+      { label: '基准', mult: 80, premPct: 8 },
+      { label: '乐观', mult: 150, premPct: 18 },
     ],
-    cfChecks: [
-      { icon: '⚠️', text: 'AUTO-STUB 自动插入，现金流数据待人工核实', tag: 'warn', tagText: '待分析' },
-    ],
-    risks: ['<strong>待分析</strong>：请用Claude补充完整招股书分析'],
-    actions: [
-      { date: '⚠️ 待填', title: '申购截止', desc: '请补充具体时间节点' },
-    ],
-    subscription: {
-      scenarios: [
-        { label: '保守', mult: 0, premPct: 0 },
-        { label: '基准', mult: 0, premPct: 0 },
-        { label: '乐观', mult: 0, premPct: 0 },
-      ],
-      recClass: 'wait', recTitle: '⚠️ 待分析',
-      lots: 0, method: '待定', marginOk: false,
-      marginTip: '⚠️ 待分析',
-      rationale: 'AUTO-STUB，待人工补充分析。',
-      urgentTip: '⚠️ 请补充截止时间',
-    },
+    recClass: 'wait',
+    recTitle: '⚠️ 谨慎参与（1手彩票仓）',
+    lots: 1,
+    method: '现金仓',
+    marginOk: false,
+    marginTip: '18A未盈利生物科技，估值极贵、亏损持续扩大，不建议孖展放大风险',
+    rationale: '礼邦医药核心产品AP301已完成中国III期并预计2026年6月提交NDA，是近期重要催化剂；基石投资者质量高（腾讯、GIC续投），保荐人阵容强（Jefferies/BofA），有绿鞋保护。然而公司仍处于深度亏损阶段，2025年净亏损RMB7.52亿，估值PS约186x极度偏贵，且赛道热度一般。建议以1手现金仓博NDA催化带来的短线情绪溢价，严格控制仓位，切勿重仓。',
+    urgentTip: '⏰ 截止2026-06-24（周三）上午11:30（eIPO）/ 中午12:00（付款）；一人一手策略；勿孖展；暗盘日2026-06-28注意观察'
+  },
+  greyMarket: {
+    date: '2026-06-28',
+    price: null,
+    changePct: null,
+    peakPrice: null,
+    peakChangePct: null
+  }
+},
     greyMarket: {
       date: '2026-06-28',
       price: null, changePct: null, peakPrice: null, peakChangePct: null
     }
   },
-  // ⚠️ AUTO-STUB [2026-06-17] Futu API检测，Claude分析失败，请手动补充
-    {
-    code: '01956',
-    applyEndTs: 1782144000,   // 北京时间 2026-06-23 10:00（Futu提供，待招股书核实）
-    listTs:     1782403200,        // 北京时间 2026-06-26 00:00（⚠️ 待招股书核实，禁用Futu原始时间戳）
-    name: '中科闻歌',
-    nameEn: '',
-    sector: '⚠️ 待补充',
-    listDate: '2026-06-26',
-    subDate: '⚠️ 待补充',
-    price: 60.7,
-    lotSize: 200,
-    entryFee: 12262.01,
-    totalIssue: '⚠️ 待补充',
-    publicIssue: '⚠️ 待补充',
-    greenshoe: '⚠️ 待查（需同时搜超額配股權和超額配售）',
-    mktCapH: '⚠️ 待补充',
-    pe: '⚠️ 待补充',
-    verdict: 'wait', verdictLabel: '待分析', score: 0,
-    position: '⚠️ 待分析',
-    sponsors: '⚠️ 待补充',
-    isTransfer: false,
-    cornerstone: { total: '⚠️ 待补充', tier1: [], others: [] },
-    conclusion: '⚠️ AUTO-STUB [2026-06-17] 由本地Futu API自动检测插入，请用Claude补充完整招股书分析。',
-    scores: [
-      { label: '业务质量',          pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '财务健康',          pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '估值吸引力',        pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '资本结构',          pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '市场叙事/赛道溢价', pts: 0, max: 15, desc: '⚠️ 待分析' },
+  // ✅ AUTO-ANALYZED [2026-06-18] Claude API 自动分析
+  {
+  code: '01956',
+  applyEndTs: 1782180000,
+  listTs:     1782403200,
+  name: '中科闻歌',
+  nameEn: 'Beijing Zhongke WengeAI Science and Technology Co., Ltd.',
+  sector: '人工智能 / 企业级大模型决策智能 / 18C特专科技',
+  listDate: '2026-06-26',
+  subDate: '2026-06-17 ~ 2026-06-23',
+  price: 60.7,
+  lotSize: 200,
+  entryFee: 12262.01,
+  totalIssue: '1483.46万股H股（全球发售，超额配股权行使前）',
+  publicIssue: '74.18万股（约5%香港公开发售，可予重新分配）',
+  greenshoe: '有（最多222.5万股，约15%，超额配股权）',
+  mktCapH: '约HK$105亿（总股本1.731亿股×HK$60.7）',
+  pe: '不适用（持续亏损）/ PS约2.2x（2025A收入RMB4.05亿，按市值约HK$105亿≈RMB91亿折算）',
+  verdict: 'wait',
+  verdictLabel: '观望',
+  score: 47,
+  position: '1手现金仓（彩票仓）',
+  sponsors: '中国国际金融香港证券有限公司（独家保荐人）',
+  isTransfer: false,
+  cornerstone: {
+    total: '待确认（招股书节选未披露基石投资者具体金额）',
+    tier1: [
+      { name: '待确认（招股书正文基石章节未在节选中披露）', amt: '待确认', lockup: '6个月' }
     ],
-    financial: [
-      { label: '收入（人民币亿元）', y2023: '—', y2024: '—', y2025: '—' },
-      { label: '毛利率',             y2023: '—', y2024: '—', y2025: '—' },
-      { label: '净利润（人民币M）',  y2023: '—', y2024: '—', y2025: '—' },
-      { label: '收入增速',           y2023: '—', y2024: '—', y2025: '—' },
+    others: []
+  },
+  conclusion: '中科闻歌是中科院系AI企业，聚焦企业级大模型决策智能，2025年细分市占率第一（10.2%）。收入增速约27%，毛利率提升至51.2%，但三年持续亏损（2025年净亏RMB1.66亿），经营现金流持续净流出（2025年约RMB1.88亿），无盈利时间表。市值约HK$105亿，PS约2.2x偏贵，赛道虽热但竞争极激烈，百度/阿里/字节等主流AI厂商均为对手。18C路径+中金保荐背书尚可，但缺乏确认基石、规模偏小、盈利路径不清晰。建议仅申购1手现金仓博弈打新，不宜重仓。',
+  scores: [
+    { label: '业务质量', pts: 13, max: 25, desc: '细分赛道市占第一（10.2%），自研DIOS平台+雅意大模型具技术壁垒，中科院背景加分；但绝对规模小（RMB4亿收入），在企业级大模型整体市场仅排第八（2.2%），客户集中度高（前五大客户占收入37.6%），政府/媒体客户依赖度高，留存率波动（55%→67%→55%），商业化路径仍在早期' },
+    { label: '财务健康', pts: 8, max: 25, desc: '收入三年CAGR约27%，毛利率持续提升至51.2%，属积极信号；但净亏损持续（2023/24/25分别亏RMB2.6/1.57/1.66亿），经营现金流持续净流出（2025年RMB1.88亿），贸易应收款大幅增长（2025年RMB2.48亿），研发费用占收入46%，短期内无盈利预期，现金储备消耗风险明显' },
+    { label: '估值吸引力', pts: 9, max: 25, desc: '发行市值约HK$105亿，PS约2.2x（基于2025年收入RMB4.05亿换算约HK$46亿），对于持续亏损的早期AI公司估值不算离谱但也无明显折扣；每股NAV备考仅HK$7.81，较发售价折让逾87%，上行依赖纯预期驱动；与商汤/第四范式等18C AI对标，估值中性偏贵' },
+    { label: '资本结构', pts: 9, max: 25, desc: '中金独家保荐，背书较强；有绿鞋机制（约15%）；十轮Pre-IPO融资约RMB12.15亿，股东背景含国开制造业基金、中科院系资本、AI基金（北京市引导基金）等国资背书；但基石投资者数据节选未披露具体金额，无法确认基石质量；单一最大股东集团持股28%，集中度适中' },
+    { label: '市场叙事/赛道溢价', pts: 8, max: 15, desc: '企业级AI大模型为当下港股热门赛道，18C特专科技标签具稀缺性；中科院系AI公司故事性强；但同类AI公司（商汤、第四范式、旷视等）港股已有多只，赛道拥挤，且决策智能细分市场认知度相对较低，大模型基础市场排名第八不占优' }
+  ],
+  financial: [
+    { label: '收入（人民币亿元）', y2023: '2.50', y2024: '3.18', y2025: '4.05' },
+    { label: '毛利率', y2023: '44.0%', y2024: '50.4%', y2025: '51.2%' },
+    { label: '净亏损（人民币百万元）', y2023: '-259.8', y2024: '-157.1', y2025: '-166.3' },
+    { label: '收入增速', y2023: '—', y2024: '+27.3%', y2025: '+27.5%' }
+  ],
+  cfChecks: [
+    { icon: '⚠️', text: '经营活动现金净流出：2023年RMB1.83亿、2024年RMB1.35亿、2025年RMB1.88亿，持续扩大', tag: 'warn', tagText: '现金流警示' },
+    { icon: '⚠️', text: '贸易应收款持续攀升：截至2025年底RMB2.48亿，占流动资产32.9%，回款风险上升', tag: 'warn', tagText: '应收款风险' },
+    { icon: '✅', text: '截至2026年4月现金储备（含金融资产等）达RMB8.61亿，加上IPO所得可维持运营约50个月', tag: 'ok', tagText: '流动性尚可' },
+    { icon: '✅', text: '毛利率三年连续提升（44%→50.4%→51.2%），规模效应初显', tag: 'ok', tagText: '盈利能力改善' },
+    { icon: '⚠️', text: '研发支出占收入46.3%（2025年RMB1.88亿），短期内难以实现盈利，2026年预计继续亏损', tag: 'warn', tagText: '持续亏损' }
+  ],
+  risks: [
+    '<strong>持续亏损风险</strong>：公司自成立以来持续录得经营亏损，2023-2025年净亏损合计超RMB5.8亿，2026年预计继续亏损，盈利时间表不明确',
+    '<strong>竞争加剧风险</strong>：在企业级大模型整体市场排名第八，需面对百度、阿里、字节、华为等主流科技巨头的直接竞争，资源差距悬殊',
+    '<strong>客户集中度风险</strong>：前五大客户贡献收入37.6%（2025年），最大客户占19.1%，政府/媒体客户预算波动直接影响业绩',
+    '<strong>现金流压力</strong>：经营现金持续净流出，贸易应收款快速增长，若收入增速放缓或大客户延迟付款，流动性压力将显著上升',
+    '<strong>18C估值风险</strong>：作为特专科技公司，上市规则明确提示"估值过高"风险，每股备考NAV仅HK$7.81，发行价较NAV溢价逾7倍，高度依赖市场情绪支撑',
+    '<strong>技术迭代风险</strong>：AI技术演进极快，若大模型基础能力被OpenAI/通义/Kimi等快速迭代颠覆，公司现有技术护城河可能快速收窄'
+  ],
+  actions: [
+    { date: '6月17日 招股开始', title: '关注基石投资者公告', desc: '留意公司正式公告基石投资者名单及金额，若基石占比超30%且有知名机构背书，可考虑升级为轻仓1手' },
+    { date: '6月23日 截止申购', title: '申购1手现金仓', desc: '按计划申购1手（HK$12,262），纯现金仓彩票策略，不建议使用孖展，控制风险' },
+    { date: '6月25日 暗盘交易', title: '观察暗盘表现', desc: '若暗盘溢价超10%可考虑在暗盘适量减持；若暗盘破发则视具体跌幅决定上市日是否止损' },
+    { date: '6月26日 上市首日', title: '视价格决定操作', desc: '若开盘溢价15%以上考虑止盈；若平价或微跌可短暂持有观察；若跌超10%建议止损离场，不建议长期持有亏损仓位' }
+  ],
+  subscription: {
+    scenarios: [
+      { label: '保守', mult: 30, premPct: -5 },
+      { label: '基准', mult: 80, premPct: 8 },
+      { label: '乐观', mult: 150, premPct: 20 }
     ],
-    cfChecks: [
-      { icon: '⚠️', text: 'AUTO-STUB 自动插入，现金流数据待人工核实', tag: 'warn', tagText: '待分析' },
-    ],
-    risks: ['<strong>待分析</strong>：请用Claude补充完整招股书分析'],
-    actions: [
-      { date: '⚠️ 待填', title: '申购截止', desc: '请补充具体时间节点' },
-    ],
-    subscription: {
-      scenarios: [
-        { label: '保守', mult: 0, premPct: 0 },
-        { label: '基准', mult: 0, premPct: 0 },
-        { label: '乐观', mult: 0, premPct: 0 },
-      ],
-      recClass: 'wait', recTitle: '⚠️ 待分析',
-      lots: 0, method: '待定', marginOk: false,
-      marginTip: '⚠️ 待分析',
-      rationale: 'AUTO-STUB，待人工补充分析。',
-      urgentTip: '⚠️ 请补充截止时间',
-    },
+    recClass: 'wait',
+    recTitle: '⚠️ 谨慎参与（1手彩票仓）',
+    lots: 1,
+    method: '现金仓',
+    marginOk: false,
+    marginTip: '持续亏损+现金流为负+估值偏高，不建议使用孖展，风险不对称',
+    rationale: '中科闻歌具备AI热门赛道+中科院背景+细分市占第一等正面因素，中金保荐背书较强。然而公司持续亏损、经营现金流为负、估值相对偏高（PS约2.2x对亏损企业），且竞争格局严峻。18C特专科技标签+港股AI稀缺性可支撑一定溢价，但上行空间有限。建议仅申购1手现金仓参与博弈，控制损失上限于约HK$1.2万。',
+    urgentTip: '⏰ 截止2026-06-23（周二）北京时间12:00（白表eIPO截止11:30提交）；每人最多申购370,800股；建议仅申购1手200股；暗盘2026-06-25'
+  },
+  greyMarket: {
+    date: '2026-06-25',
+    price: null,
+    changePct: null,
+    peakPrice: null,
+    peakChangePct: null
+  }
+},
     greyMarket: {
       date: '2026-06-25',
       price: null, changePct: null, peakPrice: null, peakChangePct: null
     }
   },
-  // ⚠️ AUTO-STUB [2026-06-17] Futu API检测，Claude分析失败，请手动补充
-    {
-    code: '01688',
-    applyEndTs: 1782144000,   // 北京时间 2026-06-23 10:00（Futu提供，待招股书核实）
-    listTs:     1782403200,        // 北京时间 2026-06-26 00:00（⚠️ 待招股书核实，禁用Futu原始时间戳）
-    name: '领益智造',
-    nameEn: '',
-    sector: '⚠️ 待补充',
-    listDate: '2026-06-26',
-    subDate: '⚠️ 待补充',
-    price: 10.18,
-    lotSize: 660,
-    entryFee: 6786.32,
-    totalIssue: '⚠️ 待补充',
-    publicIssue: '⚠️ 待补充',
-    greenshoe: '⚠️ 待查（需同时搜超額配股權和超額配售）',
-    mktCapH: '⚠️ 待补充',
-    pe: '⚠️ 待补充',
-    verdict: 'wait', verdictLabel: '待分析', score: 0,
-    position: '⚠️ 待分析',
-    sponsors: '⚠️ 待补充',
-    isTransfer: false,
-    cornerstone: { total: '⚠️ 待补充', tier1: [], others: [] },
-    conclusion: '⚠️ AUTO-STUB [2026-06-17] 由本地Futu API自动检测插入，请用Claude补充完整招股书分析。',
-    scores: [
-      { label: '业务质量',          pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '财务健康',          pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '估值吸引力',        pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '资本结构',          pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '市场叙事/赛道溢价', pts: 0, max: 15, desc: '⚠️ 待分析' },
+  // ✅ AUTO-ANALYZED [2026-06-18] Claude API 自动分析
+  {
+  code: '01688',
+  applyEndTs: 1782180000,
+  listTs:     1782403200,
+  name: '领益智造',
+  nameEn: 'LINGYI iTECH (GUANGDONG) COMPANY',
+  sector: '精密制造 / AI终端设备零组件 / A+H双重上市',
+  listDate: '2026-06-26',
+  subDate: '2026-06-17 ~ 2026-06-23',
+  price: 10.18,
+  lotSize: 660,
+  entryFee: 6786.32,
+  totalIssue: '约81,181万股H股（全球发售811,811,880股）',
+  publicIssue: '约8,118万股（10%香港公开发售81,181,320股）',
+  greenshoe: '有（超额配股权，最多约121,772万股，约15%）',
+  mktCapH: '约HK$82.6亿（H股市值，全球总市值约HK$1,320亿，总股本约81.2亿股×HK$10.18×A股折算）',
+  pe: '约20x（2025A净利润RMB23.3亿，发行价折合约HK$131.98亿总市值）/ PS约2.6x（2025A收入RMB514亿）',
+  verdict: 'da',
+  verdictLabel: '打',
+  score: 78,
+  position: '1手现金仓',
+  sponsors: '国泰君安融资有限公司（独家保荐人）；中信里昂证券、J.P. Morgan、花旗环球金融亚洲（联席全球协调人）',
+  isTransfer: false,
+  cornerstone: {
+    total: 'USD 4.069亿（≈HK$31.89亿），占发售股份约38.59%',
+    tier1: [
+      { name: '广发基金（广发基金管理+广发基金香港）', amt: 'USD 4200万', lockup: '6个月' },
+      { name: 'Kaide Global Investment', amt: 'USD 3200万', lockup: '6个月' },
+      { name: 'Qube', amt: 'USD 3000万', lockup: '6个月' },
+      { name: 'Ti-Capital Funds', amt: 'USD 3000万', lockup: '6个月' },
+      { name: '宏兴国际', amt: 'USD 3000万', lockup: '6个月' },
+      { name: '惠理（惠理基金管理香港+惠理基金管理公司）', amt: 'USD 3000万', lockup: '6个月' },
+      { name: 'MSIP（摩根士丹利）', amt: 'USD 2990万', lockup: '6个月' },
     ],
-    financial: [
-      { label: '收入（人民币亿元）', y2023: '—', y2024: '—', y2025: '—' },
-      { label: '毛利率',             y2023: '—', y2024: '—', y2025: '—' },
-      { label: '净利润（人民币M）',  y2023: '—', y2024: '—', y2025: '—' },
-      { label: '收入增速',           y2023: '—', y2024: '—', y2025: '—' },
+    others: [
+      { name: '香港景林', amt: 'USD 2300万', lockup: '6个月' },
+      { name: '3W Fund', amt: 'USD 2000万', lockup: '6个月' },
+      { name: 'Deliante（旺旺蔡衍明家族信托）', amt: 'USD 2000万', lockup: '6个月' },
+      { name: '舜宇资本', amt: 'USD 2000万', lockup: '6个月' },
+      { name: '荣耀', amt: 'USD 1500万', lockup: '6个月' },
+      { name: 'Jain Global', amt: 'USD 1500万', lockup: '6个月' },
+      { name: 'Seven Grand', amt: 'USD 1500万', lockup: '6个月' },
+      { name: '泰康人寿', amt: 'USD 1500万', lockup: '6个月' },
+      { name: '大成国际', amt: 'USD 1000万', lockup: '6个月' },
+      { name: '光大理财', amt: 'USD 1000万', lockup: '6个月' },
+      { name: 'GRANITE ASIA', amt: 'USD 1000万', lockup: '6个月' },
+      { name: 'Verition', amt: 'USD 1000万', lockup: '6个月' },
+    ]
+  },
+  conclusion: '领益智造为深圳A股上市精密制造龙头，全球AI终端设备高精密功能件市场排名第一（7%市占率），客户覆盖苹果、三星、Meta等全球头部企业。2024/2025年收入分别同比+53%/+40%，毛利率回升至15.2%，经调整净利润RMB26.5亿。基石投资者阵容强大（USD4.07亿，占发售约39%），含摩根士丹利、舜宇资本、泰康人寿等机构，有6个月锁定期。H股相对A股（A股近期约RMB14.79，折合约HK$17港元）折价约40%，触发硬性规则"A+H折价>30%直接打"。赛道覆盖AI终端、机器人、服务器等热门方向，市场叙事强劲。建议积极申购1手。',
+  scores: [
+    { label: '业务质量', pts: 20, max: 25, desc: '全球AI终端高精密功能件市占率第一（7%），全球智造平台第三，覆盖AI眼镜/折叠屏/服务器/机器人/低空经济多赛道；全球63+生产基地，客户包含全球市值最大AI终端品牌；连续8年《财富》中国500强。但客户集中度较高（前5客户占57.5%收入），单一最大客户占19%，护城河相对一般硬件制造商略强但仍有集中风险。' },
+    { label: '财务健康', pts: 18, max: 25, desc: '2024/2025年收入增速分别+52.9%/+39.6%，增长强劲。毛利率从14.4%（2024）回升至15.2%（2025），经调整净利润从RMB18.6亿升至RMB26.5亿，经营现金流连续三年为正（2025年RMB44.3亿）。净利率偏薄（4.5%），债务净额/权益比率升至38.6%，2025年流动比率降至1.2倍，2026Q1受汇损拖累净利润同比-29%，财务略有隐忧。' },
+    { label: '估值吸引力', pts: 20, max: 25, desc: 'H股发行价10.18港元，对应A股（约14.79元人民币≈17港元）折价约40%，估值吸引力极强，触发A+H折价>30%硬性规则。H股PE约20x（2025A），行业对标立讯精密、比亚迪电子约15-20x，估值基本合理；PS约2.6x，制造业合理水平。相对A股折价幅度大是最核心的估值亮点。' },
+    { label: '资本结构', pts: 12, max: 25, desc: '基石投资者合计USD4.07亿，锁定约38.6%发售份额，包含摩根士丹利、广发基金、泰康人寿、舜宇资本等21家机构，质量较高且多元。保荐人为国泰君安（独家），中信里昂/摩根大通/花旗为联席协调人，阵容扎实。有超额配股权（绿鞋，最多15%）提供稳价保障。但基石占比虽高，机构独立性有待评估；控股股东曾芳勤合计持股约52%，股权集中。' },
+    { label: '市场叙事/赛道溢价', pts: 8, max: 15, desc: '覆盖AI终端设备、机器人、服务器、低空经济等多个热门赛道，但本质是精密制造代工，并非纯AI芯片/机器人本体等最热概念。A+H稀缺性较强（A股已上市，H股首发），港股制造业细分赛道有配置价值，但同类对标（立讯精密等）已有多只，叙事溢价适中。' },
+  ],
+  financial: [
+    { label: '收入（人民币亿元）', y2023: '341.5', y2024: '442.6', y2025: '514.3' },
+    { label: '毛利率', y2023: '18.7%', y2024: '14.4%', y2025: '15.2%' },
+    { label: '净利润（人民币亿元）', y2023: '20.1', y2024: '17.6', y2025: '23.3' },
+    { label: '收入增速', y2023: '—', y2024: '+52.9%', y2025: '+39.6%' },
+  ],
+  cfChecks: [
+    { icon: '✅', text: '经营现金流连续3年为正，2025年RMB44.3亿，覆盖净利润约1.9倍', tag: 'ok', tagText: '现金流健康' },
+    { icon: '✅', text: '2025年末现金及等价物RMB54.5亿，流动性尚可', tag: 'ok', tagText: '现金充裕' },
+    { icon: '⚠️', text: '2025年投资活动净流出RMB82亿，资本开支扩张较大，净负债率升至38.6%', tag: 'warn', tagText: '资本开支偏重' },
+    { icon: '⚠️', text: '2026Q1净利润同比-29%，主因汇兑损失及费用增加，短期盈利承压', tag: 'warn', tagText: '季度利润波动' },
+    { icon: '✅', text: '有绿鞋机制（超额配股权最多15%），上市后股价稳定性有保障', tag: 'ok', tagText: '绿鞋护盘' },
+  ],
+  risks: [
+    '<strong>客户集中度风险</strong>：前5大客户占2025年收入57.5%，单一最大客户占19.2%，若大客户减单或转移供应链将显著冲击业绩。',
+    '<strong>毛利率偏低且承压</strong>：净利率仅4.5%，客户持续压价，原材料波动难以完全转嫁，利润空间受压。',
+    '<strong>汇率风险</strong>：2026Q1因汇兑损失导致净利润同比-29%，美元/人民币波动对利润影响显著。',
+    '<strong>地缘政治与贸易政策风险</strong>：中美关税摩擦、出口管制及印度外资政策变动均可能影响供应链布局和海外业务。',
+    '<strong>资本开支扩张风险</strong>：2025年投资活动净流出RMB82亿，产能扩张若需求不及预期将导致资产闲置和减值，历史上已有减值记录。',
+    '<strong>收购整合风险</strong>：持续通过并购扩张（森益、立敏达等），整合难度大，商誉减值风险持续存在。',
+    '<strong>A/H价差收窄不确定性</strong>：H股折价依赖A股维持高价，若A股下跌则折价缩小，H股打新收益或受压。',
+  ],
+  actions: [
+    { date: '6月17日 招股开始', title: '确认申购资金到位', desc: '每手入场费约HK$6,786，建议通过白表eIPO或券商EIPO渠道提前备好资金，仅申购1手现金仓，无需融资。' },
+    { date: '6月23日 申购截止', title: '完成申购（北京时间10:00前）', desc: '白表eIPO最晚11:30提交申请，12:00完成付款。通过券商EIPO请提前联系经纪商确认最晚指令时间。勿拖延至最后。' },
+    { date: '6月24日 定价日', title: '关注最终发售价', desc: '发售价不高于HK$10.18，若低于此价格申请款项将退还差额。关注是否出现大幅缩价（可能影响上市表现）。' },
+    { date: '6月25日 暗盘', title: '观察暗盘走势，评估套利空间', desc: '暗盘价格是市场情绪的重要信号。若暗盘较发行价溢价超10%，可考虑暗盘兑现；若暗盘平淡，持股至正式开市观察。' },
+    { date: '6月26日 上市日', title: '上市首日择机操作', desc: 'A股价格约HK$17，H股发行价HK$10.18，理论折价约40%。若开盘溢价5%-15%可考虑部分获利；若折价大幅收窄至10%以内可考虑出清；若开市疲软可短暂持有观察A/H价差走势。' },
+  ],
+  subscription: {
+    scenarios: [
+      { label: '保守', mult: 30, premPct: 5 },
+      { label: '基准', mult: 80, premPct: 15 },
+      { label: '乐观', mult: 150, premPct: 30 },
     ],
-    cfChecks: [
-      { icon: '⚠️', text: 'AUTO-STUB 自动插入，现金流数据待人工核实', tag: 'warn', tagText: '待分析' },
-    ],
-    risks: ['<strong>待分析</strong>：请用Claude补充完整招股书分析'],
-    actions: [
-      { date: '⚠️ 待填', title: '申购截止', desc: '请补充具体时间节点' },
-    ],
-    subscription: {
-      scenarios: [
-        { label: '保守', mult: 0, premPct: 0 },
-        { label: '基准', mult: 0, premPct: 0 },
-        { label: '乐观', mult: 0, premPct: 0 },
-      ],
-      recClass: 'wait', recTitle: '⚠️ 待分析',
-      lots: 0, method: '待定', marginOk: false,
-      marginTip: '⚠️ 待分析',
-      rationale: 'AUTO-STUB，待人工补充分析。',
-      urgentTip: '⚠️ 请补充截止时间',
-    },
+    recClass: 'da',
+    recTitle: '✅ 积极申购',
+    lots: 1,
+    method: '现金仓',
+    marginOk: false,
+    marginTip: '本股为A+H双重上市，基石锁定38.6%，公开发售盘源充裕，认购倍数难以达到孖展所需的极高门槛，建议仅以现金仓方式申购1手，不建议孖展。',
+    rationale: '领益智造H股相对A股折价约40%，触发A+H折价>30%直接打的硬性规则，是本次申购最核心逻辑。基石投资者阵容达21家机构（含摩根士丹利），合计认购USD4.07亿锁定38.6%发售量，显示机构信心较强。公司为全球AI终端高精密功能件市场第一，赛道覆盖AI/机器人/低空经济等热门方向，叙事题材丰富。有绿鞋机制提供稳价保障。1手入场费仅约HK$6,786，参与门槛低，风险可控。',
+    urgentTip: '⏰ 截止2026-06-23（周二）北京时间10:00（白表eIPO 11:30前提交申请，12:00完成付款）；一人一手策略；暗盘日2026-06-25，正式上市2026-06-26；注意A股价格变动对折价的影响。'
+  },
+  greyMarket: {
+    date: '2026-06-25',
+    price: null,
+    changePct: null,
+    peakPrice: null,
+    peakChangePct: null
+  }
+},
     greyMarket: {
       date: '2026-06-25',
       price: null, changePct: null, peakPrice: null, peakChangePct: null
     }
   },
-  // ⚠️ AUTO-STUB [2026-06-17] Futu API检测，Claude分析失败，请手动补充
-    {
-    code: '02272',
-    applyEndTs: 1782144000,   // 北京时间 2026-06-23 10:00（Futu提供，待招股书核实）
-    listTs:     1782403200,        // 北京时间 2026-06-26 00:00（⚠️ 待招股书核实，禁用Futu原始时间戳）
-    name: '科拓股份',
-    nameEn: '',
-    sector: '⚠️ 待补充',
-    listDate: '2026-06-26',
-    subDate: '⚠️ 待补充',
-    price: 39.55,
-    lotSize: 60,
-    entryFee: 2396.85,
-    totalIssue: '⚠️ 待补充',
-    publicIssue: '⚠️ 待补充',
-    greenshoe: '⚠️ 待查（需同时搜超額配股權和超額配售）',
-    mktCapH: '⚠️ 待补充',
-    pe: '⚠️ 待补充',
-    verdict: 'wait', verdictLabel: '待分析', score: 0,
-    position: '⚠️ 待分析',
-    sponsors: '⚠️ 待补充',
-    isTransfer: false,
-    cornerstone: { total: '⚠️ 待补充', tier1: [], others: [] },
-    conclusion: '⚠️ AUTO-STUB [2026-06-17] 由本地Futu API自动检测插入，请用Claude补充完整招股书分析。',
-    scores: [
-      { label: '业务质量',          pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '财务健康',          pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '估值吸引力',        pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '资本结构',          pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '市场叙事/赛道溢价', pts: 0, max: 15, desc: '⚠️ 待分析' },
+  // ✅ AUTO-ANALYZED [2026-06-18] Claude API 自动分析
+  {
+  code: '02272',
+  applyEndTs: 1782180000,
+  listTs:     1782403200,
+  name: '科拓股份',
+  nameEn: 'KEYTOP PARKING INC.',
+  sector: '智慧停车 / 城市停车运营 / AIoT+SaaS',
+  listDate: '2026-06-26',
+  subDate: '2026-06-17 ~ 2026-06-23',
+  price: 39.55,
+  lotSize: 60,
+  entryFee: 2396.85,
+  totalIssue: '约1011.23万股H股（全球发售，含超额配股权最多1516.80万股）',
+  publicIssue: '101.12万股（约10%香港公开发售）',
+  greenshoe: '有（最多1,516,800股额外H股，约15%）',
+  mktCapH: '约HK$39.99亿（总股本1.01亿股×HK$39.55）',
+  pe: '约32x（2025A净利润RMB9,368万，汇率0.89）/ PS 约4.2x',
+  verdict: 'wait',
+  verdictLabel: '轻仓',
+  score: 62,
+  position: '1手现金仓',
+  sponsors: '中国国际金融香港证券有限公司（联席保荐人）、民银资本有限公司（联席保荐人）',
+  isTransfer: false,
+  cornerstone: {
+    total: '待确认（招股书节选未披露基石投资者信息）',
+    tier1: [],
+    others: []
+  },
+  conclusion: '科拓股份为中国智慧停车空间运营行业第二名（市占率3.3%），拥有近20年行业积累，三大业务线协同。收入3年CAGR约6%，毛利率稳定在46%，净利率约11%，盈利稳健但增速偏慢。停车场运营业务高速扩张（+41% YoY）带来可期期待，但整体市场集中度极低（前五仅17.4%），竞争格局分散，估值约32x PE无明显折价。两次A股上市失败构成历史包袱，保荐人为中金+民银，属主流机构。赛道中性，非AI/机器人热门标的，港股稀缺性有限。建议轻仓1手参与，博弈上市初期停车智慧化叙事溢价。',
+  scores: [
+    { label: '业务质量', pts: 16, max: 25, desc: '行业第二（市占3.3%），近20年积累，三线业务协同；但市场极度分散，停车场运营占比仍小（21%），管理服务收入下滑，全球化尚早期，护城河中等' },
+    { label: '财务健康', pts: 15, max: 25, desc: '毛利率稳定46%，净利率11%，经营现金流正向（2025年RMB1.44亿）；但收入增速仅3年CAGR约6%，现金转换周期107天偏长，银行贷款快速增长至RMB7,170万，应收账款周转天数仍126天' },
+    { label: '估值吸引力', pts: 13, max: 25, desc: '按2025净利润RMB9,368万，按汇率0.89折HK$1.05亿，总市值HK$39.99亿，静态PE约38x；调整净利约RMB1.22亿则PE约29x；同类停车科技/SaaS估值参考，无明显折价，吸引力有限' },
+    { label: '资本结构', pts: 12, max: 25, desc: '联席保荐人中金+民银，属主流机构；无基石投资者披露；有绿鞋（15%）提供稳定支撑；两次A股上市失败为潜在负面；控股股东合计48.28%，锁定12个月；公众持股41.33%符合规定' },
+    { label: '市场叙事/赛道溢价', pts: 6, max: 15, desc: '停车智慧化+AIoT概念有一定叙事，但并非当前最热赛道（AI芯片/机器人/低空经济），港股同类标的稀缺但市场热度有限，城市停车属于中性赛道' },
+  ],
+  financial: [
+    { label: '收入（人民币百万元）', y2023: '738.0', y2024: '799.5', y2025: '830.6' },
+    { label: '毛利率', y2023: '46.4%', y2024: '45.9%', y2025: '46.4%' },
+    { label: '净利润（人民币百万元）', y2023: '87.0', y2024: '86.7', y2025: '93.7' },
+    { label: '经调整净利润（非IFRS，人民币百万元）', y2023: '89.4', y2024: '91.7', y2025: '121.9' },
+    { label: '收入增速', y2023: '—', y2024: '+8.3%', y2025: '+3.9%' },
+  ],
+  cfChecks: [
+    { icon: '✅', text: '经营活动净现金流2025年RMB1.44亿，2023年RMB1.82亿，持续正向', tag: 'ok', tagText: '现金流正常' },
+    { icon: '⚠️', text: '投资活动现金净流出2025年RMB1.05亿（同比大幅扩张），主因承包运营业务扩张及新厂房建设', tag: 'warn', tagText: '资本开支增加' },
+    { icon: '⚠️', text: '银行贷款由2023年RMB1,000万快速增至2025年RMB7,170万，截至2026年4月达RMB1.09亿', tag: 'warn', tagText: '债务上升' },
+    { icon: '⚠️', text: '贸易应收款项周转天数126天（2025），现金转换周期107天，营运资金压力较大', tag: 'warn', tagText: '回款偏慢' },
+    { icon: '✅', text: '流动比率2.8倍（2025），速动比率2.7倍，短期偿债能力良好', tag: 'ok', tagText: '流动性充裕' },
+  ],
+  risks: [
+    '<strong>A股两次上市失败</strong>：2017年主动撤回、2022年被深交所拒绝，存在历史合规隐患，港股投资者需关注监管层面遗留问题',
+    '<strong>市场极度分散、竞争激烈</strong>：前五大运营商合计市占仅17.4%，定价权弱，盈利提升空间受限',
+    '<strong>停车管理服务收入下滑</strong>：2025年同比下降9.6%，合约到期续约率不足，客户转向轻资产模式侵蚀收益',
+    '<strong>房地产下行拖累</strong>：主要客户含房地产开发商，行业低迷致应收账款回收风险及系统新装需求下降',
+    '<strong>承包运营模式资本占用大</strong>：需预付租赁费，现金转换周期长，若扩张过快可能对流动性造成压力',
+    '<strong>估值无明显安全垫</strong>：静态PE约32-38x（取不同口径），无基石投资者披露，上市首日破发风险存在',
+  ],
+  actions: [
+    { date: '6月17日 认购开始', title: '关注孖展认购倍数', desc: '留意中签率及国际配售踊跃程度，如认购倍数>50x则增加信心，>200x可考虑升级积极打' },
+    { date: '6月23日 申购截止', title: '提交1手现金申购', desc: '建议仅以现金仓申购1手（入场费约HK$2,397），不建议孖展；截止时间BJ 10:00，通过白表或EIPO渠道提交' },
+    { date: '6月25日 暗盘', title: '观察暗盘表现定策略', desc: '若暗盘溢价>10%，上市首日可考虑套现；若暗盘平价或折价，建议持观望态度，不追高' },
+    { date: '6月26日 上市首日', title: '按计划执行', desc: '溢价>15%考虑套现；溢价5-15%可持有至首周；若开盘破发则止损离场，不建议持有待涨' },
+  ],
+  subscription: {
+    scenarios: [
+      { label: '保守', mult: 20, premPct: -5 },
+      { label: '基准', mult: 50, premPct: 8 },
+      { label: '乐观', mult: 150, premPct: 20 },
     ],
-    financial: [
-      { label: '收入（人民币亿元）', y2023: '—', y2024: '—', y2025: '—' },
-      { label: '毛利率',             y2023: '—', y2024: '—', y2025: '—' },
-      { label: '净利润（人民币M）',  y2023: '—', y2024: '—', y2025: '—' },
-      { label: '收入增速',           y2023: '—', y2024: '—', y2025: '—' },
-    ],
-    cfChecks: [
-      { icon: '⚠️', text: 'AUTO-STUB 自动插入，现金流数据待人工核实', tag: 'warn', tagText: '待分析' },
-    ],
-    risks: ['<strong>待分析</strong>：请用Claude补充完整招股书分析'],
-    actions: [
-      { date: '⚠️ 待填', title: '申购截止', desc: '请补充具体时间节点' },
-    ],
-    subscription: {
-      scenarios: [
-        { label: '保守', mult: 0, premPct: 0 },
-        { label: '基准', mult: 0, premPct: 0 },
-        { label: '乐观', mult: 0, premPct: 0 },
-      ],
-      recClass: 'wait', recTitle: '⚠️ 待分析',
-      lots: 0, method: '待定', marginOk: false,
-      marginTip: '⚠️ 待分析',
-      rationale: 'AUTO-STUB，待人工补充分析。',
-      urgentTip: '⚠️ 请补充截止时间',
-    },
+    recClass: 'wait',
+    recTitle: '⚠️ 谨慎参与',
+    lots: 1,
+    method: '现金仓',
+    marginOk: false,
+    marginTip: '不建议孖展：估值无明显折价，无基石投资者背书，两次A股上市失败背景下不确定性偏高，孖展成本难以覆盖预期收益',
+    rationale: '科拓股份具备近20年行业积累和行业第二地位，停车场运营业务高速增长（+41%）为未来收入增长提供支撑。智慧停车赛道长期逻辑成立（CAGR 28.6%至2029年），AIoT+SaaS叙事在港股具一定稀缺性。然而估值约30-38x PE无明显折价，两次A股失败为历史包袱，无已知基石投资者，市场热度属中性赛道。建议轻仓1手博弈首日溢价，不建议重仓或孖展。',
+    urgentTip: '⏰ 截止2026-06-23（周二）BJ 10:00；网上白表11:30截止提交，12:00截止付款；每人限申请1手起；建议提前通过hkeipo.hk或EIPO渠道完成申购'
+  },
+  greyMarket: {
+    date: '2026-06-25',
+    price: null,
+    changePct: null,
+    peakPrice: null,
+    peakChangePct: null
+  }
+},
     greyMarket: {
       date: '2026-06-25',
       price: null, changePct: null, peakPrice: null, peakChangePct: null
     }
   },
-  // ⚠️ AUTO-STUB [2026-06-17] Futu API检测，Claude分析失败，请手动补充
-    {
-    code: '06228',
-    applyEndTs: 1782144000,   // 北京时间 2026-06-23 10:00（Futu提供，待招股书核实）
-    listTs:     1782403200,        // 北京时间 2026-06-26 00:00（⚠️ 待招股书核实，禁用Futu原始时间戳）
-    name: 'MERDEKAGOLD-DRS',
-    nameEn: '',
-    sector: '⚠️ 待补充',
-    listDate: '2026-06-26',
-    subDate: '⚠️ 待补充',
-    price: 26.6,
-    lotSize: 100,
-    entryFee: 2686.73,
-    totalIssue: '⚠️ 待补充',
-    publicIssue: '⚠️ 待补充',
-    greenshoe: '⚠️ 待查（需同时搜超額配股權和超額配售）',
-    mktCapH: '⚠️ 待补充',
-    pe: '⚠️ 待补充',
-    verdict: 'wait', verdictLabel: '待分析', score: 0,
-    position: '⚠️ 待分析',
-    sponsors: '⚠️ 待补充',
-    isTransfer: false,
-    cornerstone: { total: '⚠️ 待补充', tier1: [], others: [] },
-    conclusion: '⚠️ AUTO-STUB [2026-06-17] 由本地Futu API自动检测插入，请用Claude补充完整招股书分析。',
-    scores: [
-      { label: '业务质量',          pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '财务健康',          pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '估值吸引力',        pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '资本结构',          pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '市场叙事/赛道溢价', pts: 0, max: 15, desc: '⚠️ 待分析' },
+  // ✅ AUTO-ANALYZED [2026-06-18] Claude API 自动分析
+  {
+  code: '06228',
+  applyEndTs: 1782180000,
+  listTs:     1782403200,
+  name: 'MERDEKAGOLD-DRS',
+  nameEn: 'PT Merdeka Gold Resources Tbk',
+  sector: '矿产资源 / 黄金开采 / 印尼第二上市预托证券',
+  listDate: '2026-06-26',
+  subDate: '2026-06-17 ~ 2026-06-23',
+  price: 26.6,
+  lotSize: 100,
+  entryFee: 2686.73,
+  totalIssue: '8966.86万股（全球发售89,668,600份销售预托证券）',
+  publicIssue: '896.69万份（约10%香港公开发售8,966,900份）',
+  greenshoe: '有（最多13,450,200份预托证券，约15%）',
+  mktCapH: '约HK$444.4亿（总股本约14.73亿股×HK$26.6，含印尼证交所股份按3.04港元折算）',
+  pe: '亏损期无PE参考 / PB约0.037港元/股NAV，发行价溢价极高',
+  verdict: 'wait',
+  verdictLabel: '观望',
+  score: 48,
+  position: '1手现金仓（彩票仓）',
+  sponsors: 'UBS Securities Hong Kong Limited（联席保荐人）、中信证券（香港）有限公司（联席保荐人）',
+  isTransfer: false,
+  cornerstone: {
+    total: '待确认（招股书基石投资者章节未在本文本节选中完整披露）',
+    tier1: [
+      { name: '待确认', amt: '待确认', lockup: '6个月' }
     ],
-    financial: [
-      { label: '收入（人民币亿元）', y2023: '—', y2024: '—', y2025: '—' },
-      { label: '毛利率',             y2023: '—', y2024: '—', y2025: '—' },
-      { label: '净利润（人民币M）',  y2023: '—', y2024: '—', y2025: '—' },
-      { label: '收入增速',           y2023: '—', y2024: '—', y2025: '—' },
+    others: []
+  },
+  conclusion: 'MGR为印尼最大原生金矿Pani项目运营商，资源量700万盎司黄金，印尼证交所已上市，港股第二上市发行预托证券。核心亮点：黄金价格高位（4,319美元/盎司）、全球最低剥采比0.7:1、2026年2月刚实现首次产金。但重大缺陷：往绩记录期间全亏损（2025年亏损2750万美元），经营现金流持续负值，收益几乎为零，盈利路径依赖未来执行。全部为售股股东出售（公司不收款项），发行价对应NAV溢价极高。黄金高价顺风+大资源量+顶级保荐人有吸引力，但当前财务基础薄弱，印尼监管/权利金/MSCI降级风险不容忽视。建议最多1手现金仓彩票仓参与，不宜重仓或孖展。',
+  scores: [
+    { label: '业务质量', pts: 14, max: 25, desc: 'Pani金矿资源量700万盎司位居亚洲前列，全球最低剥采比0.7:1，2026年已实现首金，矿山服务年限15年，规模稀缺；但单一矿区依赖，经营历史极短，商业化生产刚起步，执行风险高。' },
+    { label: '财务健康', pts: 5, max: 25, desc: '往绩记录期间持续亏损（2023-2025年合计亏损约4700万美元），经营现金流全为负值，收入几乎为零（2025年仅13.2万美元），累计亏损6150万美元，无任何盈利记录，财务状况极差。' },
+    { label: '估值吸引力', pts: 8, max: 25, desc: '全亏损状态无PE可用；NAV每股0.037港元，发行价26.6港元溢价超700倍；对标印尼证交所股价3.04港元港股发行价明显溢价；但黄金4300美元/盎司高位下2026年有望扭亏，矿产资源内含价值支撑估值。' },
+    { label: '资本结构', pts: 13, max: 25, desc: '联席保荐人为UBS+中信证券，承销团队包括摩根士丹利、汇丰等顶级机构；有绿鞋（15%）；但本次全为售股股东出售，公司不收款，基石投资者信息未完整披露；19C第二上市豁免部分港交所规定，股东保护相对较弱。' },
+    { label: '市场叙事/赛道溢价', pts: 8, max: 15, desc: '黄金处于历史高位（4319美元/盎司），全球央行增储、地缘风险驱动持续，黄金矿商赛道热度较高；但港股黄金矿股已有多只（紫金矿业等），且印尼MSCI可能降级风险压制情绪，赛道热但稀缺性一般。' }
+  ],
+  financial: [
+    { label: '收入（百万美元）', y2023: '1.39', y2024: '1.75', y2025: '0.13' },
+    { label: '毛利率', y2023: '32.9%', y2024: '32.6%', y2025: '-110.6%' },
+    { label: '净亏损（百万美元）', y2023: '-6.84', y2024: '-12.70', y2025: '-27.49' },
+    { label: '收入增速', y2023: '—', y2024: '+25.6%', y2025: '-92.6%' }
+  ],
+  cfChecks: [
+    { icon: '⚠️', text: '经营活动现金流持续净流出：2023年-1649万美元、2024年-628万美元、2025年-2171万美元', tag: 'warn', tagText: '现金流警示' },
+    { icon: '⚠️', text: '2023年及2025年均录得流动负债净额（分别为930万及650万美元），流动性存在压力', tag: 'warn', tagText: '流动性风险' },
+    { icon: '✅', text: '2026年4月已获1.5亿美元循环信贷融通，5月向PBT提供1.75亿美元贷款，融资渠道畅通', tag: 'ok', tagText: '融资支撑' },
+    { icon: '✅', text: '2025年末现金余额4530万美元，印尼IPO净募资2.837亿美元已于2026年5月全部动用', tag: 'ok', tagText: '资金已动用' },
+    { icon: '⚠️', text: '全部发行为售股股东套现，公司不获任何募资款项，无法通过本次港股发行补充运营资金', tag: 'warn', tagText: '公司不受益' }
+  ],
+  risks: [
+    '<strong>全亏损历史与盈利不确定性</strong>：往绩记录期连续三年亏损，2025年净亏2750万美元，盈利时间表依赖Pani金矿顺利爬坡，存在重大不确定性。',
+    '<strong>单一矿区集中风险</strong>：全部收益依赖Pani金矿，任何运营中断、许可证问题或地质意外均可对公司造成决定性打击。',
+    '<strong>黄金价格波动风险</strong>：公司收益对金价高度敏感，若金价大幅回落，项目经济可行性及融资能力将受严重影响。',
+    '<strong>印尼监管风险</strong>：权利金费率已于2025年上调，出口关税法规趋严，MSCI或将印尼由新兴市场降级为前沿市场，可能引发资金大幅外流并压制股价。',
+    '<strong>售股模式风险</strong>：本次全球发售全部为售股股东出售，公司一分不得，市场可能对大股东减持动机持负面解读。',
+    '<strong>预托证券结构风险</strong>：港股交易的是预托证券而非普通股，持有人权利与直接持股存在差异，流动性及折溢价难以预测。',
+    '<strong>炭浸法选礦廠尾矿库风险</strong>：CIL选矿厂尾矿库损坏可能导致环境污染、监管处罚及运营暂停，保险覆盖可能不足。'
+  ],
+  actions: [
+    { date: '6月17日-23日 申购期', title: '决策：最多申请1手（彩票仓）', desc: '鉴于公司全亏损、售股性质、估值溢价极高，建议最多以1手现金仓参与，切勿孖展或重仓。申请截止2026年6月23日（周二）中午12时。' },
+    { date: '6月25日 暗盘日', title: '观察暗盘表现决定去留', desc: '暗盘开于2026年6月25日（周四）。若暗盘价高于26.6港元且溢价超10%，可持有至上市；若暗盘破发或溢价不足5%，建议第一时间卖出止损。' },
+    { date: '6月26日 上市日', title: '上市首日高开则减仓', desc: '黄金矿商类IPO短线波动大。若开盘溢价超15%，建议获利了结；若上市即破发，以止损为优先，不建议补仓。' },
+    { date: '2026年Q3-Q4 跟踪期', title: '跟踪Pani金矿产量爬坡及季度报告', desc: '关注2026年100,000-115,000盎司年产量指引能否实现，以及炭浸法（CIL）2028年投产进展。若产量大幅低于指引或金价大幅下跌，持续持有价值将存疑。' }
+  ],
+  subscription: {
+    scenarios: [
+      { label: '保守', mult: 10, premPct: -5 },
+      { label: '基准', mult: 30, premPct: 8 },
+      { label: '乐观', mult: 80, premPct: 20 }
     ],
-    cfChecks: [
-      { icon: '⚠️', text: 'AUTO-STUB 自动插入，现金流数据待人工核实', tag: 'warn', tagText: '待分析' },
-    ],
-    risks: ['<strong>待分析</strong>：请用Claude补充完整招股书分析'],
-    actions: [
-      { date: '⚠️ 待填', title: '申购截止', desc: '请补充具体时间节点' },
-    ],
-    subscription: {
-      scenarios: [
-        { label: '保守', mult: 0, premPct: 0 },
-        { label: '基准', mult: 0, premPct: 0 },
-        { label: '乐观', mult: 0, premPct: 0 },
-      ],
-      recClass: 'wait', recTitle: '⚠️ 待分析',
-      lots: 0, method: '待定', marginOk: false,
-      marginTip: '⚠️ 待分析',
-      rationale: 'AUTO-STUB，待人工补充分析。',
-      urgentTip: '⚠️ 请补充截止时间',
-    },
+    recClass: 'wait',
+    recTitle: '⚠️ 谨慎参与',
+    lots: 1,
+    method: '现金仓',
+    marginOk: false,
+    marginTip: '不建议孖展：公司处于亏损爬坡期，全为售股股东套现，估值溢价极高，孖展风险不对称。',
+    rationale: 'MGR拥有印尼最大原生金矿Pani（资源量700万盎司，亚洲前五），2026年已实现首次产金，黄金现价处于历史高位，顺风因素明显。但公司往绩记录期间全亏损且收益近乎为零，本次发行全部为大股东套现，公司完全不受益，估值对NAV溢价超700倍，印尼MSCI降级风险及权利金上调风险不可忽视。短线打新逻辑在于黄金板块热度+顶级保荐人（UBS+中信）+绿鞋保护，但基本面支撑不足，风险收益比偏低。',
+    urgentTip: '⏰ 截止2026-06-23（周二）12:00正；最多申请1手现金彩票仓；通过eIPO或经纪FINI渠道申请；注意暗盘2026-06-25观察价格再决定去留策略。'
+  },
+  greyMarket: {
+    date: '2026-06-25',
+    price: null,
+    changePct: null,
+    peakPrice: null,
+    peakChangePct: null
+  }
+},
     greyMarket: {
       date: '2026-06-25',
       price: null, changePct: null, peakPrice: null, peakChangePct: null
     }
   },
-  // ⚠️ AUTO-STUB [2026-06-17] Futu API检测，Claude分析失败，请手动补充
-    {
-    code: '09630',
-    applyEndTs: 1782144000,   // 北京时间 2026-06-23 10:00（Futu提供，待招股书核实）
-    listTs:     1782403200,        // 北京时间 2026-06-26 00:00（⚠️ 待招股书核实，禁用Futu原始时间戳）
-    name: '芯碁微装',
-    nameEn: '',
-    sector: '⚠️ 待补充',
-    listDate: '2026-06-26',
-    subDate: '⚠️ 待补充',
-    price: 252.73,
-    lotSize: 50,
-    entryFee: 12763.5,
-    totalIssue: '⚠️ 待补充',
-    publicIssue: '⚠️ 待补充',
-    greenshoe: '⚠️ 待查（需同时搜超額配股權和超額配售）',
-    mktCapH: '⚠️ 待补充',
-    pe: '⚠️ 待补充',
-    verdict: 'wait', verdictLabel: '待分析', score: 0,
-    position: '⚠️ 待分析',
-    sponsors: '⚠️ 待补充',
-    isTransfer: false,
-    cornerstone: { total: '⚠️ 待补充', tier1: [], others: [] },
-    conclusion: '⚠️ AUTO-STUB [2026-06-17] 由本地Futu API自动检测插入，请用Claude补充完整招股书分析。',
-    scores: [
-      { label: '业务质量',          pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '财务健康',          pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '估值吸引力',        pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '资本结构',          pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '市场叙事/赛道溢价', pts: 0, max: 15, desc: '⚠️ 待分析' },
+  // ✅ AUTO-ANALYZED [2026-06-18] Claude API 自动分析
+  {
+  code: '09630',
+  applyEndTs: 1782180000,
+  listTs:     1782403200,
+  name: '芯碁微装',
+  nameEn: 'Circuit Fabology Microelectronics Equipment Co., Ltd.',
+  sector: '半导体设备 / 直写光刻设备 / PCB直接成像 / 国产替代',
+  listDate: '2026-06-26',
+  subDate: '2026-06-17 ~ 2026-06-23',
+  price: 252.73,
+  lotSize: 50,
+  entryFee: 12763.5,
+  totalIssue: '1283.865万股H股（全球发售，超额配股权前）',
+  publicIssue: '128.39万股（10%香港公开发售）',
+  greenshoe: '有（最多192.575万股额外H股，约15%）',
+  mktCapH: '约HK$32.45亿（H股1283.865万股×HK$252.73）；全部股本市值约HK$606.73亿',
+  pe: '约29x（2025A净利润RMB2.9亿，按全部股本市值折算）/ PS约5.3x',
+  verdict: 'da',
+  verdictLabel: '打',
+  score: 83,
+  position: '现金仓1手，积极申购',
+  sponsors: '中国国际金融香港证券有限公司（独家保荐人）；招银国际、国元证券（香港）、中银国际亚洲（联席账簿管理人）',
+  isTransfer: false,
+  cornerstone: {
+    total: 'USD 201.81百万（≈HK$15.81亿），占发售股份约49.98%',
+    tier1: [
+      { name: 'JPMAMAPL（摩根大通系）', amt: 'USD 1950万', lockup: '6个月' },
+      { name: '胜宏科技香港', amt: 'USD 1950万', lockup: '6个月' },
+      { name: 'CPE Chestnut', amt: 'USD 1755万', lockup: '6个月' },
+      { name: 'Lion Global', amt: 'USD 1755万', lockup: '6个月' },
+      { name: '合肥建汇（合肥国资委）', amt: 'USD 1072万', lockup: '6个月' },
+      { name: '芯耀投资（合肥国资委）', amt: 'USD 975万', lockup: '6个月' },
+      { name: '晶合集成香港（合肥国资委）', amt: 'USD 780万', lockup: '6个月' },
+      { name: 'HHLR', amt: 'USD 1170万', lockup: '6个月' },
+      { name: 'CICC FT（景林场外掉期）', amt: 'USD 1170万', lockup: '6个月' },
+      { name: 'Huadeng Victorious', amt: 'USD 1024万', lockup: '6个月' },
     ],
-    financial: [
-      { label: '收入（人民币亿元）', y2023: '—', y2024: '—', y2025: '—' },
-      { label: '毛利率',             y2023: '—', y2024: '—', y2025: '—' },
-      { label: '净利润（人民币M）',  y2023: '—', y2024: '—', y2025: '—' },
-      { label: '收入增速',           y2023: '—', y2024: '—', y2025: '—' },
+    others: [
+      { name: 'Montage HK', amt: 'USD 975万', lockup: '6个月' },
+      { name: '永联投资', amt: 'USD 975万', lockup: '6个月' },
+      { name: 'Monterey Park', amt: 'USD 927万', lockup: '6个月' },
+      { name: '博时国际', amt: 'USD 682万', lockup: '6个月' },
+      { name: '汇添富（香港）', amt: 'USD 682万', lockup: '6个月' },
+      { name: '富国香港及富国基金', amt: 'USD 682万', lockup: '6个月' },
+      { name: '广发基金', amt: 'USD 682万', lockup: '6个月' },
+      { name: '海耀实业', amt: 'USD 487万', lockup: '6个月' },
+      { name: '阳光电源香港', amt: 'USD 487万', lockup: '6个月' },
+    ]
+  },
+  conclusion: '芯碁微装是全球最大PCB直接成像设备供应商（市占18.8%），A+H双重上市标的，科创板688630对应A股价格约RMB379元，H股以HK$252.73上市，A股溢价显著（H股相对A股折价约40%+），硬性触发"A+H H股折价>30%"规则，直接打。2025年收入14.1亿元（+47.6%），净利润2.9亿元（+80.4%），Q1 2026营收同比+113%高增速持续。19家基石投资者认购约50%发售份额，合肥国资委、摩根大通、景林等背书强劲。绿鞋机制存在。唯一风险：H股流通盘极小（仅约1284万股），市场波动大，但A股折价保护明显，建议积极申购1手现金仓。',
+  scores: [
+    { label: '业务质量', pts: 22, max: 25, desc: '全球PCB直接成像市占率18.8%第一，半导体直写光刻全球第四，唯一商业化覆盖全场景（PCB/IC载板/先进封装/掩膜版），客户含AI服务器供应链，护城河深，Q1 2026营收同比+113%验证高增速；扣1分客户集中度提升（五大客户占比41.6%）及现金转换周期长（351天）' },
+    { label: '财务健康', pts: 19, max: 25, desc: '2025年收入14.1亿元(+47.6%)、毛利率39.1%、净利率20.6%、净利润2.9亿元(+80.4%)，Q1 2026净利润延续高增；2023/2024年经营现金流为负（-1.29亿/-0.72亿），2025年转正（+0.92亿），存货周转天数287天偏高，应收账款周转天数改善至275天；整体健康但现金转换周期偏长扣分' },
+    { label: '估值吸引力', pts: 18, max: 25, desc: 'A股市值约607亿港元，H股发行市值仅约32亿港元（H股仅占8.88%总股本），H股相对A股折价超40%，估值极具吸引力；按全部股本市值PS约5.3x、PE约29x（2025A），结合47%+增速属合理偏低；但H股流通盘极小易波动，加权扣分' },
+    { label: '资本结构', pts: 17, max: 25, desc: '独家保荐人中金香港（顶级），19家基石投资者认购约50%发售份额（USD 2.02亿），含合肥国资委三实体、摩根大通系、景林、HHLR、CPE、Lion Global等知名机构，背书极强；绿鞋最多15%；控股股东程女士持31.1%有不竞业承诺；制裁风险已终止相关交易，OFAC罚款风险低' },
+    { label: '市场叙事/赛道溢价', pts: 7, max: 15, desc: 'PCB及半导体直写光刻设备是AI服务器算力基础设施核心装备，受益AI基建浪潮，但非芯片/机器人/低空等最热赛道标签，A+H双重上市属香港市场稀缺，港股半导体设备标的少，叙事中性偏积极，赛道热度中等' },
+  ],
+  financial: [
+    { label: '收入（人民币亿元）', y2023: '8.29', y2024: '9.54', y2025: '14.08' },
+    { label: '毛利率', y2023: '40.9%', y2024: '35.5%', y2025: '39.1%' },
+    { label: '净利润（人民币百万元）', y2023: '179.3', y2024: '160.7', y2025: '289.9' },
+    { label: '收入增速', y2023: '—', y2024: '+15.1%', y2025: '+47.6%' },
+  ],
+  cfChecks: [
+    { icon: '✅', text: '2025年经营活动现金净流入RMB 9186万元，首次转正，营运资金管理改善', tag: 'ok', tagText: '转正' },
+    { icon: '⚠️', text: '2023/2024年经营现金流为负（分别-1.29亿/-0.72亿），历史现金流结构偏弱', tag: 'warn', tagText: '历史负流' },
+    { icon: '⚠️', text: '存货周转天数287.2天（2025年），现金转换周期351.2天，占用资金较大', tag: 'warn', tagText: '周期长' },
+    { icon: '✅', text: '资产负债率低，权益总额23.1亿元，流动资产净额18.7亿元，偿债能力强', tag: 'ok', tagText: '财务稳健' },
+    { icon: '✅', text: 'Q1 2026营收RMB 5.147亿（同比+113%），毛利率40.3%维持高位，增长强劲', tag: 'ok', tagText: '高增速' },
+  ],
+  risks: [
+    '<strong>A股折价套利风险</strong>：H股仅占总股本8.88%，流通盘约1284万股极小，若市场情绪逆转可能波动剧烈，A/H价差未必快速收窄',
+    '<strong>美国OFAC制裁风险</strong>：曾与SDN相关中国供应商采购激光二极管（2024-2025年），最高潜在民事罚款不超过240万美元，OFAC仍可按个案处理，存在不确定性',
+    '<strong>客户集中度上升</strong>：2025年前五大客户占收入41.6%，最大客户占13.7%，依赖度提升风险',
+    '<strong>现金转换周期长</strong>：351天的现金转换周期及大额应收账款（10.97亿元），资金占用压力持续',
+    '<strong>供应链依赖风险</strong>：最大供应商采购占比21.2%，激光二极管等关键零部件存在被限供风险（美国技术出口管制）',
+    '<strong>H股折价未必持续</strong>：A股价格约RMB379元，H股HK$252.73，A/H溢价超40%，但若A股回调或港股流动性不足，可能双向承压',
+  ],
+  actions: [
+    { date: '6月17日 申购开始', title: '开始申购', desc: '通过白表eIPO或券商EIPO申请1手（50股），入场费HK$12,763.5，建议现金仓参与，无需孖展' },
+    { date: '6月23日 截止申购', title: '申购截止（BJ 10:00前完成）', desc: '白表网上申请截止11:30(HK)，网银转账截止12:00(HK)，务必提前操作，避免系统拥堵' },
+    { date: '6月24日 定价日', title: '关注最终发售价', desc: '发售价范围HK$240.09-252.73，最终定价预期6月24日中午前公布，关注是否顶格定价' },
+    { date: '6月25日 暗盘交易', title: '暗盘观察', desc: '暗盘日期6月25日，关注暗盘价格走势，若暗盘高于HK$260以上可考虑持有至上市，低于HK$240谨慎评估' },
+    { date: '6月26日 上市首日', title: '上市首日策略', desc: '鉴于H股折价A股幅度大（>40%），首日可持有观察；若开盘溢价超20%（>HK$303）可分批减仓锁利，长期可跟踪AI服务器需求拉动的业绩释放' },
+  ],
+  subscription: {
+    scenarios: [
+      { label: '保守', mult: 50, premPct: 5 },
+      { label: '基准', mult: 150, premPct: 15 },
+      { label: '乐观', mult: 300, premPct: 30 },
     ],
-    cfChecks: [
-      { icon: '⚠️', text: 'AUTO-STUB 自动插入，现金流数据待人工核实', tag: 'warn', tagText: '待分析' },
-    ],
-    risks: ['<strong>待分析</strong>：请用Claude补充完整招股书分析'],
-    actions: [
-      { date: '⚠️ 待填', title: '申购截止', desc: '请补充具体时间节点' },
-    ],
-    subscription: {
-      scenarios: [
-        { label: '保守', mult: 0, premPct: 0 },
-        { label: '基准', mult: 0, premPct: 0 },
-        { label: '乐观', mult: 0, premPct: 0 },
-      ],
-      recClass: 'wait', recTitle: '⚠️ 待分析',
-      lots: 0, method: '待定', marginOk: false,
-      marginTip: '⚠️ 待分析',
-      rationale: 'AUTO-STUB，待人工补充分析。',
-      urgentTip: '⚠️ 请补充截止时间',
-    },
+    recClass: 'da',
+    recTitle: '✅ 积极申购',
+    lots: 1,
+    method: '现金仓',
+    marginOk: false,
+    marginTip: 'H股流通盘极小（仅1284万股），孖展风险较高，建议纯现金仓1手申购，控制风险',
+    rationale: '①硬性触发：A+H上市，H股相对A股折价超40%，符合"A+H折价>30%直接打"规则。②19家基石投资者认购发售股份约50%，背书极强，含合肥国资委、摩根大通系、景林等。③Q1 2026营收同比+113%，增速加速，AI服务器PCB需求强劲。④绿鞋机制存在，提供上市初期价格支撑。⑤入场费约1.28万港元，1手成本可控，风险收益比佳。',
+    urgentTip: '⏰ 截止2026-06-23(周二) BJ 10:00前完成白表申请；白表网站www.hkeipo.hk；一人一手最优；H股代码09630；注意暗盘日6月25日可参考定价'
+  },
+  greyMarket: {
+    date: '2026-06-25',
+    price: null,
+    changePct: null,
+    peakPrice: null,
+    peakChangePct: null
+  }
+},
     greyMarket: {
       date: '2026-06-25',
       price: null, changePct: null, peakPrice: null, peakChangePct: null
     }
   },
-  // ⚠️ AUTO-STUB [2026-06-17] Futu API检测，Claude分析失败，请手动补充
-    {
-    code: '03661',
-    applyEndTs: 1782144000,   // 北京时间 2026-06-23 10:00（Futu提供，待招股书核实）
-    listTs:     1782403200,        // 北京时间 2026-06-26 00:00（⚠️ 待招股书核实，禁用Futu原始时间戳）
-    name: '圣邦股份',
-    nameEn: '',
-    sector: '⚠️ 待补充',
-    listDate: '2026-06-26',
-    subDate: '⚠️ 待补充',
-    price: 85.2,
-    lotSize: 100,
-    entryFee: 8605.63,
-    totalIssue: '⚠️ 待补充',
-    publicIssue: '⚠️ 待补充',
-    greenshoe: '⚠️ 待查（需同时搜超額配股權和超額配售）',
-    mktCapH: '⚠️ 待补充',
-    pe: '⚠️ 待补充',
-    verdict: 'wait', verdictLabel: '待分析', score: 0,
-    position: '⚠️ 待分析',
-    sponsors: '⚠️ 待补充',
-    isTransfer: false,
-    cornerstone: { total: '⚠️ 待补充', tier1: [], others: [] },
-    conclusion: '⚠️ AUTO-STUB [2026-06-17] 由本地Futu API自动检测插入，请用Claude补充完整招股书分析。',
-    scores: [
-      { label: '业务质量',          pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '财务健康',          pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '估值吸引力',        pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '资本结构',          pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '市场叙事/赛道溢价', pts: 0, max: 15, desc: '⚠️ 待分析' },
+  // ✅ AUTO-ANALYZED [2026-06-18] Claude API 自动分析
+  {
+  code: '03661',
+  applyEndTs: 1782180000,
+  listTs:     1782403200,
+  name: '圣邦股份',
+  nameEn: 'SG Micro Corp',
+  sector: '半导体 / 模拟集成电路 / 中国芯片国产替代',
+  listDate: '2026-06-26',
+  subDate: '2026-06-17 ~ 2026-06-23',
+  price: 85.2,
+  lotSize: 100,
+  entryFee: 8605.63,
+  totalIssue: '5400.12万股H股（全球发售，含绿鞋前）',
+  publicIssue: '540.02万股（10%香港公开发售）',
+  greenshoe: '有（最多810.01万股，约15%）',
+  mktCapH: '约HK$820亿（总股本6.75亿股×HK$85.2，含A股市值）；H股市值约HK$46亿',
+  pe: '约108x（2025A GAAP净利润534M RMB）/ 约78x（经调整净利润693M RMB）/ PS约16x',
+  verdict: 'wait',
+  verdictLabel: '轻仓',
+  score: 62,
+  position: '1手现金仓（A+H折价打新策略）',
+  sponsors: '中国国际金融香港证券有限公司、华泰金融控股（香港）有限公司',
+  isTransfer: true,
+  cornerstone: {
+    total: '待确认（招股书节选未完整披露基石投资者名单及总金额）',
+    tier1: [
+      { name: '待确认（招股书节选未完整列出基石投资者）', amt: '待确认', lockup: '6个月' }
     ],
-    financial: [
-      { label: '收入（人民币亿元）', y2023: '—', y2024: '—', y2025: '—' },
-      { label: '毛利率',             y2023: '—', y2024: '—', y2025: '—' },
-      { label: '净利润（人民币M）',  y2023: '—', y2024: '—', y2025: '—' },
-      { label: '收入增速',           y2023: '—', y2024: '—', y2025: '—' },
+    others: []
+  },
+  conclusion: '圣邦股份为A+H两地上市，A股（300661.SZ）截至招股书日前五日均价约108.49元人民币（约HK$124.6），H股发售价HK$85.2，折价约31.6%，触发A+H折价>30%硬性规则，建议至少申购1手。业务面：中国模拟IC国内第一、全球第八，7200+产品，CAGR 22.1%；财务面：25年收入38.98亿元，经调整净利6.94亿元，毛利率46%，Q1 2026收入增39%。估值偏高（GAAP PE约108x）是主要风险，研发占收入27%高企，存货周转天数拉长至228天，现金流有压力。建议1手现金仓参与折价套利，不宜重仓。',
+  scores: [
+    { label: '业务质量', pts: 20, max: 25, desc: '中国模拟IC第一名，7200+产品线极宽，38个品类，2023-2025 CAGR 22.1%，覆盖AI数据中心/机器人/EV/消费电子，客户超6000家，技术护城河较强；但供应商集中度高（前五占91%），经销商依赖（92.6%），市占率1.8%全球仍偏低' },
+    { label: '财务健康', pts: 15, max: 25, desc: '收入增速良好（+16.5% 2025），毛利率稳定在46-47%，经调整净利润+20.3%；但GAAP净利润仅5.34亿元，研发占收入26.8%吃掉大量利润，存货周转228天逐年恶化，2025经营现金流仅4.34亿元偏弱，银行借款从零增至3.97亿元' },
+    { label: '估值吸引力', pts: 10, max: 25, desc: 'H股发售价对应GAAP PE约108x，经调整PE约78x，PS约16x，估值显著高于TI/ADI等国际同类（PE 20-30x），但与A股可比公司思瑞浦/艾为等港股稀缺性有一定溢价空间；A+H折价约31.6%提供安全垫，但绝对估值偏贵' },
+    { label: '资本结构', pts: 10, max: 25, desc: '联席保荐人为中金+华泰，品质中上；绿鞋15%存在；基石投资者信息在节选中未完整披露，无法确认顶级机构占比；控股股东一致行动协议持股约32.82%，集中度适中；A股已上市合规记录良好；H股仅占总股本8%流通量偏小' },
+    { label: '市场叙事/赛道溢价', pts: 7, max: 15, desc: '中国芯片国产替代+AI数据中心+机器人+EV四重叙事，赛道热度高；但港股已有澜起科技、中芯国际等半导体标的，模拟IC细分港股稀缺性一般；A股同股300661估值已高，H股折价是最大吸引力' }
+  ],
+  financial: [
+    { label: '收入（人民币亿元）', y2023: '26.16', y2024: '33.47', y2025: '38.98' },
+    { label: '毛利率', y2023: '44.9%', y2024: '47.2%', y2025: '46.2%' },
+    { label: '净利润GAAP（人民币M）', y2023: '269.9', y2024: '491.2', y2025: '534.4' },
+    { label: '经调整净利润（人民币M）', y2023: '388.7', y2024: '576.0', y2025: '693.5' },
+    { label: '收入增速', y2023: '-17.9%', y2024: '+28.0%', y2025: '+16.5%' },
+    { label: 'Q1 2026收入（人民币M）', y2023: '—', y2024: '—', y2025: '1098.1（+39.1% YoY）' }
+  ],
+  cfChecks: [
+    { icon: '✅', text: '2025年经营现金流净额4.34亿元人民币，2024年5.34亿元，持续正值', tag: 'ok', tagText: '经营现金流正' },
+    { icon: '⚠️', text: '存货周转天数逐年拉长：2023年203天→2024年214天→2025年228天，库存压力上升', tag: 'warn', tagText: '存货周转恶化' },
+    { icon: '⚠️', text: '2025年银行借款从零增至3.97亿元，净负债权益比率升至8.4%，融资依赖增加', tag: 'warn', tagText: '负债抬升' },
+    { icon: '✅', text: '现金及现金等价物2025年末11.81亿元，加流动金融资产13.40亿元，现金储备充裕', tag: 'ok', tagText: '流动性充裕' },
+    { icon: '⚠️', text: '研发开支2025年达10.45亿元，占收入26.8%，持续高投入压制净利润率（约13.7%）', tag: 'warn', tagText: '研发高消耗' },
+    { icon: '✅', text: 'Q1 2026净利润1.23亿元，同比+109.3%，净利润率升至11.2%，盈利能力改善明显', tag: 'ok', tagText: '最新业绩超预期' }
+  ],
+  risks: [
+    '<strong>估值过高风险</strong>：H股发售价对应GAAP PE约108x，远高于国际模拟IC巨头TI/ADI的20-30x，若市场情绪转向或业绩不及预期，估值压缩空间大',
+    '<strong>A股压力传导</strong>：A股300661.SZ市值约670亿元人民币，若A股下跌导致折价收窄，H股打新收益将大幅压缩',
+    '<strong>供应商高度集中</strong>：前五大供应商占采购总额91%，晶圆代工厂单一依赖风险大，产能中断将直接冲击业绩',
+    '<strong>存货周转恶化</strong>：存货规模从2023年9.01亿元升至2025年14.48亿元，周转天数228天，下游去库存若再度启动将带来减值压力',
+    '<strong>地缘政治与贸易摩擦</strong>：中美贸易关税及出口管制持续演变，公司拓展海外市场的战略目标面临不确定性',
+    '<strong>股份支付摊薄</strong>：2025年股份支付开支1.59亿元人民币，大量期权计划（占总股本4.35%）持续稀释股东权益'
+  ],
+  actions: [
+    { date: '6月17日 招股开始', title: '确认基石投资者信息', desc: '关注正式配售结果公告，确认基石机构占比及质量；同时核查A股（300661.SZ）实时价格，计算H股实际折价幅度' },
+    { date: '6月23日 截止日', title: '申购1手现金仓', desc: '利用A+H折价>30%硬性规则，申购1手（HK$8,606）；不建议孖展，估值偏高风险较大；通过网上白表www.hkeipo.hk或经纪EIPO渠道提交，截止上午11:30' },
+    { date: '6月25日 暗盘', title: '观察暗盘表现', desc: '暗盘价格反映机构认购情绪。若暗盘溢价>10%可适当加仓；若暗盘破发或平价则持1手等正股' },
+    { date: '6月26日 上市', title: '视盘面操作', desc: '若开盘较发售价溢价>15%（即>HK$98），可考虑减持1手套现折价收益；若表现平淡，持股观察中期业绩催化剂' },
+    { date: '上市后1-3个月', title: '关注中期业绩', desc: '重点跟踪2026年上半年收入及净利润增速，Q1已实现+39.1%收入增长，若半年报维持强势可考虑增持；否则估值过高应果断减仓' }
+  ],
+  subscription: {
+    scenarios: [
+      { label: '保守', mult: 10, premPct: 0 },
+      { label: '基准', mult: 30, premPct: 8 },
+      { label: '乐观', mult: 80, premPct: 18 }
     ],
-    cfChecks: [
-      { icon: '⚠️', text: 'AUTO-STUB 自动插入，现金流数据待人工核实', tag: 'warn', tagText: '待分析' },
-    ],
-    risks: ['<strong>待分析</strong>：请用Claude补充完整招股书分析'],
-    actions: [
-      { date: '⚠️ 待填', title: '申购截止', desc: '请补充具体时间节点' },
-    ],
-    subscription: {
-      scenarios: [
-        { label: '保守', mult: 0, premPct: 0 },
-        { label: '基准', mult: 0, premPct: 0 },
-        { label: '乐观', mult: 0, premPct: 0 },
-      ],
-      recClass: 'wait', recTitle: '⚠️ 待分析',
-      lots: 0, method: '待定', marginOk: false,
-      marginTip: '⚠️ 待分析',
-      rationale: 'AUTO-STUB，待人工补充分析。',
-      urgentTip: '⚠️ 请补充截止时间',
-    },
+    recClass: 'wait',
+    recTitle: '⚠️ 谨慎参与（1手现金仓）',
+    lots: 1,
+    method: '现金仓',
+    marginOk: false,
+    marginTip: '估值GAAP PE约108x极高，孖展风险不对称；A股折价提供安全垫但幅度有限，不建议孖展操作',
+    rationale: '圣邦股份触发A+H折价>30%硬性打新规则（A股约HK$124.6 vs H股HK$85.2，折价约31.6%），建议最低1手现金仓参与。基本面优质：中国模拟IC第一名，7200+产品，CAGR 22.1%，Q1 2026收入大增39%。但GAAP PE约108x估值偏高，研发高投入压制盈利，存货周转恶化是潜在风险。适合稳健型投资者以1手参与折价套利，不适合重仓或孖展。',
+    urgentTip: '⏰ 截止2026-06-23（周二）上午11:30（网上白表）/ 中午12:00（EIPO）；一人一手策略；入场费HK$8,605.63；通过www.hkeipo.hk或经纪EIPO渠道申请'
+  },
+  greyMarket: {
+    date: '2026-06-25',
+    price: null,
+    changePct: null,
+    peakPrice: null,
+    peakChangePct: null
+  }
+},
     greyMarket: {
       date: '2026-06-25',
       price: null, changePct: null, peakPrice: null, peakChangePct: null
@@ -1527,13 +1882,7 @@ const stocks = [
     rationale: '海清智元在多光譜AI細分賽道具備一定稀缺性和技術積累，AI大模型敘事有助市場炒作情緒。但PE約189倍估值嚴重透支未來，淨利率僅4.4%且持續下行，連續兩年經營現金流為負，無基石無綠鞋保護，整體風險收益比偏差。建議僅以1手現金倉博彩票，若認購倍數低預期則暗盤即走。',
     urgentTip: '⏰ 截止2026-06-16（週二）10:00（BJ時間）；白表服務截止11:30；建議提前完成申購；1手入場費HK$3,636.18；僅建議現金倉1手，不宜孖展'
   },
-  greyMarket: {
-    date: '2026-06-21',
-    price: null,
-    changePct: null,
-    peakPrice: null,
-    peakChangePct: null
-  }
+  greyMarket: { date: '2026-06-21', price: 7.2, changePct: 0.0, peakPrice: null, peakChangePct: null }
 },
   // ✅ AUTO-ANALYZED [2026-06-12] Claude API 自动分析
   {
