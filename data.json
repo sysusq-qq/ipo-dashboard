@@ -2258,6 +2258,466 @@
     }
   },
   {
+    "code": "02697",
+    "applyEndTs": 0,
+    "listTs": 0,
+    "name": "廣東真健康醫療科技開發股份有限公司",
+    "nameEn": "",
+    "sector": "待补充",
+    "listDate": "",
+    "subDate": "—",
+    "price": null,
+    "lotSize": 100,
+    "entryFee": null,
+    "totalIssue": "—",
+    "publicIssue": "—",
+    "greenshoe": "—",
+    "mktCapH": "—",
+    "pe": "—",
+    "verdict": "noda",
+    "verdictLabel": "不打",
+    "score": 47,
+    "position": "待确认",
+    "sponsors": "待补充",
+    "isTransfer": false,
+    "cornerstone": {
+      "total": "待补充",
+      "tier1": [],
+      "others": []
+    },
+    "conclusion": "自动分析 | 招股/上市中新股。毛利率 —，收入增速 —。基本面评分 47/100，建议：不打。（本分析由规则引擎自动生成，待人工补充完整招股书分析）",
+    "scores": [
+      {
+        "label": "业务质量",
+        "pts": 12,
+        "max": 25,
+        "desc": "自动评分：收入增速+毛利率"
+      },
+      {
+        "label": "财务健康",
+        "pts": 10,
+        "max": 25,
+        "desc": "自动评分：盈利能力+现金流"
+      },
+      {
+        "label": "估值吸引力",
+        "pts": 12,
+        "max": 25,
+        "desc": "自动评分：估值区间参考"
+      },
+      {
+        "label": "资本结构",
+        "pts": 13,
+        "max": 25,
+        "desc": "自动评分：基石+新旧股比例"
+      }
+    ],
+    "financial": [
+      {
+        "label": "收入（人民币亿元）",
+        "y2023": "—",
+        "y2024": "—",
+        "y2025": "—"
+      },
+      {
+        "label": "毛利率",
+        "y2023": "—",
+        "y2024": "—",
+        "y2025": "—"
+      },
+      {
+        "label": "净利润（人民币M）",
+        "y2023": "—",
+        "y2024": "—",
+        "y2025": "—"
+      },
+      {
+        "label": "收入增速",
+        "y2023": "—",
+        "y2024": "—",
+        "y2025": "—"
+      }
+    ],
+    "cfChecks": [
+      {
+        "icon": "⚠️",
+        "text": "自动生成stub，现金流数据待人工核实",
+        "tag": "warn",
+        "tagText": "待核实"
+      }
+    ],
+    "risks": [
+      "<strong>信息待补充</strong>：建议手动补充招股书详细分析"
+    ],
+    "actions": [
+      {
+        "date": "上市后",
+        "title": "观察价格",
+        "desc": "关注上市后估值收敛情况"
+      },
+      {
+        "date": "中期",
+        "title": "盈利兑现",
+        "desc": "跟踪全年净利润是否实质性增长"
+      }
+    ],
+    "subscription": null,
+    "greyMarket": {
+      "date": "",
+      "price": null,
+      "changePct": null,
+      "peakPrice": null,
+      "peakChangePct": null
+    },
+    "_auto": true,
+    "_updatedAt": "2026-06-24"
+  },
+  {
+    "code": "06915",
+    "applyEndTs": 0,
+    "listTs": 0,
+    "name": "江西生物製品研究所股份有限公司",
+    "nameEn": "",
+    "sector": "待补充",
+    "listDate": "",
+    "subDate": "—",
+    "price": null,
+    "lotSize": 100,
+    "entryFee": null,
+    "totalIssue": "—",
+    "publicIssue": "—",
+    "greenshoe": "—",
+    "mktCapH": "—",
+    "pe": "—",
+    "verdict": "noda",
+    "verdictLabel": "不打",
+    "score": 47,
+    "position": "待确认",
+    "sponsors": "待补充",
+    "isTransfer": false,
+    "cornerstone": {
+      "total": "待补充",
+      "tier1": [],
+      "others": []
+    },
+    "conclusion": "自动分析 | 招股/上市中新股。毛利率 —，收入增速 —。基本面评分 47/100，建议：不打。（本分析由规则引擎自动生成，待人工补充完整招股书分析）",
+    "scores": [
+      {
+        "label": "业务质量",
+        "pts": 12,
+        "max": 25,
+        "desc": "自动评分：收入增速+毛利率"
+      },
+      {
+        "label": "财务健康",
+        "pts": 10,
+        "max": 25,
+        "desc": "自动评分：盈利能力+现金流"
+      },
+      {
+        "label": "估值吸引力",
+        "pts": 12,
+        "max": 25,
+        "desc": "自动评分：估值区间参考"
+      },
+      {
+        "label": "资本结构",
+        "pts": 13,
+        "max": 25,
+        "desc": "自动评分：基石+新旧股比例"
+      }
+    ],
+    "financial": [
+      {
+        "label": "收入（人民币亿元）",
+        "y2023": "—",
+        "y2024": "—",
+        "y2025": "—"
+      },
+      {
+        "label": "毛利率",
+        "y2023": "—",
+        "y2024": "—",
+        "y2025": "—"
+      },
+      {
+        "label": "净利润（人民币M）",
+        "y2023": "—",
+        "y2024": "—",
+        "y2025": "—"
+      },
+      {
+        "label": "收入增速",
+        "y2023": "—",
+        "y2024": "—",
+        "y2025": "—"
+      }
+    ],
+    "cfChecks": [
+      {
+        "icon": "⚠️",
+        "text": "自动生成stub，现金流数据待人工核实",
+        "tag": "warn",
+        "tagText": "待核实"
+      }
+    ],
+    "risks": [
+      "<strong>信息待补充</strong>：建议手动补充招股书详细分析"
+    ],
+    "actions": [
+      {
+        "date": "上市后",
+        "title": "观察价格",
+        "desc": "关注上市后估值收敛情况"
+      },
+      {
+        "date": "中期",
+        "title": "盈利兑现",
+        "desc": "跟踪全年净利润是否实质性增长"
+      }
+    ],
+    "subscription": null,
+    "greyMarket": {
+      "date": "",
+      "price": null,
+      "changePct": null,
+      "peakPrice": null,
+      "peakChangePct": null
+    },
+    "_auto": true,
+    "_updatedAt": "2026-06-24"
+  },
+  {
+    "code": "03952",
+    "applyEndTs": 0,
+    "listTs": 0,
+    "name": "浙江來福諧波傳動股份有限公司",
+    "nameEn": "",
+    "sector": "待补充",
+    "listDate": "",
+    "subDate": "—",
+    "price": null,
+    "lotSize": 100,
+    "entryFee": null,
+    "totalIssue": "—",
+    "publicIssue": "—",
+    "greenshoe": "—",
+    "mktCapH": "—",
+    "pe": "—",
+    "verdict": "noda",
+    "verdictLabel": "不打",
+    "score": 47,
+    "position": "待确认",
+    "sponsors": "待补充",
+    "isTransfer": false,
+    "cornerstone": {
+      "total": "待补充",
+      "tier1": [],
+      "others": []
+    },
+    "conclusion": "自动分析 | 招股/上市中新股。毛利率 —，收入增速 —。基本面评分 47/100，建议：不打。（本分析由规则引擎自动生成，待人工补充完整招股书分析）",
+    "scores": [
+      {
+        "label": "业务质量",
+        "pts": 12,
+        "max": 25,
+        "desc": "自动评分：收入增速+毛利率"
+      },
+      {
+        "label": "财务健康",
+        "pts": 10,
+        "max": 25,
+        "desc": "自动评分：盈利能力+现金流"
+      },
+      {
+        "label": "估值吸引力",
+        "pts": 12,
+        "max": 25,
+        "desc": "自动评分：估值区间参考"
+      },
+      {
+        "label": "资本结构",
+        "pts": 13,
+        "max": 25,
+        "desc": "自动评分：基石+新旧股比例"
+      }
+    ],
+    "financial": [
+      {
+        "label": "收入（人民币亿元）",
+        "y2023": "—",
+        "y2024": "—",
+        "y2025": "—"
+      },
+      {
+        "label": "毛利率",
+        "y2023": "—",
+        "y2024": "—",
+        "y2025": "—"
+      },
+      {
+        "label": "净利润（人民币M）",
+        "y2023": "—",
+        "y2024": "—",
+        "y2025": "—"
+      },
+      {
+        "label": "收入增速",
+        "y2023": "—",
+        "y2024": "—",
+        "y2025": "—"
+      }
+    ],
+    "cfChecks": [
+      {
+        "icon": "⚠️",
+        "text": "自动生成stub，现金流数据待人工核实",
+        "tag": "warn",
+        "tagText": "待核实"
+      }
+    ],
+    "risks": [
+      "<strong>信息待补充</strong>：建议手动补充招股书详细分析"
+    ],
+    "actions": [
+      {
+        "date": "上市后",
+        "title": "观察价格",
+        "desc": "关注上市后估值收敛情况"
+      },
+      {
+        "date": "中期",
+        "title": "盈利兑现",
+        "desc": "跟踪全年净利润是否实质性增长"
+      }
+    ],
+    "subscription": null,
+    "greyMarket": {
+      "date": "",
+      "price": null,
+      "changePct": null,
+      "peakPrice": null,
+      "peakChangePct": null
+    },
+    "_auto": true,
+    "_updatedAt": "2026-06-24"
+  },
+  {
+    "code": "06715",
+    "applyEndTs": 0,
+    "listTs": 0,
+    "name": "杭州千島湖鱘龍科技股份有限公司",
+    "nameEn": "",
+    "sector": "待补充",
+    "listDate": "",
+    "subDate": "—",
+    "price": null,
+    "lotSize": 100,
+    "entryFee": null,
+    "totalIssue": "—",
+    "publicIssue": "—",
+    "greenshoe": "—",
+    "mktCapH": "—",
+    "pe": "—",
+    "verdict": "noda",
+    "verdictLabel": "不打",
+    "score": 47,
+    "position": "待确认",
+    "sponsors": "待补充",
+    "isTransfer": false,
+    "cornerstone": {
+      "total": "待补充",
+      "tier1": [],
+      "others": []
+    },
+    "conclusion": "自动分析 | 招股/上市中新股。毛利率 —，收入增速 —。基本面评分 47/100，建议：不打。（本分析由规则引擎自动生成，待人工补充完整招股书分析）",
+    "scores": [
+      {
+        "label": "业务质量",
+        "pts": 12,
+        "max": 25,
+        "desc": "自动评分：收入增速+毛利率"
+      },
+      {
+        "label": "财务健康",
+        "pts": 10,
+        "max": 25,
+        "desc": "自动评分：盈利能力+现金流"
+      },
+      {
+        "label": "估值吸引力",
+        "pts": 12,
+        "max": 25,
+        "desc": "自动评分：估值区间参考"
+      },
+      {
+        "label": "资本结构",
+        "pts": 13,
+        "max": 25,
+        "desc": "自动评分：基石+新旧股比例"
+      }
+    ],
+    "financial": [
+      {
+        "label": "收入（人民币亿元）",
+        "y2023": "—",
+        "y2024": "—",
+        "y2025": "—"
+      },
+      {
+        "label": "毛利率",
+        "y2023": "—",
+        "y2024": "—",
+        "y2025": "—"
+      },
+      {
+        "label": "净利润（人民币M）",
+        "y2023": "—",
+        "y2024": "—",
+        "y2025": "—"
+      },
+      {
+        "label": "收入增速",
+        "y2023": "—",
+        "y2024": "—",
+        "y2025": "—"
+      }
+    ],
+    "cfChecks": [
+      {
+        "icon": "⚠️",
+        "text": "自动生成stub，现金流数据待人工核实",
+        "tag": "warn",
+        "tagText": "待核实"
+      }
+    ],
+    "risks": [
+      "<strong>信息待补充</strong>：建议手动补充招股书详细分析"
+    ],
+    "actions": [
+      {
+        "date": "上市后",
+        "title": "观察价格",
+        "desc": "关注上市后估值收敛情况"
+      },
+      {
+        "date": "中期",
+        "title": "盈利兑现",
+        "desc": "跟踪全年净利润是否实质性增长"
+      }
+    ],
+    "subscription": null,
+    "greyMarket": {
+      "date": "",
+      "price": null,
+      "changePct": null,
+      "peakPrice": null,
+      "peakChangePct": null
+    },
+    "_auto": true,
+    "_updatedAt": "2026-06-24"
+  },
+  {
     "code": "02672",
     "applyEndTs": 0,
     "listTs": 0,
