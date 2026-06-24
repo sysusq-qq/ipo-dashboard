@@ -528,6 +528,158 @@
    DATA  —  按上市日期倒序排列（越晚越前）
 ════════════════════════════════════════════════════════ */
 const stocks = [
+  // ⚠️ AUTO-STUB [2026-06-24] Futu API检测，Claude分析失败，请手动补充
+    {
+    code: '03774',
+    applyEndTs: 0,   // 北京时间 N/A 10:00（Futu提供，待招股书核实）
+    listTs:     1782748800,        // 北京时间 2026-06-30 00:00（⚠️ 待招股书核实，禁用Futu原始时间戳）
+    name: '亮晴控股',
+    nameEn: '',
+    sector: '⚠️ 待补充',
+    listDate: '2026-06-30',
+    subDate: '⚠️ 待补充',
+    price: null,
+    lotSize: 1000,
+    entryFee: null,
+    totalIssue: '⚠️ 待补充',
+    publicIssue: '⚠️ 待补充',
+    greenshoe: '⚠️ 待查（需同时搜超額配股權和超額配售）',
+    mktCapH: '⚠️ 待补充',
+    pe: '⚠️ 待补充',
+    verdict: 'wait', verdictLabel: '待分析', score: 0,
+    position: '⚠️ 待分析',
+    sponsors: '⚠️ 待补充',
+    isTransfer: false,
+    cornerstone: { total: '⚠️ 待补充', tier1: [], others: [] },
+    conclusion: '⚠️ AUTO-STUB [2026-06-24] 由本地Futu API自动检测插入，请用Claude补充完整招股书分析。',
+    scores: [
+      { label: '业务质量',          pts: 0, max: 25, desc: '⚠️ 待分析' },
+      { label: '财务健康',          pts: 0, max: 25, desc: '⚠️ 待分析' },
+      { label: '估值吸引力',        pts: 0, max: 25, desc: '⚠️ 待分析' },
+      { label: '资本结构',          pts: 0, max: 25, desc: '⚠️ 待分析' },
+      { label: '市场叙事/赛道溢价', pts: 0, max: 15, desc: '⚠️ 待分析' },
+    ],
+    financial: [
+      { label: '收入（人民币亿元）', y2023: '—', y2024: '—', y2025: '—' },
+      { label: '毛利率',             y2023: '—', y2024: '—', y2025: '—' },
+      { label: '净利润（人民币M）',  y2023: '—', y2024: '—', y2025: '—' },
+      { label: '收入增速',           y2023: '—', y2024: '—', y2025: '—' },
+    ],
+    cfChecks: [
+      { icon: '⚠️', text: 'AUTO-STUB 自动插入，现金流数据待人工核实', tag: 'warn', tagText: '待分析' },
+    ],
+    risks: ['<strong>待分析</strong>：请用Claude补充完整招股书分析'],
+    actions: [
+      { date: '⚠️ 待填', title: '申购截止', desc: '请补充具体时间节点' },
+    ],
+    subscription: {
+      scenarios: [
+        { label: '保守', mult: 0, premPct: 0 },
+        { label: '基准', mult: 0, premPct: 0 },
+        { label: '乐观', mult: 0, premPct: 0 },
+      ],
+      recClass: 'wait', recTitle: '⚠️ 待分析',
+      lots: 0, method: '待定', marginOk: false,
+      marginTip: '⚠️ 待分析',
+      rationale: 'AUTO-STUB，待人工补充分析。',
+      urgentTip: '⚠️ 请补充截止时间',
+    },
+    greyMarket: {
+      date: '2026-06-29',
+      price: null, changePct: null, peakPrice: null, peakChangePct: null
+    }
+  },
+  // ✅ AUTO-ANALYZED [2026-06-24] Claude API 自动分析
+  {
+  code: '00668',
+  applyEndTs: 1782439200,
+  listTs:     1782921600,
+  name: '安克创新',
+  nameEn: 'Anker Innovations Technology Co., Ltd.',
+  sector: '消费电子 / 智能硬件科技 / A+H两地上市',
+  listDate: '2026-07-02',
+  subDate: '2026-06-23 ~ 2026-06-26',
+  price: 99.32,
+  lotSize: 100,
+  entryFee: 10032.16,
+  totalIssue: '约4663万股H股（全球发售，不含超额配股权）',
+  publicIssue: '约466万股（10%香港公开发售）',
+  greenshoe: '有（最多约699万股，约占初步发售股份15%）',
+  mktCapH: '约HK$463亿（总股本5.83亿股×HK$99.32，含A股折算）',
+  pe: '约18x（2025A净利润约25.5亿人民币，总市值约720亿港元）/ PS约2.1x',
+  verdict: 'da',
+  verdictLabel: '打',
+  score: 83,
+  position: '现金仓1手（稳健）/ 积极者可孖展3-5手',
+  sponsors: '中国国际金融香港证券有限公司、高盛（亚洲）有限责任公司、J.P. Morgan Securities (Far East) Limited',
+  isTransfer: false,
+  cornerstone: {
+    total: '待确认（招股书文本未完整披露基石投资者金额）',
+    tier1: [
+      { name: '待确认', amt: '待确认', lockup: '6个月' }
+    ],
+    others: []
+  },
+  conclusion: '安克创新是A+H两地上市消费电子龙头，2025年收入305亿元人民币（+23.5% YoY），毛利率43.9%，净利润25.5亿元，股息支付率稳定在50%以上。全球移动充电市占率第一，三大品牌（Anker/eufy/soundcore）覆盖180+国家，2亿用户基础护城河深厚。三大顶级投行（中金/高盛/摩根）联合保薦，有绿鞋机制护盘。A股（300866）当前市值约584亿人民币（≈648亿港元），H股发行价对应总市值约720亿港元存在一定溢价，但H股流动性折价合理。赛道属成熟消费电子，非AI/机器人热门赛道，叙事溢价有限。综合质地优秀、财务稳健、保荐团队顶级，建议至少打1手现金仓，积极投资者可适度孖展参与。',
+  scores: [
+    { label: '业务质量', pts: 22, max: 25, desc: '全球移动充电#1，三品牌矩阵成熟，2亿用户，180+国家布局，10年CAGR 35%+，GaN/SOLIX等技术壁垒；唯亚马逊依赖度（52%收入）为隐忧，扣3分' },
+    { label: '财务健康', pts: 22, max: 25, desc: '2025年收入305亿人民币，毛利率43.9%（持续提升），净利率8.3%，股息率50%+，资产净值108亿元；2025年经营现金流仅4.8亿（远低于净利润），存货周转天数升至87.7天，扣3分' },
+    { label: '估值吸引力', pts: 17, max: 25, desc: 'H股PE约18x（2025A），对标A股（约21x）有折价，PS约2.1x。消费电子同类Anker A股在创业板，H股无直接可比港股标的。估值中性偏合理，非明显低估，扣8分' },
+    { label: '资本结构', pts: 15, max: 25, desc: '三大顶级投行（中金/高盛/JPM）联合保荐，有绿鞋（15%），有稳定价格操作人（中金）；基石投资者信息招股书文本未完整披露，H股仅占总股本8%流通量偏低，扣10分' },
+    { label: '市场叙事/赛道溢价', pts: 7, max: 15, desc: '消费电子/智能硬件属成熟赛道，非AI芯片/机器人/低空经济当前最热门方向；SOLIX储能有新能源叙事加成，但整体赛道溢价有限，归入中性区间' }
+  ],
+  financial: [
+    { label: '收入（人民币亿元）', y2023: '175.1', y2024: '247.1', y2025: '305.1' },
+    { label: '毛利率', y2023: '42.7%', y2024: '43.1%', y2025: '43.9%' },
+    { label: '净利润（人民币百万元）', y2023: '1,615', y2024: '2,114', y2025: '2,545' },
+    { label: '收入增速', y2023: '—', y2024: '+41.1%', y2025: '+23.5%' }
+  ],
+  cfChecks: [
+    { icon: '✅', text: '2024年经营现金流27.5亿元人民币，覆盖净利润130%，现金质量优秀', tag: 'ok', tagText: '现金流健康' },
+    { icon: '⚠️', text: '2025年经营现金流仅4.8亿元（大幅低于净利润25.5亿），主因库存扩张（存货+17.6亿）及应收款增加，需关注', tag: 'warn', tagText: '2025年现金流偏弱' },
+    { icon: '✅', text: '截至2025年末现金及等价物30.7亿元，同比+32%，流动性充裕', tag: 'ok', tagText: '现金充裕' },
+    { icon: '✅', text: '三年累计股息超过27亿元人民币，股息支付率50%+，股东回报稳定', tag: 'ok', tagText: '高分红' },
+    { icon: '⚠️', text: '存货周转天数由2023年70.8天升至2025年87.7天，库存管理压力上升', tag: 'warn', tagText: '存货周转放缓' }
+  ],
+  risks: [
+    '<strong>亚马逊平台集中度风险</strong>：2025年亚马逊收入占比52.3%，平台政策变化或账号风险可能对业务造成重大影响',
+    '<strong>关税与贸易政策风险</strong>：美国对华关稅波动（2025年关税支出占收入3.4%），未来政策不确定性仍高',
+    '<strong>A股H股溢价风险</strong>：H股发行价对应总市值约720亿港元，高于A股当前市值（约648亿港元），存在上市后跌破A股对应估值风险',
+    '<strong>现金流与存货风险</strong>：2025年经营现金流仅4.8亿，存货达50亿元，库存周转天数87.7天持续上升',
+    '<strong>产品召回风险</strong>：2025年6月及10月已发生两次主动召回，涉及电池问题，产品责任风险持续存在',
+    '<strong>流通量偏低风险</strong>：H股仅占总股本8%，流动性偏低，上市初期波动性可能较大'
+  ],
+  actions: [
+    { date: '6月23日 认购开始', title: '开始申购', desc: '通过白表eIPO (www.eipo.com.hk) 或经纪商FINI渠道提交申购，最低1手100股' },
+    { date: '6月26日 截止日', title: '申购截止（BJ 10:00）', desc: '白表eIPO需在11:30前完成申请，网银转账需在12:00正前完成；经纪商渠道以各自截止时间为准，建议提早操作' },
+    { date: '6月29日 定价日', title: '关注最终定价', desc: '最高发售价HK$99.32，最终价格6月29日中午12时前确认，关注是否折让定价' },
+    { date: '6月30日 公布结果', title: '查看中签结果', desc: '于iporesults.com.hk查询中签情况，退款将同日处理' },
+    { date: '7月1日 暗盘', title: '关注暗盘价格', desc: '暗盘日观察市场情绪，暗盘价格可作为次日开盘参考；若暗盘溢价超10%可考虑暗盘减持部分仓位' },
+    { date: '7月2日 上市', title: '上市首日策略', desc: '现金仓持有者视开盘溢价情况决定持有或止盈；建议首日溢价>15%减半，>25%全出；孖展仓视情况当日平仓' }
+  ],
+  subscription: {
+    scenarios: [
+      { label: '保守', mult: 50, premPct: 5 },
+      { label: '基准', mult: 100, premPct: 12 },
+      { label: '乐观', mult: 200, premPct: 22 }
+    ],
+    recClass: 'da',
+    recTitle: '✅ 积极申购',
+    lots: 5,
+    method: '现金仓1手为基础，积极者现金仓3-5手',
+    marginOk: true,
+    marginTip: '品质优秀公司，有绿鞋保护，孖展风险可控；建议孖展不超过5手，首日视溢价平仓',
+    rationale: '安克创新是全球智能硬件龙头，三顶级投行保荐信心背书强。10年CAGR 35%+的收入增长、43.9%毛利率持续提升、高达50%分红率，基本面扎实。H股相对A股存在一定折价，具备安全边际。A+H架构叠加硬性触发规则（折价>30%尚需上市后确认），至少积极打1手。唯一隐忧是H股流通量仅8%且赛道非当前最热，预期稳健上涨而非暴涨。',
+    urgentTip: '⏰ 截止2026-06-26（周五）BJ 10:00；白表eIPO需11:30前完成；一人一手起，最多2,331,600股；申购即冻结资金，退款约6月30日'
+  },
+  greyMarket: {
+    date: '2026-07-01',
+    price: null,
+    changePct: null,
+    peakPrice: null,
+    peakChangePct: null
+  }
+},
   // ⚠️ AUTO-STUB [2026-06-22] 自动插入，请用 Claude 补充完整招股书分析后替换此条目
   {
   "code": "06715",
