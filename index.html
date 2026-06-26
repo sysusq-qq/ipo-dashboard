@@ -1917,7 +1917,7 @@ const stocks = [
   listTs:     1782403200,
   name: '圣邦股份',
   nameEn: 'SG Micro Corp',
-  sector: '半导体 / 模拟集成电路 / 中国芯片国产替代',
+  sector: '半导体 / 模拟集成电路 / 中国芯片国产替代 / A+H两地上市',
   listDate: '2026-06-26',
   subDate: '2026-06-17 ~ 2026-06-23',
   price: 85.2,
@@ -1933,7 +1933,7 @@ const stocks = [
   score: 62,
   position: '1手现金仓（A+H折价打新策略）',
   sponsors: '中国国际金融香港证券有限公司、华泰金融控股（香港）有限公司',
-  isTransfer: true,
+  isTransfer: false,
   cornerstone: {
     total: '待确认（招股书节选未完整披露基石投资者名单及总金额）',
     tier1: [
@@ -2211,7 +2211,7 @@ const stocks = [
   score: 57,
   position: '1手现金仓',
   sponsors: '中信建投（国际）融资有限公司（独家保荐人）',
-  isTransfer: true,
+  isTransfer: false,
   cornerstone: {
     total: '待确认（招股书正文未完整披露基石金额，CICC FT代独立第三方认购，金额待公告）',
     tier1: [
@@ -4821,6 +4821,10 @@ function bjNowMs() {
 
 function calcStatus(s) {
   if (s.isTransfer) return { cls: 's-transfer', text: '转板' };
+  // A+H / 第二上市 / 转板 sector标签自动归入"其他"
+  const sec = s.sector || '';
+  if (sec.includes('A+H'))   return { cls: 's-transfer', text: 'A+H' };
+  if (sec.includes('第二上市')) return { cls: 's-transfer', text: '第二上市' };
   const nowTs = bjNowMs() / 1000;
   if (s.listTs     && nowTs >= s.listTs)     return { cls: 's-listed',  text: '已上市' };
   if (s.applyEndTs && nowTs >= s.applyEndTs) return { cls: 's-closed',  text: '已截招' };
