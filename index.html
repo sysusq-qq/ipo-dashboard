@@ -733,7 +733,7 @@ const stocks = [
   score: 83,
   position: '1手现金仓（公开发售中签率极低，建议1手博彩票）',
   sponsors: '中信证券（香港）/ 高盛（亚洲）/ 中国国际金融香港证券（三家顶级联席保荐人）',
-  isTransfer: true,
+  isTransfer: false,
   cornerstone: {
     total: '待确认具体金额（招股书提及广发基金管理、广发基金香港、惠理基金VPHKL、VPL为基石投资者）',
     tier1: [
@@ -1159,7 +1159,7 @@ const stocks = [
   score: 57,
   position: '1手现金仓',
   sponsors: '华泰金融控股（香港）有限公司、建银国际金融有限公司',
-  isTransfer: true,
+  isTransfer: false,
   cornerstone: {
     total: 'USD 4,980万（≈HK$3.91亿），占发售股份约30.91%（按发行价最高价3.59港元）',
     tier1: [
@@ -6084,6 +6084,7 @@ function calcStatus(s) {
   const sec = s.sector || '';
   if (sec.includes('A+H'))   return { cls: 's-transfer', text: 'A+H' };
   if (sec.includes('第二上市')) return { cls: 's-transfer', text: '第二上市' };
+  if (sec.includes('转板'))  return { cls: 's-transfer', text: '转板' };
   const nowTs = bjNowMs() / 1000;
   if (s.listTs     && nowTs >= s.listTs)     return { cls: 's-listed',  text: '已上市' };
   if (s.applyEndTs && nowTs >= s.applyEndTs) return { cls: 's-closed',  text: '已截招' };
