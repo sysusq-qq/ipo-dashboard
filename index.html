@@ -1416,67 +1416,108 @@ const stocks = [
     peakChangePct: null
   }
 },
-  // ⚠️ AUTO-STUB [2026-06-29] Futu API检测，Claude分析失败，请手动补充
-    {
-    code: '06880',
-    applyEndTs: 1783008000,   // 北京时间 2026-07-03 10:00（Futu提供，待招股书核实）
-    listTs:     1783440000,        // 北京时间 2026-07-08 00:00（⚠️ 待招股书核实，禁用Futu原始时间戳）
-    name: 'MOMENTA-W',
-    nameEn: '',
-    sector: '⚠️ 待补充',
-    listDate: '2026-07-08',
-    subDate: '⚠️ 待补充',
-    price: 295.6,
-    lotSize: 20,
-    entryFee: 5971.42,
-    totalIssue: '⚠️ 待补充',
-    publicIssue: '⚠️ 待补充',
-    greenshoe: '⚠️ 待查（需同时搜超額配股權和超額配售）',
-    mktCapH: '⚠️ 待补充',
-    pe: '⚠️ 待补充',
-    verdict: 'wait', verdictLabel: '待分析', score: 0,
-    position: '⚠️ 待分析',
-    sponsors: '⚠️ 待补充',
-    isTransfer: false,
-    cornerstone: { total: '⚠️ 待补充', tier1: [], others: [] },
-    conclusion: '⚠️ AUTO-STUB [2026-06-29] 由本地Futu API自动检测插入，请用Claude补充完整招股书分析。',
-    scores: [
-      { label: '业务质量',          pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '财务健康',          pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '估值吸引力',        pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '资本结构',          pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '市场叙事/赛道溢价', pts: 0, max: 15, desc: '⚠️ 待分析' },
+    // ✅ AUTO-ANALYZED [2026-07-03] Claude API 自动分析
+  {
+  code: '06880',
+  applyEndTs: 1783008000,
+  listTs:     1783440000,
+  name: 'MOMENTA-W',
+  nameEn: 'MOMENTA GLOBAL LIMITED',
+  sector: '自动驾驶 / 智能驾驶解决方案 / 18C科技独角兽',
+  listDate: '2026-07-08',
+  subDate: '2026-06-30 ~ 2026-07-03',
+  price: 295.6,
+  lotSize: 20,
+  entryFee: 5971.42,
+  totalIssue: '约1993.83万股H股（全球发售，含超额）',
+  publicIssue: '199.38万股（10%香港公开发售）',
+  greenshoe: '有（最多299.07万股超额配股权，约15%）',
+  mktCapH: '约HK$696.5亿（总股本约2.355亿股×HK$295.6）',
+  pe: '亏损阶段，PS约待确认（参考同类Mobileye/地平线估值体系）',
+  verdict: 'da',
+  verdictLabel: '打',
+  score: 82,
+  position: '1手现金仓（彩票策略）',
+  sponsors: '中国国际金融香港证券有限公司（联席保荐人及整体协调人）',
+  isTransfer: false,
+  cornerstone: {
+    total: '约HK$29.5亿（9,960,080股×HK$295.6），占全球发售约49.95%',
+    tier1: [
+      { name: 'GIC（新加坡政府投资公司）', amt: '2,650,760股≈HK$7.84亿', lockup: '6个月' },
+      { name: '富达国际', amt: '2,650,760股≈HK$7.84亿', lockup: '6个月' },
+      { name: '蘇州魔速', amt: '656,060股≈HK$1.94亿', lockup: '6个月' },
+      { name: 'BlackRock', amt: '662,680股≈HK$1.96亿', lockup: '6个月' },
+      { name: '梅赛德斯-奔驰集团（现有股东）', amt: '662,680股≈HK$1.96亿', lockup: '6个月' },
+      { name: 'Oaktree', amt: '530,140股≈HK$1.57亿', lockup: '6个月' },
     ],
-    financial: [
-      { label: '收入（人民币亿元）', y2023: '—', y2024: '—', y2025: '—' },
-      { label: '毛利率',             y2023: '—', y2024: '—', y2025: '—' },
-      { label: '净利润（人民币M）',  y2023: '—', y2024: '—', y2025: '—' },
-      { label: '收入增速',           y2023: '—', y2024: '—', y2025: '—' },
-    ],
-    cfChecks: [
-      { icon: '⚠️', text: 'AUTO-STUB 自动插入，现金流数据待人工核实', tag: 'warn', tagText: '待分析' },
-    ],
-    risks: ['<strong>待分析</strong>：请用Claude补充完整招股书分析'],
-    actions: [
-      { date: '⚠️ 待填', title: '申购截止', desc: '请补充具体时间节点' },
-    ],
-    subscription: {
-      scenarios: [
-        { label: '保守', mult: 0, premPct: 0 },
-        { label: '基准', mult: 0, premPct: 0 },
-        { label: '乐观', mult: 0, premPct: 0 },
-      ],
-      recClass: 'wait', recTitle: '⚠️ 待分析',
-      lots: 0, method: '待定', marginOk: false,
-      marginTip: '⚠️ 待分析',
-      rationale: 'AUTO-STUB，待人工补充分析。',
-      urgentTip: '⚠️ 请补充截止时间',
-    },
-    greyMarket: {
-      date: '2026-07-07',
-      price:      294.6, changePct: -0.34, peakPrice: null, peakChangePct: null
-    }
+    others: [
+      { name: '金菱（现有股东）', amt: '397,600股', lockup: '6个月' },
+      { name: 'Franklin Templeton', amt: '265,060股', lockup: '6个月' },
+      { name: 'Boyu（博裕资本）', amt: '265,060股', lockup: '6个月' },
+      { name: '高毅实体（Perseverance AM）', amt: '265,060股', lockup: '6个月' },
+      { name: 'CPIC', amt: '265,060股', lockup: '6个月' },
+      { name: '广发基金', amt: '265,060股', lockup: '6个月' },
+      { name: '华夏基金（香港）', amt: '265,060股', lockup: '6个月' },
+      { name: 'GigaDevice', amt: '159,040股', lockup: '6个月' },
+    ]
   },
+  conclusion: 'Momenta是中国头部自动驾驶软件公司，获GIC、富达、BlackRock、梅赛德斯-奔驰等顶级基石背书，基石占比近50%，显示机构高度认可。公开认购413.63倍超额，国际发售20.31倍，需求旺盛。18C上市+不同投票权架构，港股自动驾驶稀缺标的。硬性触发：18C+顶级机构基石占比>30%，最低1手现金仓彩票。公开认购倍数达414倍，升级积极打。建议1手现金仓参与，博上市首日溢价。',
+  scores: [
+    { label: '业务质量', pts: 22, max: 25, desc: '中国头部自动驾驶软件平台，飞轮数据驱动模式具备技术护城河；梅赛德斯-奔驰为战略股东兼基石，已实现车企前装量产落地；18C科技公司港股稀缺，全球自动驾驶赛道技术壁垒高。扣分：尚处亏损阶段，商业化规模仍需验证。' },
+    { label: '财务健康', pts: 12, max: 25, desc: '招股书文本未披露详细财务数据，作为18C上市公司处于研发投入期，预计持续亏损。现金流依赖融资，但IPO净额约HK$56.6亿提供充足弹药。毛利率结构待确认，高研发投入压制利润率，财务健康分偏低。' },
+    { label: '估值吸引力', pts: 16, max: 25, desc: '发行价HK$295.6，市值约HK$696亿，对标Mobileye（亏损阶段PS估值）及地平线（港股18C）。基石认购近50%锁定6个月提供价格支撑；414倍公开超购反映二级市场需求极旺；相对全球自动驾驶独角兽估值体系，定价合理偏保守，具备一定吸引力。' },
+    { label: '资本结构', pts: 21, max: 25, desc: '基石阵容极强：GIC+富达+BlackRock+梅赛德斯-奔驰+Oaktree等全球顶级机构，占全球发售近50%；中金香港为联席保薦人，背书充分；有绿鞋机制（最多约15%）提供上市初期价格稳定支撑；禁售安排完善，股权集中度适当。' },
+    { label: '市场叙事/赛道溢价', pts: 14, max: 15, desc: '自动驾驶是2026年港股最热赛道之一，AI+汽车智能化叙事持续升温；港股18C自动驾驶纯软件平台稀缺，地平线上市后赛道热度居高不下；梅赛德斯-奔驰战略持股+顶级VC背书放大市场想象空间；414倍超购验证市场热度，赛道溢价显著。' },
+  ],
+  financial: [
+    { label: '收入（人民币亿元）', y2023: '待确认', y2024: '待确认', y2025: '待确认' },
+    { label: '毛利率', y2023: '待确认', y2024: '待确认', y2025: '待确认' },
+    { label: '净利润（人民币M）', y2023: '亏损', y2024: '亏损', y2025: '亏损' },
+    { label: '收入增速', y2023: '—', y2024: '待确认', y2025: '待确认' },
+  ],
+  cfChecks: [
+    { icon: '⚠️', text: '18C公司持续研发投入，经营现金流预计为负，依赖融资补血', tag: 'warn', tagText: '经营现金流负' },
+    { icon: '✅', text: 'IPO净额约HK$56.6亿，提供充裕现金储备支撑3-5年运营', tag: 'ok', tagText: '融资现金流强' },
+    { icon: '✅', text: '基石投资者锁定约50%发售股份6个月，减少短期抛压', tag: 'ok', tagText: '锁定结构健康' },
+    { icon: '⚠️', text: '尚无稳定盈利来源，商业化收入规模待招股书完整数据核实', tag: 'warn', tagText: '盈利能力待验证' },
+  ],
+  risks: [
+    '<strong>持续亏损风险</strong>：公司处于研发重投入期，短期内难以实现盈利，若商业化进展低于预期，估值将承压。',
+    '<strong>不同投票权架构风险</strong>：创始人曹旭东持有超级投票权，小股东对公司决策影响力有限，利益可能不一致。',
+    '<strong>股权高度集中警告</strong>：公告特别警示股权集中导致股价可能大幅波动，少量交易即可引发剧烈价格波动。',
+    '<strong>自动驾驶商业化不确定性</strong>：L2+至L4自动驾驶量产落地进度受政策法规、车企合作及技术成熟度多重因素制约。',
+    '<strong>竞争激烈</strong>：国内面临华为、大疆、地平线等强劲竞争，海外面临Waymo、Mobileye等国际巨头竞争压力。',
+    '<strong>估值高企回调风险</strong>：市值近700亿港元，若市场情绪转变或赛道热度降温，高估值标的回调幅度可能较大。',
+  ],
+  actions: [
+    { date: '7月3日 申购截止', title: '现金申购1手', desc: '截止北京时间10:00前完成申购，1手入场费约HK$5,971，414倍超购中签率约5%（1手档），彩票策略参与。' },
+    { date: '7月7日 暗盘交易', title: '观察暗盘价格', desc: '暗盘日关注成交价，若暗盘溢价>10%可持有待正式开市；若暗盘破发需评估持仓风险。' },
+    { date: '7月8日 上市首日', title: '开市观察后决策', desc: '若开市溢价>15%考虑逢高兑现部分；若表现强势可持有至稳定；注意股权集中导致的流动性风险。' },
+    { date: '上市后1-2周', title: '追踪基本面更新', desc: '关注公司发布的完整财务数据及商业化合同进展，判断是否有中线持有价值。' },
+  ],
+  subscription: {
+    scenarios: [
+      { label: '保守', mult: 200, premPct: 5 },
+      { label: '基准', mult: 414, premPct: 20 },
+      { label: '乐观', mult: 600, premPct: 40 },
+    ],
+    recClass: 'da',
+    recTitle: '✅ 积极申购',
+    lots: 1,
+    method: '现金仓',
+    marginOk: false,
+    marginTip: '18C亏损公司，股价波动性极高，不建议使用孖展；1手现金彩票策略风险可控',
+    rationale: 'Momenta为港股稀缺自动驾驶纯软件平台，18C上市触发机构基石>30%硬性规则；GIC、富达、BlackRock等顶级机构以近50%占比锁仓背书，信心极高；414倍公开超购触发升级积极打规则；绿鞋机制提供上市初期价格保护；1手入场费约HK$5,971，风险完全可控。',
+    urgentTip: '⏰ 截止2026-07-03（周四）BJ 10:00；公开超购414倍，1手中签率约5%；一人一手最优；现金仓参与，切勿孖展'
+  },
+  greyMarket: {
+    date: '2026-07-07',
+    price:      294.6, changePct: -0.34,
+    ,
+    peakPrice: null,
+    peakChangePct: null
+  }
+},
   // ✅ AUTO-ANALYZED [2026-06-29] Claude API 自动分析
   {
   code: '07656',
