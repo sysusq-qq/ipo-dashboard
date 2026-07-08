@@ -1711,66 +1711,92 @@ const stocks = [
 },
   // ⚠️ AUTO-STUB [2026-06-29] Futu API检测，Claude分析失败，请手动补充
     {
-    code: '08090',
-    applyEndTs: 1783008000,   // 北京时间 2026-07-03 10:00（Futu提供，待招股书核实）
-    listTs:     1783440000,        // 北京时间 2026-07-08 00:00（⚠️ 待招股书核实，禁用Futu原始时间戳）
-    name: '宝盖新材',
-    nameEn: '',
-    sector: '⚠️ 待补充',
-    listDate: '2026-07-08',
-    subDate: '⚠️ 待补充',
-    price: 8.51,
-    lotSize: 500,
-    entryFee: 4297.76,
-    totalIssue: '⚠️ 待补充',
-    publicIssue: '⚠️ 待补充',
-    greenshoe: '⚠️ 待查（需同时搜超額配股權和超額配售）',
-    mktCapH: '⚠️ 待补充',
-    pe: '⚠️ 待补充',
-    verdict: 'wait', verdictLabel: '待分析', score: 0,
-    position: '⚠️ 待分析',
-    sponsors: '⚠️ 待补充',
-    isTransfer: false,
-    cornerstone: { total: '⚠️ 待补充', tier1: [], others: [] },
-    conclusion: '⚠️ AUTO-STUB [2026-06-29] 由本地Futu API自动检测插入，请用Claude补充完整招股书分析。',
-    scores: [
-      { label: '业务质量',          pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '财务健康',          pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '估值吸引力',        pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '资本结构',          pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '市场叙事/赛道溢价', pts: 0, max: 15, desc: '⚠️ 待分析' },
-    ],
-    financial: [
-      { label: '收入（人民币亿元）', y2023: '—', y2024: '—', y2025: '—' },
-      { label: '毛利率',             y2023: '—', y2024: '—', y2025: '—' },
-      { label: '净利润（人民币M）',  y2023: '—', y2024: '—', y2025: '—' },
-      { label: '收入增速',           y2023: '—', y2024: '—', y2025: '—' },
-    ],
-    cfChecks: [
-      { icon: '⚠️', text: 'AUTO-STUB 自动插入，现金流数据待人工核实', tag: 'warn', tagText: '待分析' },
-    ],
-    risks: ['<strong>待分析</strong>：请用Claude补充完整招股书分析'],
-    actions: [
-      { date: '⚠️ 待填', title: '申购截止', desc: '请补充具体时间节点' },
-    ],
-    subscription: {
-      scenarios: [
-        { label: '保守', mult: 0, premPct: 0 },
-        { label: '基准', mult: 0, premPct: 0 },
-        { label: '乐观', mult: 0, premPct: 0 },
-      ],
-      recClass: 'wait', recTitle: '⚠️ 待分析',
-      lots: 0, method: '待定', marginOk: false,
-      marginTip: '⚠️ 待分析',
-      rationale: 'AUTO-STUB，待人工补充分析。',
-      urgentTip: '⚠️ 请补充截止时间',
-    },
-    greyMarket: {
-      date: '2026-07-07',
-      price:      6.67, changePct: -21.62, peakPrice: null, peakChangePct: null
-    }
+  code: '08090',
+  applyEndTs: 1783008000,
+  listTs:     1783440000,
+  name: '宝盖新材',
+  nameEn: 'Shandong Baogai New Materials Technology Co., Ltd.',
+  sector: '新材料 / 特种材料 / 山东国内制造',
+  listDate: '2026-07-08',
+  subDate: '待确认 ~ 2026-07-03',
+  price: 6.22,
+  lotSize: 500,
+  entryFee: 3137.76,
+  totalIssue: '1,447万股H股（全球发售）',
+  publicIssue: '144.7万股（10%香港公开发售）',
+  greenshoe: '无（招股书明确标注超额分配及发售量调整权均为"不适用"）',
+  mktCapH: '约HK$3.60亿（总股本5,787万股×HK$6.22）',
+  pe: '待确认（招股书财务数据不足，PS待确认）',
+  verdict: 'wait',
+  verdictLabel: '轻仓',
+  score: 57,
+  position: '1手现金仓',
+  sponsors: '待确认（独家保荐人名称招股书正文未完整披露，页面截断）',
+  isTransfer: false,
+  cornerstone: {
+    total: '无基石投资者（招股书未披露基石安排）',
+    tier1: [],
+    others: []
   },
-  // ✅ AUTO-ANALYZED [2026-06-29] Claude API 自动分析
+  conclusion: '宝盖新材为山东新材料GEM小盘股，最终发售价HK$6.22（低于招股价上限HK$8.51，折价约27%），显示机构认购偏冷。公开发售超额认购高达3,015倍，打新中签率极低（约0.5%/手），散户热情旺盛但流通盘仅1,447万股极度袖珍。无绿鞋、无基石、保荐人资质待确认、H股集中度极高（前5大H股东持53.76%），二级市场流动性风险极大。新材料赛道中性，叙事溢价有限。综合评分57分，建议仅以1手现金仓参与博彩，切勿重仓。',
+  scores: [
+    { label: '业务质量', pts: 13, max: 25, desc: '山东新材料科技公司，细分赛道不明朗，招股书正文业务描述不足；无明显技术护城河信息披露，市占率及全球化数据缺失；赛道一般，仅给中等偏低分' },
+    { label: '财务健康', pts: 13, max: 25, desc: '招股书节选未完整披露财务数据，募集净额仅HK$6,940万，规模较小；上市费用HK$2,060万占总募资额22.9%，成本偏高；整体财务信息不透明，谨慎给分' },
+    { label: '估值吸引力', pts: 12, max: 25, desc: '最终发售价HK$6.22较上限HK$8.51折价26.9%，机构定价偏保守，一定程度反映估值已有修正；但总市值仅约3.6亿港元，流动性极差，估值参考意义有限' },
+    { label: '资本结构', pts: 11, max: 25, desc: '无基石投资者，无绿鞋，保荐人名称截断未确认；控股股东持股72.58%锁定12个月；H股高度集中前10大持73%，流通极差；配售仅1.26倍，机构认购冷淡，资本结构偏弱' },
+    { label: '市场叙事/赛道溢价', pts: 8, max: 15, desc: '新材料属热门但非最热赛道，非AI/机器人/低空经济核心标的；公开超购3015倍显示散户打新热情，有一定短线炒作动能，但同类GEM小盘新材料股已有多只' },
+  ],
+  financial: [
+    { label: '收入（人民币亿元）', y2023: '待确认', y2024: '待确认', y2025: '待确认' },
+    { label: '毛利率', y2023: '待确认', y2024: '待确认', y2025: '待确认' },
+    { label: '净利润（人民币M）', y2023: '待确认', y2024: '待确认', y2025: '待确认' },
+    { label: '收入增速', y2023: '—', y2024: '待确认', y2025: '待确认' },
+  ],
+  cfChecks: [
+    { icon: '⚠️', text: '上市费用HK$2,060万，占总募资HK$9,000万约22.9%，上市成本偏高侵蚀净募资额', tag: 'warn', tagText: '费用偏高' },
+    { icon: '⚠️', text: '净募资额仅HK$6,940万（约人民币6,400万），规模极小，难以支撑大规模扩张', tag: 'warn', tagText: '募资规模小' },
+    { icon: '⚠️', text: '配售认购仅1.26倍，机构热情低迷，反映基本面吸引力有限', tag: 'warn', tagText: '机构冷淡' },
+    { icon: '✅', text: '公开发售超购3,015倍，散户认购热情极高，短线有助股价支撑', tag: 'ok', tagText: '散户热捧' },
+  ],
+  risks: [
+    '<strong>流动性风险极高</strong>：H股总流通仅1,447万股，前10大H股东持73%，市场可交易筹码极少，价格易被操控大幅波动',
+    '<strong>股权高度集中警告</strong>：招股书明确警示H股高度集中于少数股东，少量成交即可引发大幅波动',
+    '<strong>无基石无绿鞋</strong>：缺乏机构背书和价格稳定机制，上市后下行无保护',
+    '<strong>机构认购冷淡</strong>：配售仅1.26倍，说明专业投资者对公司估值/基本面信心不足',
+    '<strong>发售价大幅低于上限</strong>：最终定价HK$6.22较询价上限HK$8.51折价27%，显示需求疲弱',
+    '<strong>财务信息披露不足</strong>：招股书节选中核心财务数据缺失，投资者难以判断真实盈利质量',
+    '<strong>GEM市场流动性折价</strong>：GEM板块整体流动性远低于主板，长期持有风险大',
+  ],
+  actions: [
+    { date: '7月3日 申购截止', title: '申购操作', desc: '仅申购1手（500股），入场费约HK$3,138，纯现金参与，博超购彩票效应，切勿孖展' },
+    { date: '7月7日 暗盘', title: '观察暗盘走势', desc: '关注暗盘价格，若暗盘溢价超20%可考虑暗盘卖出锁定收益；若暗盘破发则上市日谨慎处理' },
+    { date: '7月8日 上市日', title: '开市观察', desc: '上市首日若溢价超15%建议及时止盈，鉴于流通盘极小价格波动剧烈，设好止损位，不追高' },
+    { date: '上市后', title: '风险控制', desc: '小盘GEM新材料股流动性极差，中签后如无明显催化剂建议首日出货，不建议长期持有' },
+  ],
+  subscription: {
+    scenarios: [
+      { label: '保守', mult: 1000, premPct: 5 },
+      { label: '基准', mult: 3000, premPct: 20 },
+      { label: '乐观', mult: 5000, premPct: 50 },
+    ],
+    recClass: 'wait',
+    recTitle: '⚠️ 谨慎参与',
+    lots: 1,
+    method: '现金仓',
+    marginOk: false,
+    marginTip: '不建议孖展：机构认购仅1.26倍，无基石无绿鞋，破发风险较高，孖展代价不合算',
+    rationale: '公开发售超购3015倍显示散户热情，短线有博弈价值；但机构仅1.26倍认购、无基石、无绿鞋、流通盘极小，基本面支撑薄弱。最终定价较上限折价27%，已反映机构冷淡。建议仅以1手现金仓参与，中签率极低（约0.5%），以小博大性质。若中签切记首日审慎止盈。',
+    urgentTip: '⏰ 截止2026-07-03(周四) 10:00(BJ)；一人一手策略；现金申购HK$3,138；超购3015倍中签极难'
+  },
+  greyMarket: {
+    date: '2026-07-07',
+    price: 6.67,
+    changePct: -21.62,
+    peakPrice: null,
+    peakChangePct: null
+  }
+},
+
   {
   code: '09971',
   applyEndTs: 1783008000,
