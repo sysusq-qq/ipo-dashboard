@@ -1612,67 +1612,103 @@ const stocks = [
     peakChangePct: null
   }
 },
-  // ⚠️ AUTO-STUB [2026-06-29] Futu API检测，Claude分析失败，请手动补充
-    {
-    code: '07687',
-    applyEndTs: 1783008000,   // 北京时间 2026-07-03 10:00（Futu提供，待招股书核实）
-    listTs:     1783440000,        // 北京时间 2026-07-08 00:00（⚠️ 待招股书核实，禁用Futu原始时间戳）
-    name: '易控智驾',
-    nameEn: '',
-    sector: '⚠️ 待补充',
-    listDate: '2026-07-08',
-    subDate: '⚠️ 待补充',
-    price: 87.92,
-    lotSize: 50,
-    entryFee: 4440.18,
-    totalIssue: '⚠️ 待补充',
-    publicIssue: '⚠️ 待补充',
-    greenshoe: '⚠️ 待查（需同时搜超額配股權和超額配售）',
-    mktCapH: '⚠️ 待补充',
-    pe: '⚠️ 待补充',
-    verdict: 'wait', verdictLabel: '待分析', score: 0,
-    position: '⚠️ 待分析',
-    sponsors: '⚠️ 待补充',
-    isTransfer: false,
-    cornerstone: { total: '⚠️ 待补充', tier1: [], others: [] },
-    conclusion: '⚠️ AUTO-STUB [2026-06-29] 由本地Futu API自动检测插入，请用Claude补充完整招股书分析。',
-    scores: [
-      { label: '业务质量',          pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '财务健康',          pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '估值吸引力',        pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '资本结构',          pts: 0, max: 25, desc: '⚠️ 待分析' },
-      { label: '市场叙事/赛道溢价', pts: 0, max: 15, desc: '⚠️ 待分析' },
+    // ✅ AUTO-ANALYZED [2026-07-03] Claude API 自动分析
+  {
+  code: '07687',
+  applyEndTs: 1783008000,
+  listTs:     1783440000,
+  name: '易控智驾',
+  nameEn: 'EACON Group Co., Ltd',
+  sector: '自动驾驶 / 智能驾驶科技 / 工业自动化',
+  listDate: '2026-07-08',
+  subDate: '2026-06-30 ~ 2026-07-03',
+  price: 87.92,
+  lotSize: 50,
+  entryFee: 4440.18,
+  totalIssue: '2613.2万股H股（全球发售，超额配股权行使前）',
+  publicIssue: '261.32万股（10%香港公开发售）',
+  greenshoe: '有（最多391.98万股，约15%）',
+  mktCapH: '约HK$130亿（总股本约1.479亿股×HK$87.92）',
+  pe: '待确认（招股书财务数据未完整披露）/ PS 待确认',
+  verdict: 'da',
+  verdictLabel: '打',
+  score: 73,
+  position: '1手现金仓',
+  sponsors: '海通国际证券有限公司（独家保荐人、整体协调人）',
+  isTransfer: false,
+  cornerstone: {
+    total: '约HK$11.44亿（按87.92港元×1301.165万股），占发售股份49.79%',
+    tier1: [
+      { name: '富达国际（Fidelity）', amt: '267.365万股×HK$87.92≈HK$2.35亿', lockup: '6个月' },
+      { name: 'JPMorgan Asset Management (Asia Pacific)', amt: '222.805万股×HK$87.92≈HK$1.96亿', lockup: '6个月' },
+      { name: 'ZIJINNING（紫金矿业关联）', amt: '178.245万股×HK$87.92≈HK$1.57亿', lockup: '6个月' },
+      { name: 'Aurora SF', amt: '133.68万股×HK$87.92≈HK$1.18亿', lockup: '6个月' },
+      { name: '霸菱资产管理（亚洲）', amt: '133.68万股×HK$87.92≈HK$1.18亿', lockup: '6个月' },
     ],
-    financial: [
-      { label: '收入（人民币亿元）', y2023: '—', y2024: '—', y2025: '—' },
-      { label: '毛利率',             y2023: '—', y2024: '—', y2025: '—' },
-      { label: '净利润（人民币M）',  y2023: '—', y2024: '—', y2025: '—' },
-      { label: '收入增速',           y2023: '—', y2024: '—', y2025: '—' },
-    ],
-    cfChecks: [
-      { icon: '⚠️', text: 'AUTO-STUB 自动插入，现金流数据待人工核实', tag: 'warn', tagText: '待分析' },
-    ],
-    risks: ['<strong>待分析</strong>：请用Claude补充完整招股书分析'],
-    actions: [
-      { date: '⚠️ 待填', title: '申购截止', desc: '请补充具体时间节点' },
-    ],
-    subscription: {
-      scenarios: [
-        { label: '保守', mult: 0, premPct: 0 },
-        { label: '基准', mult: 0, premPct: 0 },
-        { label: '乐观', mult: 0, premPct: 0 },
-      ],
-      recClass: 'wait', recTitle: '⚠️ 待分析',
-      lots: 0, method: '待定', marginOk: false,
-      marginTip: '⚠️ 待分析',
-      rationale: 'AUTO-STUB，待人工补充分析。',
-      urgentTip: '⚠️ 请补充截止时间',
-    },
-    greyMarket: {
-      date: '2026-07-07',
-      price:      91.5, changePct: 4.07, peakPrice: null, peakChangePct: null
-    }
+    others: [
+      { name: 'Indus Fund', amt: '89.12万股≈HK$0.78亿', lockup: '6个月' },
+      { name: 'Jain Global Master Fund', amt: '89.12万股≈HK$0.78亿', lockup: '6个月' },
+      { name: 'REGAL', amt: '71.295万股≈HK$0.63亿', lockup: '6个月' },
+      { name: '广发基金', amt: '44.56万股≈HK$0.39亿', lockup: '6个月' },
+      { name: 'CDH', amt: '44.56万股≈HK$0.39亿', lockup: '6个月' },
+      { name: 'Seven Grand', amt: '26.735万股≈HK$0.24亿', lockup: '6个月' },
+    ]
   },
+  conclusion: '易控智驾为智能驾驶科技企业，港股稀缺赛道。本次IPO基石阵容强劲，富达国际、摩根资产、霸菱等顶级机构合计认购占全球发售约49.79%，彰显机构认可度。香港公开发售认购倍数高达157.82倍，市场热情较高。公司市值约130亿港元，超额配股权（绿鞋）提供稳价支持。主要风险在于股权高度集中（招股书已警示）、自动驾驶行业商业化进程不确定。综合基石占比高、认购倍数佳、自动驾驶叙事热度强，建议1手现金仓参与，博取上市首日溢价。',
+  scores: [
+    { label: '业务质量', pts: 16, max: 25, desc: '自动驾驶/智能驾驶赛道具备技术稀缺性，港股同类标的较少，但招股书未披露具体市占率和收入增速细节，技术护城河待验证，给中等偏上分' },
+    { label: '财务健康', pts: 12, max: 25, desc: '招股书文本未披露完整财务数据（收入、净利润、毛利率均未在摘录中体现），自动驾驶企业普遍处于亏损或低利润阶段，保守评分' },
+    { label: '估值吸引力', pts: 13, max: 25, desc: '市值约130亿港元，对于自动驾驶科技企业属中等估值，但缺乏明确PE/PS对标数据，发行价定于区间上限87.92港元（区间81.16-87.92），显示需求较强，给中性分' },
+    { label: '资本结构', pts: 20, max: 25, desc: '基石占全球发售49.79%，含富达国际、摩根资产管理、霸菱等一线机构，阵容极强；有绿鞋机制（约15%）；保荐人海通国际为知名港股投行；香港公开认购157.82倍，资本结构优质' },
+    { label: '市场叙事/赛道溢价', pts: 12, max: 15, desc: '自动驾驶/智能驾驶为港股热门赛道，AI+汽车智能化叙事持续，港股同类纯正标的稀缺，市场热度高；认购倍数157.82倍印证市场关注度，给高分' },
+  ],
+  financial: [
+    { label: '收入（人民币亿元）', y2023: '待确认', y2024: '待确认', y2025: '待确认' },
+    { label: '毛利率', y2023: '待确认', y2024: '待确认', y2025: '待确认' },
+    { label: '净利润（人民币M）', y2023: '待确认', y2024: '待确认', y2025: '待确认' },
+    { label: '收入增速', y2023: '—', y2024: '待确认', y2025: '待确认' },
+  ],
+  cfChecks: [
+    { icon: '⚠️', text: '招股书摘录未披露现金流数据，自动驾驶企业通常经营现金流为负，需关注招股章程详细财务数据', tag: 'warn', tagText: '数据待核' },
+    { icon: '✅', text: '所得款项净额约HK$21.75亿，资金实力充足，支撑研发及商业化扩张', tag: 'ok', tagText: '募资充足' },
+    { icon: '✅', text: '绿鞋机制（超额配股权最多391.98万股）提供上市后价格支撑至2026年8月2日', tag: 'ok', tagText: '稳价机制' },
+  ],
+  risks: [
+    '<strong>股权高度集中风险</strong>：招股书明确警示股权高度集中于少数股东，少量买卖即可能导致H股价格大幅波动，流动性风险较高。',
+    '<strong>自动驾驶商业化不确定性</strong>：智能驾驶行业处于快速发展但盈利路径尚不明朗阶段，竞争激烈，技术迭代快，可能面临持续亏损压力。',
+    '<strong>财务数据透明度不足</strong>：招股书摘录未完整披露收入、利润等核心财务指标，投资者需自行研读完整招股章程方可作出全面评估。',
+    '<strong>国际政策风险</strong>：自动驾驶涉及数据安全及跨境合规，中美关系及相关政策变化可能影响业务扩张。',
+    '<strong>发行价定于区间上限</strong>：以87.92港元（区间最高价）发行，上市初期估值压力较大，若基本面不及预期存在回调风险。',
+  ],
+  actions: [
+    { date: '7月3日 申购截止', title: '现金仓申购1手', desc: '于北京时间10:00前提交申购，入场费约HK$4440，仅申请1手以提高中签概率' },
+    { date: '7月7日 暗盘交易', title: '观察暗盘表现', desc: '暗盘开盘价若较发行价溢价超10%，可考虑持有至正式上市；若暗盘破发则评估是否于上市首日止损' },
+    { date: '7月8日 上市首日', title: '视溢价幅度决策', desc: '若上市首日溢价15%-30%可考虑获利了结；若溢价超30%分批减持；若破发且基本面无重大变化可继续持有观察' },
+    { date: '2027年1月7日 基石解禁', title: '关注基石投资者动向', desc: '基石投资者6个月禁售期届满，富达国际、摩根等持仓将解禁，需提前评估抛压风险' },
+  ],
+  subscription: {
+    scenarios: [
+      { label: '保守', mult: 100, premPct: 5 },
+      { label: '基准', mult: 157, premPct: 15 },
+      { label: '乐观', mult: 200, premPct: 30 },
+    ],
+    recClass: 'da',
+    recTitle: '✅ 积极申购',
+    lots: 1,
+    method: '现金仓',
+    marginOk: false,
+    marginTip: '股权高度集中警示及财务数据不透明，不建议使用孖展，1手现金仓博彩票即可',
+    rationale: '基石投资者阵容顶级（富达、摩根、霸菱等），占全球发售近50%，机构背书极强。香港公开认购157.82倍，市场需求旺盛。自动驾驶赛道在港股具备稀缺溢价。有绿鞋机制保护下行。综合考虑1手现金仓性价比最优，风险可控。',
+    urgentTip: '⏰ 截止2026-07-03(周四) 北京时间10:00；建议仅申请1手提高中签率；中签率约10%（1手申请约10%获配）；暗盘日期2026-07-07可参考定价'
+  },
+  greyMarket: {
+    date: '2026-07-07',
+    price:      91.5, changePct: 4.07,
+    ,
+    peakPrice: null,
+    peakChangePct: null
+  }
+},
   // ⚠️ AUTO-STUB [2026-06-29] Futu API检测，Claude分析失败，请手动补充
     {
     code: '08090',
