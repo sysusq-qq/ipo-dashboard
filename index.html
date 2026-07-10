@@ -1891,13 +1891,13 @@ const stocks = [
   // ⚠️ AUTO-STUB [2026-06-24] Futu API检测，Claude分析失败，请手动补充
     {
     code: '03774',
-    applyEndTs: 0,   // 北京时间 N/A 10:00（Futu提供，待招股书核实）
-    listTs:     1782748800,        // 北京时间 2026-06-30 00:00（⚠️ 待招股书核实，禁用Futu原始时间戳）
+    applyEndTs: 0,
+    listTs:     1782748800,        // 北京时间 2026-06-30 00:00
     name: '亮晴控股',
-    nameEn: '',
-    sector: '⚠️ 待补充',
+    nameEn: 'Liang Ching Holdings Limited',
+    sector: '零售 / GEM转主板 / 转板',
     listDate: '2026-06-30',
-    subDate: '⚠️ 待补充',
+    subDate: '不适用（GEM转板）',
     price: null,
     lotSize: 1000,
     entryFee: null,
@@ -1906,12 +1906,12 @@ const stocks = [
     greenshoe: '⚠️ 待查（需同时搜超額配股權和超額配售）',
     mktCapH: '⚠️ 待补充',
     pe: '⚠️ 待补充',
-    verdict: 'wait', verdictLabel: '待分析', score: 0,
-    position: '⚠️ 待分析',
-    sponsors: '⚠️ 待补充',
-    isTransfer: false,
-    cornerstone: { total: '⚠️ 待补充', tier1: [], others: [] },
-    conclusion: '⚠️ AUTO-STUB [2026-06-24] 由本地Futu API自动检测插入，请用Claude补充完整招股书分析。',
+    verdict: 'wait', verdictLabel: '观望', score: 0,
+    position: '转板观察 · 暂不申购',
+    sponsors: '待查',
+    isTransfer: true,
+    cornerstone: { total: '不适用', tier1: [], others: [] },
+    conclusion: '亮晴控股为GEM创业板转主板（转板），无新股发售、无招股价、无入场费，不是传统打新机会。转板后关注主板流动性改善能否带来估值重估，不参与打新。',
     scores: [
       { label: '业务质量',          pts: 0, max: 25, desc: '⚠️ 待分析' },
       { label: '财务健康',          pts: 0, max: 25, desc: '⚠️ 待分析' },
