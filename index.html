@@ -6177,12 +6177,9 @@ function bjNowMs() {
 }
 
 function calcStatus(s) {
-  if (s.isTransfer) return { cls: 's-transfer', text: '转板' };
-  // A+H / 第二上市 / 转板 sector标签自动归入"其他"
+  // 只有 isTransfer:true 或 sector含"转板" 才归入"其他"
   const sec = s.sector || '';
-  if (sec.includes('A+H'))   return { cls: 's-transfer', text: 'A+H' };
-  if (sec.includes('第二上市')) return { cls: 's-transfer', text: '第二上市' };
-  if (sec.includes('转板'))  return { cls: 's-transfer', text: '转板' };
+  if (s.isTransfer || sec.includes('转板')) return { cls: 's-transfer', text: '转板' };
   const nowTs = bjNowMs() / 1000;
   if (s.listTs     && nowTs >= s.listTs)     return { cls: 's-listed',  text: '已上市' };
   if (s.applyEndTs && nowTs >= s.applyEndTs) return { cls: 's-closed',  text: '已截招' };
